@@ -1,20 +1,37 @@
 <template lang="pug">
-  div
-    h1 The Team {{team}}
-    .team-grid
-      person-preview(:person="person", v-for="person in team", :key="person.id")
-    //- close-modal(:link="teamLink")
+  .container
+    nuxt-child(:key="$route.params.id")
+    close-modal(:link="teamLink", :team="team")
 </template>
 
 <script>
-// import { createClient } from '~/plugins/contentful.js'
+import { createClient } from '~/plugins/contentful.js'
 import CloseModal from '~/components/CloseModal.vue'
 import PersonPreview from '~/components/person-preview.vue'
 
-// const client = createClient()
+const client = createClient()
 
 export default {
-  props: ['team'],
+  asyncData ({ env, params }) {
+    return client.getEntries({
+      'content_type': 'person'
+    }).then(entries => {
+      let team = []
+      for (let entry of entries.items) {
+        team.push(entry)
+      }
+      var newArr = team.slice()
+      for (var i = newArr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1))
+        var temp = newArr[i]
+        newArr[i] = newArr[j]
+        newArr[j] = temp
+      }
+      return {
+        team: newArr
+      }
+    })
+  },
   data () {
     return {
       teamLink: '/chat'
@@ -33,7 +50,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team teamView'
-    console.log(this.team)
+    // this.$store.dispatch('setTeam', this.team)
   }
 }
 </script>

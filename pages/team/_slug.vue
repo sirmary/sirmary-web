@@ -11,7 +11,7 @@
         a(v-bind:href="'mailto:'+person.fields.email") {{person.fields.email}}
       p.person-phone(v-if="person.fields.phone")
         a(v-bind:href="'tel:'+person.fields.phone") {{person.fields.phone}}
-    close-modal(:link="'/team'")
+    //- close-modal(:link="'/team'")
 </template>
 
 <script>
