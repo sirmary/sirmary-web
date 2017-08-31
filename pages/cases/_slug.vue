@@ -141,9 +141,7 @@ a {
 
 }
 
-  h2 {
-    line-height: 1.2;
-  }
+
 .hero-image {
   width: 100%;
   max-width: $column-width;

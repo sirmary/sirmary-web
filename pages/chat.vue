@@ -224,7 +224,7 @@ export default {
     }, 500)
   },
   updated () {
-    console.log('updated')
+    // console.log('updated')
     let containerHeight = this.$refs.messageBox.clientHeight
     let messagesHeight = this.$refs.messages.clientHeight
     if (messagesHeight >= containerHeight) {
