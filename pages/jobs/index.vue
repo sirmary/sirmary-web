@@ -26,7 +26,7 @@ export default {
   asyncData ({ env, params }) {
     return jobClient.getEntries({
       'content_type': 'job',
-      order: '-sys.createdAt'
+      order: '-sys.updatedAt'
     }).then(entries => {
       return {
         jobs: entries.items
