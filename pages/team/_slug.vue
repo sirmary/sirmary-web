@@ -1,5 +1,4 @@
 <template lang="pug">
-  .container
     .person-content(ref="content")
       .img-holder
         img(class="thumbnail", :src="person.fields.image.fields.file.url + '?fit=scale&w=72&h=72'")
@@ -11,7 +10,6 @@
         a(v-bind:href="'mailto:'+person.fields.email") {{person.fields.email}}
       p.person-phone(v-if="person.fields.phone")
         a(v-bind:href="'tel:'+person.fields.phone") {{person.fields.phone}}
-    //- close-modal(:link="'/team'")
 </template>
 
 <script>
@@ -46,6 +44,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team detailView'
+    this.$parent.teamLink = '/team'
   }
 }
 </script>

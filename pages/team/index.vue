@@ -1,8 +1,8 @@
 <template lang="pug">
-  div
+  .grid-wrapper
     h1 The Team {{team}}
     .team-grid
-      person-preview(:person="person", v-for="person in team", :key="person.id")
+      person-preview(:person="person", v-for="person in this.$parent.team", :key="person.id")
     //- close-modal(:link="teamLink")
 </template>
 
@@ -33,27 +33,18 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team teamView'
-    console.log(this.team)
+    console.log(this.$parent.team)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
-
-.container {
-  display: flex;
-  flex-flow: row nowrap;
-  padding: 100px 0 0 0;
-  transition: margin-left .5s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
-.grid {
-  width: 100vw;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
+.grid-wrapper {
+  margin: 0 auto;
   padding: 12px;
+  padding-bottom: 100px;
+}
 
   h1 {
     width: 100%;
@@ -62,7 +53,6 @@ export default {
     margin: 0;
     margin-bottom: 24px;
   }
-}
 
   .team-grid {
     display: flex;
