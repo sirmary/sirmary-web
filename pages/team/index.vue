@@ -33,7 +33,6 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team teamView'
-    console.log(this.$parent.team)
   }
 }
 </script>

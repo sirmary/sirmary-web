@@ -60,6 +60,13 @@ body {
 
 }
 
+input:focus {
+    // outline: none !important;
+    // border:1px solid red;
+    // box-shadow: 0 0 10px red;
+    outline-width: 0;
+}
+
 .page-enter-active, .page-leave-active {
   transition: all .4s $default-easing;
   // margin-top: 0;
@@ -162,6 +169,7 @@ a {
     // Typing Animation
   .typing-container {
   position: relative;
+  height: 24px;
 
   .circle {
     position: absolute;

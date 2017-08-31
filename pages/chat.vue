@@ -136,6 +136,7 @@ export default {
       let dirtyMsg = this.inputValue
       let cleanMsg = this.cleanMsg
       let self = this
+      self.scrollToEnd()
       // console.log(dirtyMsg)
       messages.push({who: 'me', text: cleanMsg})
       axios.post('https://api.api.ai/v1/query?v=20150910', {
@@ -144,23 +145,34 @@ export default {
         sessionId: '69696969'
       }, this.config)
       .then(function (response) {
+        self.scrollToEnd()
         let responseMsg = response.data.result.fulfillment.speech
-        // console.log('** popping the dots')
-        messages.pop()
-        // console.log('** pushing the response: ')
-        // console.log(responseMsg)
-        messages.push({who: 'bot', text: responseMsg})
+        setTimeout(function () {
+          // console.log('** popping the dots')
+          messages.pop()
+          // console.log('** pushing the response: ')
+          // console.log(responseMsg)
+          messages.push({who: 'bot new', text: responseMsg})
+          // self.$nextTick(function () {
+          //   console.log('next teck')
+          //   self.scrollToEnd()
+          // })
+        }, 1000)
+
         self.trackEvent(responseMsg)
         if (response.data.result.action !== 'input.unknown') {
           $router.push(response.data.result.action)
         }
+        setTimeout(function () {
+          document.querySelector('ul').lastChild.classList.remove('new')
+        }, 3000)
       })
       .catch(function (error) {
         console.log(error)
         messages.pop()
         messages.push({who: 'bot error', text: 'oops. I didn\'t quite get that...'})
       })
-      messages.push({who: 'bot waiting', text: `<div class="typing-container"><span class="circle"></span><span class="circle"></span><span class="circle"></span></div>`})
+      messages.push({who: 'bottemp waiting', text: `<div class="typing-container"><span class="circle"></span><span class="circle"></span><span class="circle"></span></div>`})
       this.scrollToEnd()
       this.blurInputMobile()
     },
@@ -185,7 +197,7 @@ export default {
     },
     scrollToEnd () {
       let messagesHeight = this.$refs.messages.scrollHeight
-      this.$refs.messageBox.scrollTop = messagesHeight
+      this.$refs.messageBox.scrollTop = messagesHeight + 100
     },
     handleClick (event, value) {
       let myLink = event.target.dataset.link
@@ -212,11 +224,11 @@ export default {
     }, 500)
   },
   updated () {
+    console.log('updated')
     let containerHeight = this.$refs.messageBox.clientHeight
     let messagesHeight = this.$refs.messages.clientHeight
     if (messagesHeight >= containerHeight) {
       this.$refs.messages.style.height = '100%'
-      // this.$store.state.isLogoBlurred = true
     }
     this.scrollToEnd()
   }
@@ -290,13 +302,17 @@ h3 {
     list-style: none;
     padding: 0 12px;
     margin-bottom: 12px;
-    animation: popIn .5s;
     transform-origin: 0 100%;
     font-size: 1rem;
     margin-bottom: 24px;
     padding-right: 90px;
     padding-left: 24px;
     // text-indent: rem(36);
+
+    &.new {
+      transform-origin: center bottom;
+      animation: bounceInUp .5s;
+    }
 
     &.greeting  {
       text-indent: $text-indent;
@@ -332,6 +348,7 @@ h3 {
   a {
   color: #D8D941;
   }
+
 .input-wrapper {
   left: 12px;
   right: 12px;
@@ -383,15 +400,43 @@ h3 {
 
 @keyframes popIn {
   0% {
-    transform: scale(0) translateY(100px);
+    transform: translateY(50px);
     opacity: 0;
 
   }
   75% {
-    transform: scale(1.2)
+    transform: translateY(-10px);
   }
   100% {
     transform: none
+  }
+}
+
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
 
