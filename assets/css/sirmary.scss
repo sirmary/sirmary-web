@@ -1,0 +1,371 @@
+@import 'settings';
+@import 'awesomplete';
+@import 'levi';
+
+html {
+  background-image: url(~assets/img/heart.png);
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  background-position: 50% 20vh;
+  background-attachment: fixed;
+}
+
+body {
+    font-family: $base-font-family;
+    color:white;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+}
+
+
+.close-modal {
+  position: absolute;
+  transition: right .5s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  button {
+    width: 44px;
+    height: 44px;
+    border: none;
+    outline: none;
+    border-radius: 22px;
+    padding: 11px;
+    padding-top: 12px;
+    background: rgba(black, .7);
+    color: white;
+    cursor: pointer;
+
+     &:hover {
+      background: black;
+      transform: scale(1.1);
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+
+
+  &.sticky {
+    position: fixed;
+    right: 24px;
+    top: 24px;
+  }
+
+
+}
+
+.page-enter-active, .page-leave-active {
+  transition: all .4s $default-easing;
+  // margin-top: 0;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+  // margin-top: 100vh;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: all .4s $default-easing;
+  // margin-right: 0;
+}
+.slide-enter, .slide-leave-active {
+  opacity: 0;
+  // margin-right: 100vw;
+  transform: translateX(100vw)
+}
+
+.pill-button {
+  background: black;
+    height: 36px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: fixed;
+    right: 24px;
+    width: 95px;
+    top: 24px;
+
+    &:hover {
+      text-decoration: none;
+    }
+}
+
+ul.messages a {
+  background: black;
+    padding: 14px 24px 13px 24px;
+    height: 48px;
+    display: inline-block;
+    margin: 12px 0;
+    border-radius: 24px;
+    color: white;
+    text-indent: 0;
+
+    @include mq($from: tablet) {
+      padding-top: 10px;
+    }
+}
+
+a {
+  text-decoration: none;
+  color:$sm-yellow;
+}
+
+
+.logo {
+  width: 100px;
+  position: fixed;
+  top: 24px;
+  left: 50vw;
+  margin-left: -50px;
+  // transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: -1;
+
+  &.reduced {
+    width: 72px;
+    left: 24px;
+    margin-left: 0;
+  }
+
+    @include mq($from: tablet) {
+      width: 122px;
+
+      &.reduced {
+        width: 122px;
+      }
+    }
+}
+
+
+  .awesomplete > ul {
+    background: rgba(white,.3);
+    border-radius: 20px;
+    padding: 24px;
+
+    &:before {
+      content: 'Dinge, die du mich fragen kannst:';
+      font-size: rem(24);
+      text-indent: $text-indent;
+      margin-top: 0;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+  }
+
+
+    // Typing Animation
+  .typing-container {
+  position: relative;
+
+  .circle {
+    position: absolute;
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    background-color: white;
+    margin: 3px;
+    border-radius: 50%;
+    animation: wave 1.5s infinite ease-in-out;
+    top: 0;
+
+    &:first-child {
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      left: 10px;
+      animation-delay: 0.10s;
+    }
+
+    &:last-child {
+      left: 20px;
+      animation-delay: 0.20s;
+    }
+  }
+}
+
+@keyframes wave {
+  0%, 50% {
+    top: 0;
+  }
+
+  25% {
+    top: -10px;
+  }
+}
+
+
+body.cases main, body.about main, body.team main, body.job main, body.clients main, body.jobs main, body.client main {
+  padding-top: 142px;
+  @include mq($from: tablet){
+    padding-top: 180px;
+  }
+
+  .container {
+    background: rgba(white,.3);
+    min-height: calc(100vh - 142px);
+
+    @include mq($from: tablet) {
+      min-height: calc(100vh - 180px);
+    }
+  }
+
+  .close-modal  {
+    position: absolute;
+    right: 24px;
+    top: 166px;
+
+      @include mq($from: tablet) {
+        top: 204px;
+      }
+
+      &.sticky {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+      }
+  }
+}
+
+body.cases .container {
+  background: none;
+  padding-top: 72px;
+  @include mq($from: tablet) {
+    background: rgba(white,.3);
+  }
+}
+
+body.cases.detailView main {
+  padding-top: 0;
+
+  .close-modal {
+    top: 24px;
+  }
+
+  iframe {
+    max-width: 100%;
+  }
+
+  .container {
+    padding-top: 0;
+      padding-bottom: 100px;
+
+  }
+
+  .copy {
+      p {
+        margin-top: rm(18);
+    margin-bottom: rem(18);
+  }
+
+  div {
+    // margin: 36px 0;
+  }
+  }
+
+  .copy img {
+      width: 100%;
+    }
+}
+
+body.cases .copy ul {
+  text-indent: 0;
+  padding-left: 20px;
+}
+
+body.team .container {
+  padding-top: 48px;
+}
+
+body.about .container {
+  padding: 18px;
+
+  &.leave {
+    animation: slideDown .5s ease-out;
+  }
+}
+
+.job-body {
+  // text-indent: $text-indent;
+}
+
+.job-body h3 {
+  color: black;
+  font-family: 'LeviRebrushed';
+  font-weight: normal;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.job-body h2 {
+  font-size: rem(36);
+  text-indent: $text-indent;
+  line-height: 1.2;
+}
+
+  @keyframes slideUp {
+    0% {
+      margin-top: 100vh;
+    }
+    100% {
+      margin-top: 0;
+    }
+  }
+
+    @keyframes slideDown {
+    0% {
+      margin-top: 0;
+    }
+    100% {
+      margin-top: 100vh;
+    }
+  }
+
+// close button -> arrow
+#close-btn {
+  #x1 {
+    transform: rotateZ(45deg);
+    transform-origin: center center;
+    transition: transform .3s ease, opacity .3s linear;
+  }
+
+  #x2 {
+    transform: rotateZ(-45deg);
+    transform-origin: center center;
+    transition: transform .3s ease, opacity .3s linear;
+  }
+
+  #wing1, #wing2 {
+    opacity: 0;
+    transition: transform .3s ease, opacity .3s linear;
+    transform: none;
+    transform-origin: top left;
+  }
+}
+
+  body.detailView .close-modal #close-btn {
+
+    #x1 {
+      transform: none;
+      opacity: 0;
+    }
+
+    #x2 {
+      transform: none;
+    }
+
+    #wing1 {
+      opacity: 1;
+      transform: rotateZ(45deg)
+    }
+       #wing2 {
+      opacity: 1;
+      transform: rotateZ(-45deg)
+    }
+  }
