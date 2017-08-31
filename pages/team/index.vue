@@ -17,33 +17,27 @@ const client = createClient()
 export default {
   asyncData ({ env, params }) {
     return client.getEntries({
-      'content_type': 'person',
-      order: '-sys.createdAt'
+      'content_type': 'person'
     }).then(entries => {
-      return {
-        team: entries.items
+      let team = []
+      for (let entry of entries.items) {
+        team.push(entry)
       }
-    })
-  },
-  data () {
-    return {
-      teamLink: '/chat'
-    }
-  },
-  methods: {
-    shuffle () {
-      this.team = this.shuffleArray(this.team)
-      this.$store.state.isTeamShuffled = true
-    },
-    shuffleArray (arr) {
-      var newArr = arr.slice()
+      var newArr = team.slice()
       for (var i = newArr.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1))
         var temp = newArr[i]
         newArr[i] = newArr[j]
         newArr[j] = temp
       }
-      return newArr
+      return {
+        team: newArr
+      }
+    })
+  },
+  data () {
+    return {
+      teamLink: '/chat'
     }
   },
   components: {
@@ -59,9 +53,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team teamView'
-    if (!this.$store.state.isTeamShuffled) {
-      this.shuffle()
-    }
+    // this.$store.dispatch('setTeam', this.team)
   }
 }
 </script>
@@ -84,7 +76,6 @@ export default {
   padding: 12px;
 
   h1 {
-    // height: 60px;
     width: 100%;
     max-width: rem(1200);
     text-indent: $text-indent;

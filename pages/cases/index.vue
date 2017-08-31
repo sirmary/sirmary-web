@@ -23,8 +23,8 @@ export default {
       let posts = []
       for (let item of entries.items) {
         // console.log(item)
-        console.log(typeof item.fields.overviewThumbnail)
-        console.log(item.sys.updatedAt)
+        // console.log(typeof item.fields.overviewThumbnail)
+        // console.log(item.sys.updatedAt)
         if (typeof item.fields.overviewThumbnail !== 'undefined') {
           // console.log(item.fields.overviewThumbnail)
           if (typeof item.fields.overviewThumbnail.fields !== 'undefined') {
@@ -33,7 +33,7 @@ export default {
           }
         }
       }
-      console.log(posts)
+      // console.log(posts)
       return {
         posts
       }
