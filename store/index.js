@@ -28,7 +28,7 @@ const store = () =>
         {
           id: 14,
           q: 'Was ist das Angebot von SiR MaRY?',
-          o: 1,
+          o: null,
           f: [
             'was',
             'sirmary',

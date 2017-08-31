@@ -26,7 +26,6 @@
 </template>
 
 <script>
-// import {bus} from '~/plugins/bus.js'
 import store from '~/store/index.js'
 import axios from 'axios'
 import {filter} from '~/plugins/badwords.js'
@@ -57,6 +56,15 @@ export default {
         minChars: 2,
         maxItems: 7,
         filter: function (text, input) {
+          let helps = [
+            'Wer oder was ist SiR MaRY?',
+            'Welche Kunden betreut SiR MaRY?',
+            'Kann ich bei SiR MaRY arbeiten?',
+            'Wie kontaktiere ich SiR MaRY?'
+          ]
+          if (input.length < 1) {
+            return helps.indexOf(text.label) > -1
+          }
           return filterlogic.performSentenceLogic(text, input)
         },
         item: function (text, input) {
@@ -96,6 +104,7 @@ export default {
       }
     },
     getHelp () {
+      // console.log(this.helpQuestions)
       this.$refs.awesomeInput.awesomplete.isHelpClicked = true
       this.$refs.awesomeInput.awesomplete.minChars = 0
       this.$refs.awesomeInput.awesomplete.input.focus()

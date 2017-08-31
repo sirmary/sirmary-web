@@ -61,7 +61,6 @@ export default {
     },
 
     open () {
-      console.log('OPEN inside compo')
       this.awesomplete.open()
     },
 
@@ -74,7 +73,6 @@ export default {
     },
 
     test () {
-      console.log('testing')
       this.$emit('selectcomplete')
     },
     enterPressed () {
