@@ -1,7 +1,7 @@
 <template lang="pug">
   .container
-    nuxt-child(:key="$route.params.id")
-    close-modal(:link="teamLink", :team="team")
+    nuxt-child(:key="$route.params.id" :team="team")
+    close-modal(:link="teamLink")
 </template>
 
 <script>

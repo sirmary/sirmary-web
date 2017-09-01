@@ -69,9 +69,8 @@ export default {
         },
         item: function (text, input) {
           let words = input.trim().split(' ')
-          for (let word of words) {
-            text = text.replace(RegExp(word, 'gi'), '<mark>$&</mark>')
-          }
+          let regex = '(' + words.join('|') + ')'
+          text = text.replace(RegExp(regex, 'gi'), '<mark>$&</mark>')
           let li = document.createElement('li')
           li.innerHTML = text
           return li

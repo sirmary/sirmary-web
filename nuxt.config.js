@@ -137,13 +137,13 @@ const config = {
         }),
         cdaClient.getEntries({
           'content_type':ctfConfig.CTF_CLIENT_TYPE_ID
-        }),
+        })
         // get the blog post content type
-        cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
-          .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
+        // cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
+        // .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
       ])
-      .then(([entries, person, job, client, postType]) => {
-        return [
+      .then(([entries, person, job, client]) => {
+        let routes = [
           // map entries to URLs
           ...entries.items.map(entry => `/cases/${entry.fields.slug}`),
           // map clients to URLS
@@ -156,6 +156,7 @@ const config = {
           //...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
           // ...postType.fields.find(field => field.id === 'client').items.validations[0].in.map(client => `/clients/${client}`)
         ]
+        return routes
       })
     }
   },

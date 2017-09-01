@@ -1,8 +1,8 @@
 <template lang="pug">
   .grid-wrapper
-    h1 Team {{team}}
+    h1 Team
     .team-grid
-      person-preview(:person="person", v-for="person in this.$parent.team", :key="person.id")
+      person-preview(:person="person", v-for="person in team", :key="person.id")
     //- close-modal(:link="teamLink")
 </template>
 
