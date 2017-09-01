@@ -138,6 +138,7 @@ export default {
       self.scrollToEnd()
       // console.log(dirtyMsg)
       messages.push({who: 'me', text: cleanMsg})
+      self.trackEvent(dirtyMsg)
       axios.post('https://api.api.ai/v1/query?v=20150910', {
         query: dirtyMsg,
         lang: 'en',
@@ -157,8 +158,6 @@ export default {
           //   self.scrollToEnd()
           // })
         }, 1000)
-
-        self.trackEvent(responseMsg)
         if (response.data.result.action !== 'input.unknown') {
           $router.push(response.data.result.action)
         }

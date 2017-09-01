@@ -1,15 +1,15 @@
 <template lang="pug">
     .person-content(ref="content")
       .img-holder
-      //-   img(class="thumbnail", :src="person.image.fields.file.url + '?fit=scale&w=72&h=72'")
-      //- .name
-      //-   h1(v-html="person.name")
-      //- h3(v-html="person.title")
-      //- vue-markdown(class="person-bio" v-html="person.shortBio")
-      //- p.person-email
-      //-   a(v-bind:href="'mailto:'+person.email") {{person.email}}
-      //- p.person-phone(v-if="person.phone")
-      //-   a(v-bind:href="'tel:'+person.phone") {{person.phone}}
+        img(class="thumbnail", :src="person.image.fields.file.url + '?fit=scale&w=72&h=72'")
+      .name
+        h1(v-html="person.name")
+      h3(v-html="person.title")
+      vue-markdown(class="person-bio" v-html="person.shortBio")
+      p.person-email
+        a(v-bind:href="'mailto:'+person.email") {{person.email}}
+      p.person-phone(v-if="person.phone")
+        a(v-bind:href="'tel:'+person.phone") {{person.phone}}
 </template>
 
 <script>
@@ -20,16 +20,12 @@ import CloseModal from '~/components/CloseModal.vue'
 const personClient = createClient()
 
 export default {
-  // props: ['']
   asyncData ({ env, params }) {
-    console.log('calling async:' + params.slug)
     return personClient.getEntries({
       'content_type': 'person',
       'fields.slug': params.slug
     }).then(entries => {
-      // console.log('received async: ' + JSON.stringify(entries.items))
       if (entries.items[0].fields === undefined) {
-        console.log('i am undefined:' + JSON.stringify(entries))
       }
       return {
         person: entries.items[0].fields
