@@ -36,12 +36,13 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     }
-  },
-  watch: {
-    '$route': function () {
-      // track the route change here
-    }
   }
+  // watch: {
+  //   '$route': function () {
+  //     // track the route change here
+  //     console.log(this.path)
+  //   }
+  // }
 
 }
 </script>
