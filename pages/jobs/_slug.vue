@@ -39,6 +39,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'job detailView'
+    this.$store.state.isArrow = true
   }
 }
 </script>

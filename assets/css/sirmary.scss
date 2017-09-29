@@ -21,7 +21,7 @@ body {
 
 .close-modal {
   position: absolute;
-  transition: right .5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  // transition: right .5s cubic-bezier(0.4, 0.0, 0.2, 1);
 
   button {
     width: 44px;
@@ -342,43 +342,15 @@ body.about .container {
 
 // close button -> arrow
 #close-btn {
-  #x1 {
+  .clockwise {
     transform: rotateZ(45deg);
     transform-origin: center center;
     transition: transform .3s ease, opacity .3s linear;
   }
 
-  #x2 {
+  .counterclockwise {
     transform: rotateZ(-45deg);
     transform-origin: center center;
     transition: transform .3s ease, opacity .3s linear;
   }
-
-  #wing1, #wing2 {
-    opacity: 0;
-    transition: transform .3s ease, opacity .3s linear;
-    transform: none;
-    transform-origin: top left;
-  }
 }
-
-  body.detailView .close-modal #close-btn {
-
-    // #x1 {
-    //   transform: none;
-    //   opacity: 0;
-    // }
-
-    // #x2 {
-    //   transform: none;
-    // }
-
-    // #wing1 {
-    //   opacity: 1;
-    //   transform: rotateZ(45deg)
-    // }
-    //    #wing2 {
-    //   opacity: 1;
-    //   transform: rotateZ(-45deg)
-    // }
-  }

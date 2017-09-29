@@ -33,6 +33,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team teamView'
+    this.$store.state.isArrow = false
   }
 }
 </script>
@@ -69,11 +70,11 @@ export default {
   padding-top: 0;
 }
 
-.close-modal button {
-  font-size: 2.2rem;
-  font-weight: 100;
-  line-height: .5;
-}
+// .close-modal button {
+//   font-size: 2.2rem;
+//   font-weight: 100;
+//   line-height: .5;
+// }
 
 
 .person-view {

@@ -58,6 +58,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'cases'
+    this.$store.state.isArrow = false
   }
 }
 </script>

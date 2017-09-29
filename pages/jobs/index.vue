@@ -51,6 +51,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'jobs'
+    this.$store.state.isArrow = false
   }
 }
 </script>

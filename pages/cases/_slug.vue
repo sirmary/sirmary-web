@@ -60,6 +60,7 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'cases detailView'
+    this.$store.state.isArrow = true
   }
 }
 </script>

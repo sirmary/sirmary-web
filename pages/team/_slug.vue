@@ -47,6 +47,7 @@ export default {
   beforeMount () {
     document.body.classList = 'team detailView'
     this.$parent.teamLink = '/team'
+    this.$store.state.isArrow = true
   }
 }
 </script>

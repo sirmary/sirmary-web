@@ -50,7 +50,13 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'team teamView'
-    // this.$store.dispatch('setTeam', this.team)
+    this.$store.state.isArrow = false
+  },
+  watch: {
+    '$route': function () {
+      // watch the route change here, make the arrow x
+      this.$store.state.isArrow = false
+    }
   }
 }
 </script>
@@ -97,11 +103,11 @@ export default {
   padding-top: 0;
 }
 
-.close-modal button {
-  font-size: 2.2rem;
-  font-weight: 100;
-  line-height: .5;
-}
+// .close-modal button {
+//   font-size: 2.2rem;
+//   font-weight: 100;
+//   line-height: .5;
+// }
 
 
 .person-view {
