@@ -364,21 +364,21 @@ body.about .container {
 
   body.detailView .close-modal #close-btn {
 
-    #x1 {
-      transform: none;
-      opacity: 0;
-    }
+    // #x1 {
+    //   transform: none;
+    //   opacity: 0;
+    // }
 
-    #x2 {
-      transform: none;
-    }
+    // #x2 {
+    //   transform: none;
+    // }
 
-    #wing1 {
-      opacity: 1;
-      transform: rotateZ(45deg)
-    }
-       #wing2 {
-      opacity: 1;
-      transform: rotateZ(-45deg)
-    }
+    // #wing1 {
+    //   opacity: 1;
+    //   transform: rotateZ(45deg)
+    // }
+    //    #wing2 {
+    //   opacity: 1;
+    //   transform: rotateZ(-45deg)
+    // }
   }
