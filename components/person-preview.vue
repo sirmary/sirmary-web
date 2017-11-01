@@ -1,10 +1,11 @@
 <template lang="pug">
   .person-wrapper
-    nuxt-link(:to="{ name: 'team-slug', params: { slug: person.fields.slug }}", class="person")
-      img(class="thumbnail", :src="person.fields.image.fields.file.url + '?fit=scale&w=100&h=100'")
-      .text-wrapper
-        p.person-name {{ person.fields.name }}
-        p.person-title {{ person.fields.title }}
+    .person-content
+      nuxt-link(:to="{ name: 'team-slug', params: { slug: person.fields.slug }}", class="person")
+        img(class="thumbnail", :src="person.fields.image.fields.file.url + '?fit=scale&w=100&h=100'")
+        .text-wrapper
+          p.person-name {{ person.fields.name }}
+          p.person-title {{ person.fields.title }}
 </template>
 
 <script>
@@ -18,7 +19,7 @@ export default {
 
   .person-wrapper {
     // background: rgba(white, .2);
-    padding: $spacing-unit/2;
+    // padding: $spacing-unit/2;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -33,7 +34,15 @@ export default {
       flex: 0 1 33.33%;
     }
 
+    .person-content {
+      padding: $spacing-unit/2;
+      width: 100%;
+      height: 100%;
+    }
+
     .person {
+      // min-height: 10rem;
+      height: 100%;
       background: rgba(white,.3);
       display: flex;
       flex: 1 1 auto;
