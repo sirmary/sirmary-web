@@ -8,10 +8,8 @@
     button.close(v-show="!$store.state.isArrow")
       svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 36 35")
         style(type='text/css').
-          .clockwise{transform: rotateZ(45deg); transform-origin: center center;}
-          .counterclockwise{transform: rotateZ(-45deg); transform-origin: center center;}
-        line(class="clockwise" x1="1" y1="17.5" x2="35" y2="17.5")
-        line(class="counterclockwise" x1="1" y1="17.5" x2="35" y2="17.5")
+        line(transform="rotate(45 18 17.5)" x1="1" y1="17.5" x2="35" y2="17.5")
+        line(transform="rotate(-45 18 17.5)" x1="1" y1="17.5" x2="35" y2="17.5")
 </template>
 
 <script>
@@ -33,6 +31,7 @@ export default {
     let closeButton = this.$refs.closeButton
     let $data = this.$data
     let $store = this.$store
+
     document.body.onscroll = function () {
       if (closeButton.$el.parentElement.getBoundingClientRect().top < 25) {
         $data.isSticky = true

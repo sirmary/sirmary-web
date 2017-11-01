@@ -59,6 +59,12 @@ export default {
   beforeMount () {
     document.body.classList = 'cases'
     this.$store.state.isArrow = false
+  },
+  mounted () {
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', 'cases')
+    }
   }
 }
 </script>
@@ -84,7 +90,7 @@ export default {
 
     @include mq($from: tablet) {
       flex: 0 1 50%;
-      padding: 12px;
+      // padding: 12px;
     }
 
 
@@ -99,6 +105,17 @@ export default {
       &:hover {
         background: rgba(white,.2);
       }
+    }
+
+    .article-wrapper {
+      width: 100%;
+      padding: 0;
+    }
+
+
+
+    img {
+      width: 100%;
     }
   }
 

@@ -48,6 +48,12 @@ export default {
     document.body.classList = 'team detailView'
     this.$parent.teamLink = '/team'
     this.$store.state.isArrow = true
+  },
+  mounted () {
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', 'team detailView')
+    }
   }
 }
 </script>

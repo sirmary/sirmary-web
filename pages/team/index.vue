@@ -1,7 +1,7 @@
 <template lang="pug">
   .grid-wrapper
     h1 Team
-    .team-grid
+    .team-grid#team-grid
       person-preview(:person="person", v-for="person in team", :key="person.id")
     //- close-modal(:link="teamLink")
 </template>
@@ -34,6 +34,12 @@ export default {
   beforeMount () {
     document.body.classList = 'team teamView'
     this.$store.state.isArrow = false
+  },
+  mounted () {
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', 'team teamView')
+    }
   }
 }
 </script>
@@ -44,6 +50,7 @@ export default {
   margin: 0 auto;
   padding: 12px;
   padding-bottom: 100px;
+  width: 100%;
 }
 
   h1 {

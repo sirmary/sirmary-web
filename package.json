@@ -8,6 +8,7 @@
     "bad-words": "^1.5.1",
     "contentful": "^4.6.0",
     "contentful-management": "^3.4.0",
+    "eventsource-polyfill": "^0.9.6",
     "node-sass": "^4.5.3",
     "normalize-scss": "^7.0.0",
     "normalize.css": "^7.0.0",

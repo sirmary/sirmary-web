@@ -61,6 +61,12 @@ export default {
   beforeMount () {
     document.body.classList = 'cases detailView'
     this.$store.state.isArrow = true
+  },
+  mounted () {
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', 'cases detailView')
+    }
   }
 }
 </script>
@@ -87,6 +93,7 @@ $column-width: 40rem;
   display: table;
   clear: both;
 }
+
 
 
 h1 {

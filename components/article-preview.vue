@@ -1,10 +1,11 @@
 <template lang="pug">
-  .article
-    nuxt-link(:to="{ name: 'cases-slug', params: { slug: post.fields.slug }}", class="title")
-      .title-wrapper
-        h4 {{ post.fields.title }}
-        p.description {{ post.fields.description }}
-      img(class="thumbnail", :src="post.fields.overviewThumbnail.fields.file.url + '?fit=scale&w=750&h=510'")
+  .article-wrapper
+    .article
+      nuxt-link(:to="{ name: 'cases-slug', params: { slug: post.fields.slug }}", class="title")
+        .title-wrapper
+          h4 {{ post.fields.title }}
+          p.description {{ post.fields.description }}
+        img(class="thumbnail", :src="post.fields.overviewThumbnail.fields.file.url + '?fit=scale&w=750&h=510'")
 </template>
 
 <script>
@@ -16,12 +17,18 @@ export default {
 <style scoped lang="scss" scoped>
 @import '~assets/css/_settings.scss';
 
-  .article {
+  .article-wrapper {
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
     align-items: space-between;
     align-content: space-between;
+
+    .article {
+      @include mq($from: tablet) {
+        padding: .8rem;
+      }
+    }
 
     .title-wrapper {
       padding: 12px;

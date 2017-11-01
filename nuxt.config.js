@@ -94,6 +94,8 @@ const config = {
       }
     },
 
+    vendor: ['eventsource-polyfill'],
+
     postcss: [
       require('autoprefixer')({
         browsers: ['> 5%']

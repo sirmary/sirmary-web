@@ -59,6 +59,12 @@ export default {
   },
   beforeMount () {
     document.body.classList = 'about'
+  },
+  mounted () {
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', 'about')
+    }
   }
 }
 </script>
