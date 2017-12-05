@@ -1,7 +1,7 @@
 <template lang="pug">
   .wrapper
     nuxt-link(to="/chat")
-      h1 {{claim}}
+      h1(v-html="claim")
 </template>
 
 <script>
@@ -9,7 +9,7 @@
 export default {
   data () {
     return {
-      claim: 'We decomplex digital.'
+      claim: 'We decomplex<br> digital.'
     }
   },
   head () {
