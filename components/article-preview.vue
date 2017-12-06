@@ -5,7 +5,7 @@
         .title-wrapper
           h4 {{ post.fields.title }}
           p.description {{ post.fields.description }}
-        img(class="thumbnail", :src="post.fields.overviewThumbnail.fields.file.url + '?fit=scale&w=750&h=510'")
+        img(class="thumbnail", :src="post.fields.overviewThumbnail.fields.file.url + '?fit=scale&w=750&h=450'")
 </template>
 
 <script>
