@@ -1,6 +1,6 @@
 <template lang="pug">
   .container
-    img(:src="post.fields.heroImage.fields.file.url", :alt="post.fields.heroImage.fields.description", class="hero-image")
+    img(:src="post.fields.heroImage.fields.file.url+'?fm=jpg&q=60&fl=progressive'", :alt="post.fields.heroImage.fields.description", class="hero-image")
     .body-container
       .wrapper
         .copy

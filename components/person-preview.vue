@@ -2,7 +2,7 @@
   .person-wrapper
     .person-content
       nuxt-link(:to="{ name: 'team-slug', params: { slug: person.fields.slug }}", class="person")
-        img(class="thumbnail", :src="person.fields.image.fields.file.url + '?fit=scale&w=100&h=100'")
+        img(class="thumbnail", :src="person.fields.image.fields.file.url + '?fit=scale&w=50&h=50'")
         .text-wrapper
           p.person-name {{ person.fields.name }}
           p.person-title {{ person.fields.title }}
