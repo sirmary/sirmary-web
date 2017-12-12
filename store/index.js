@@ -10,6 +10,7 @@ const store = () =>
       buttonMsg: '&times;',
       isTeamShuffled: false,
       isLogoBlurred: false,
+      samsung: [{who: 'bot greeting', text: '<h2>Hey shhitty</h2>'}],
       keyData: [
         {
           id: 10,

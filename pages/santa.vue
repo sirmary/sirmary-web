@@ -47,14 +47,12 @@ export default {
       inputValue: '',
       blurred: false,
       isHuman: true,
-      codes: ['xmas', 'santa', 'reindeer'],
       bgColor: 'e40000',
-      config: {
-        headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
-      },
-      messages: this.$store.state.messages,
-      messagesScrolltop: 0
+      messagesScrolltop: 0,
+      messages: this.$store.state.samsung
     }
+  },
+  computed: {
   },
   methods: {
     changePhase (phase) {
