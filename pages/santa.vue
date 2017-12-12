@@ -1,32 +1,48 @@
 <template lang="pug">
   .wrapper
-    vue-particles(color="snowColor")
+    Snowf(
+      :amount="snowAmount"
+      :size="snowSize"
+      :speed="snowSpeed"
+      :wind="snowWind"
+      :opacity="snowOpacity"
+      :swing="snowSwing"
+      :image="null"
+      :zIndex="null"
+      :resize="true"
+      color="#fff"
+    )
     .chatstuff
       .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
         ul.messages(ref="messages")
           li(v-for="message in messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
 
     .main-links
-      nuxt-link(to="/about") About
-      nuxt-link(to="/cases") Cases
-      nuxt-link(to="/team") Team
-      button(@click="increaseSpeed") speed
-      button(@click="increaseAmount") amount
+      //- nuxt-link(to="/about") About
+      //- nuxt-link(to="/cases") Cases
+      //- nuxt-link(to="/team") Team
+    .snow-controls
+      button(@click="changePhase(1)") phase 1
+      button(@click="changePhase(2)") phase 2
+      button(@click="changePhase(3)") phase 3
+      button(@click="changePhase(4)") phase 4
 </template>
 
 <script>
-import VueParticles from '~/components/vue-particles.vue'
-import {bus} from '~/plugins/bus.js'
+import Snowf from '~/components/Snowf.vue'
 
 export default {
   components: {
-    VueParticles
+    Snowf
   },
   data () {
     return {
-      snowColor: '#555555',
-      particleSize: 50,
-      moveSpeed: 100,
+      snowAmount: 700,
+      snowSize: 5,
+      snowSpeed: 1.5,
+      snowWind: 0,
+      snowSwing: 1,
+      snowOpacity: 0.7,
       route: '',
       inputValue: '',
       blurred: false,
@@ -41,15 +57,45 @@ export default {
     }
   },
   methods: {
-    increaseSpeed () {
-      console.log('increase speed')
-      console.log('current speed:')
-      console.log(this.$store.state.snowData.particles.move.speed)
-      this.$store.state.snowData.particles.move.speed = 100
-      bus.$emit('redoSnow')
-    },
-    increaseAmount () {
-      this.$store.state.snowData.particles.number.value = 800
+    changePhase (phase) {
+      switch (phase) {
+        case 1:
+          console.log('enter phahse 1')
+          this.snowAmount = 50
+          this.snowSize = 5
+          this.snowSpeed = 1.5
+          this.snowWind = 0
+          this.snowSwing = 1
+          this.snowOpacity = 0.7
+          break
+        case 2:
+          console.log('enter phase 2')
+          this.snowAmount = 200
+          this.snowSize = 7
+          this.snowSpeed = 3
+          this.snowWind = 1
+          this.snowSwing = 2
+          this.snowOpacity = 0.8
+          break
+        case 3:
+          console.log('enter phase 3')
+          this.snowAmount = 400
+          this.snowSize = 9
+          this.snowSpeed = 5
+          this.snowWind = 2
+          this.snowSwing = 3
+          this.snowOpacity = 0.9
+          break
+        case 4:
+          console.log('enter phase 4')
+          this.snowAmount = 700
+          this.snowSize = 8
+          this.snowSpeed = 5
+          this.snowWind = 3
+          this.snowSwing = 4
+          this.snowOpacity = 0.95
+          break
+      }
     },
     trackEvent (keywordQuery) {
       var ga = window.ga
@@ -104,9 +150,8 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$store.state.snowData.particles.number.value)
-    this.$store.state.snowData.particles.move.speed = 3
     let self = this
+    this.snowAmount = 50
     setTimeout(function () {
       self.scrollToEnd()
     }, 500)
@@ -126,7 +171,12 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
 
-
+.snow-controls {
+  position: relative;
+  button {
+    font-size: .7rem;
+  }
+}
 
 h1 {
   text-indent: 13vw;

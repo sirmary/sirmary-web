@@ -93,7 +93,7 @@ const config = {
       }
     },
 
-    vendor: ['eventsource-polyfill','vue-particles'],
+    vendor: ['eventsource-polyfill'],
 
     postcss: [
       require('autoprefixer')({
@@ -108,7 +108,6 @@ const config = {
   */
   plugins: [
     '~plugins/contentful',
-    { src: '~plugins/particles.js', ssr: false },
     { src: '~plugins/ga.js', ssr: false }
   ],
 
