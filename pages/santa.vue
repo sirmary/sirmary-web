@@ -1,5 +1,6 @@
 <template lang="pug">
   .wrapper
+    vue-particles(color="fff")
     .chatstuff
       .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
         ul.messages(ref="messages")
@@ -12,7 +13,12 @@
 </template>
 
 <script>
+import VueParticles from '~/components/vue-particles.vue'
+
 export default {
+  components: {
+    VueParticles
+  },
   data () {
     return {
       route: '',
