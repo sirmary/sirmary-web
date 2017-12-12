@@ -1,6 +1,6 @@
 <template lang="pug">
   .wrapper
-    vue-particles(color="fff")
+    vue-particles(color="snowColor")
     .chatstuff
       .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
         ul.messages(ref="messages")
@@ -10,10 +10,13 @@
       nuxt-link(to="/about") About
       nuxt-link(to="/cases") Cases
       nuxt-link(to="/team") Team
+      button(@click="increaseSpeed") speed
+      button(@click="increaseAmount") amount
 </template>
 
 <script>
 import VueParticles from '~/components/vue-particles.vue'
+import {bus} from '~/plugins/bus.js'
 
 export default {
   components: {
@@ -21,6 +24,9 @@ export default {
   },
   data () {
     return {
+      snowColor: '#555555',
+      particleSize: 50,
+      moveSpeed: 100,
       route: '',
       inputValue: '',
       blurred: false,
@@ -35,6 +41,16 @@ export default {
     }
   },
   methods: {
+    increaseSpeed () {
+      console.log('increase speed')
+      console.log('current speed:')
+      console.log(this.$store.state.snowData.particles.move.speed)
+      this.$store.state.snowData.particles.move.speed = 100
+      bus.$emit('redoSnow')
+    },
+    increaseAmount () {
+      this.$store.state.snowData.particles.number.value = 800
+    },
     trackEvent (keywordQuery) {
       var ga = window.ga
       if (typeof ga === 'function') {
@@ -88,7 +104,8 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$store.state.snowing)
+    console.log(this.$store.state.snowData.particles.number.value)
+    this.$store.state.snowData.particles.move.speed = 3
     let self = this
     setTimeout(function () {
       self.scrollToEnd()
@@ -108,6 +125,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
+
+
 
 h1 {
   text-indent: 13vw;
