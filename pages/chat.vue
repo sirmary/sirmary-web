@@ -44,6 +44,8 @@ export default {
       inputValue: '',
       blurred: false,
       isHuman: true,
+      codes: ['xmas', 'santa', 'reindeer'],
+      bgColor: '157C78',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
       },
@@ -202,7 +204,10 @@ export default {
     },
     checkMsg () {
       // console.log('*** Checking message!')
-      if (this.isHuman === true && this.inputValue) {
+      if (this.codes.includes(this.inputValue)) {
+        console.log('I am santa!')
+        this.bgColor = 'e40000'
+      } else if (this.isHuman === true && this.inputValue) {
         this.sendMsg()
       }
       this.humanize()
@@ -231,7 +236,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #157C78 }', type: 'text/css' }
+        { cssText: ':root { background: #' + this.bgColor + '}', type: 'text/css' }
       ]
     }
   },
