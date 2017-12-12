@@ -73,7 +73,6 @@ const config = {
   css: [
      'normalize.css',
      {src: '~assets/css/sirmary.scss', lang: 'scss'}
-    //  'bulma',
   ],
 
   /*
@@ -94,7 +93,7 @@ const config = {
       }
     },
 
-    vendor: ['eventsource-polyfill'],
+    vendor: ['eventsource-polyfill','vue-particles'],
 
     postcss: [
       require('autoprefixer')({
@@ -109,6 +108,7 @@ const config = {
   */
   plugins: [
     '~plugins/contentful',
+    { src: '~plugins/particles.js', ssr: false },
     { src: '~plugins/ga.js', ssr: false }
   ],
 

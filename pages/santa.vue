@@ -4,7 +4,7 @@
       .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
         ul.messages(ref="messages")
           li(v-for="message in messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
-      
+
     .main-links
       nuxt-link(to="/about") About
       nuxt-link(to="/cases") Cases
@@ -12,18 +12,7 @@
 </template>
 
 <script>
-import store from '~/store/index.js'
-import axios from 'axios'
-import {filter} from '~/plugins/badwords.js'
-import filterLogic from '~/assets/js/filterlogic.js'
-import VueAwesomplete from '~/components/VueAwesomplete'
-
-const filterlogic = filterLogic(store().state.keyData)
-
 export default {
-  components: {
-    'vue-awesomplete': VueAwesomplete
-  },
   data () {
     return {
       route: '',
@@ -36,49 +25,10 @@ export default {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
       },
       messages: this.$store.state.messages,
-      helpQuestions: [],
-      autoComps: {
-        list: []},
-      setting: {
-        list: [],
-        minChars: 2,
-        maxItems: 7,
-        filter: function (text, input) {
-          let helps = [
-            'Wer oder was ist SiR MaRY?',
-            'Welche Kunden betreut SiR MaRY?',
-            'Kann ich bei SiR MaRY arbeiten?',
-            'Wie kontaktiere ich SiR MaRY?'
-          ]
-          if (input.length < 1) {
-            return helps.indexOf(text.label) > -1
-          }
-          return filterlogic.performSentenceLogic(text, input)
-        },
-        item: function (text, input) {
-          let words = input.trim().split(' ')
-          let regex = '(' + words.join('|') + ')'
-          text = text.replace(RegExp(regex, 'gi'), '<mark>$&</mark>')
-          let li = document.createElement('li')
-          li.innerHTML = text
-          return li
-        }
-      },
       messagesScrolltop: 0
     }
   },
-  computed: {
-    cleanMsg () {
-      return filter.clean(this.inputValue)
-    }
-  },
   methods: {
-    handleAwesomOpen () {
-      this.blurred = true
-    },
-    handleAwesomClose () {
-      this.blurred = false
-    },
     trackEvent (keywordQuery) {
       var ga = window.ga
       if (typeof ga === 'function') {
@@ -88,31 +38,6 @@ export default {
           eventAction: 'user-entered-keyword',
           eventLabel: keywordQuery
         })
-      }
-    },
-    getHelp () {
-      // console.log(this.helpQuestions)
-      this.$refs.awesomeInput.awesomplete.isHelpClicked = true
-      this.$refs.awesomeInput.awesomplete.minChars = 0
-      this.$refs.awesomeInput.awesomplete.input.focus()
-      this.$refs.awesomeInput.awesomplete.evaluate()
-    },
-    dehumanize () {
-      this.isHuman = false
-    },
-    humanize () {
-      this.isHuman = true
-    },
-    updateValue (value) {
-      this.inputValue = value
-      this.$refs.awesomeInput.awesomplete.isHelpClicked = false
-    },
-    updateClickedValue (value) {
-      this.inputValue = value
-    },
-    blurInputMobile () {
-      if (window.innerWidth < 500) {
-        this.$refs.awesomeInput.$el.blur()
       }
     },
     track_load (docloc, doctit) {
@@ -140,76 +65,6 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     },
-    sendMsg () {
-      // console.log('sending message...')
-      // console.log('* human?: ' + this.isHuman)
-      let messages = this.messages
-      let $router = this.$router
-      let dirtyMsg = this.inputValue
-      let cleanMsg = this.cleanMsg
-      let self = this
-      self.scrollToEnd()
-      // console.log(dirtyMsg)
-      messages.push({who: 'me', text: cleanMsg})
-      self.trackEvent(dirtyMsg)
-      self.track_load('chat-query', dirtyMsg)
-      axios.post('https://api.api.ai/v1/query?v=20150910', {
-        query: dirtyMsg,
-        lang: 'en',
-        sessionId: '69696969'
-      }, this.config)
-      .then(function (response) {
-        self.scrollToEnd()
-        let responseMsg = response.data.result.fulfillment.speech
-        setTimeout(function () {
-          // console.log('** popping the dots')
-          messages.pop()
-          // console.log('** pushing the response: ')
-          // console.log(responseMsg)
-          messages.push({who: 'bot new', text: responseMsg})
-          // self.$nextTick(function () {
-          //   console.log('next teck')
-          //   self.scrollToEnd()
-          // })
-        }, 1000)
-        if (response.data.result.action !== 'input.unknown') {
-          $router.push(response.data.result.action)
-        }
-        setTimeout(function () {
-          document.querySelector('ul').lastChild.classList.remove('new')
-        }, 3000)
-      })
-      .catch(function (error) {
-        console.log(error)
-        messages.pop()
-        messages.push({who: 'bot error', text: 'oops. I didn\'t quite get that...'})
-      })
-      messages.push({who: 'bottemp waiting', text: `<div class="typing-container"><span class="circle"></span><span class="circle"></span><span class="circle"></span></div>`})
-      this.scrollToEnd()
-      this.blurInputMobile()
-    },
-    checkMsg () {
-      // console.log('*** Checking message!')
-      if (this.codes.includes(this.inputValue)) {
-        console.log('I am santa!')
-        this.$router.push('santa')
-      } else if (this.isHuman === true && this.inputValue) {
-        this.sendMsg()
-      }
-      this.humanize()
-    },
-    handleMsgClick (event) {
-      if (event.target.dataset.link) {
-        this.$router.push(event.target.dataset.link)
-      }
-    },
-    selectOne (value) {
-      this.dehumanize()
-      this.updateClickedValue(value)
-      this.sendMsg()
-      this.$refs.awesomeInput.awesomplete.isHelpClicked = false
-      this.$refs.awesomeInput.awesomplete.minChars = 2
-    },
     scrollToEnd () {
       let messagesHeight = this.$refs.messages.scrollHeight
       this.$refs.messageBox.scrollTop = messagesHeight + 100
@@ -227,12 +82,7 @@ export default {
     }
   },
   mounted () {
-    for (var question of this.$store.state.keyData) {
-      this.setting.list.push(question.q)
-      if (question.o === 1) {
-        this.helpQuestions.push(question.q)
-      }
-    }
+    console.log(this.$store.state.snowing)
     let self = this
     setTimeout(function () {
       self.scrollToEnd()

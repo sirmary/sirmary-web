@@ -1,5 +1,7 @@
 <template lang="pug">
   main
+    #particle-wrapper
+      vue-particles(v-show="$store.state.snowing" color="#dedede")
     noscript
       | Please enable Javascript to view this web site.
     img(src="https://secure.leadforensics.com/89514.png", style="display:none;")

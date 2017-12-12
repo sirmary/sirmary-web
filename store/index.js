@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 const store = () =>
   new Vuex.Store({
     state: {
+      snowing: true,
       messages: [{ who: 'bot greeting', text: '<h2>Hallo 😄,</h2> ich bin der Chatbot von SiR MaRY und beantworte deine Fragen zu SiR MaRY. <br><br>Was möchtest du wissen?' }],
       newMsg: '',
       mainClass: 'home',
