@@ -4,21 +4,7 @@
       .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
         ul.messages(ref="messages")
           li(v-for="message in messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
-      .input-wrapper
-        .input-bar
-          vue-awesomplete(
-            :setting="setting",
-            ref="awesomeInput",
-            class="input",
-            placeholder="Frag mich",
-            :internalValue="inputValue",
-            @select="dehumanize",
-            @open="handleAwesomOpen",
-            @close="handleAwesomClose",
-            @selectcomplete="selectOne($event)",
-            @input="updateValue($event)",
-            @enterPressed="checkMsg")
-          button(id="help-button", @click="getHelp") ?
+      
     .main-links
       nuxt-link(to="/about") About
       nuxt-link(to="/cases") Cases
@@ -45,7 +31,7 @@ export default {
       blurred: false,
       isHuman: true,
       codes: ['xmas', 'santa', 'reindeer'],
-      bgColor: '157C78',
+      bgColor: 'e40000',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
       },
