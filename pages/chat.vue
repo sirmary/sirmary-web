@@ -44,7 +44,7 @@ export default {
       inputValue: '',
       blurred: false,
       isHuman: true,
-      codes: ['xmas', 'santa', 'reindeer'],
+      codes: ['samsung', 'sharoo', 'coop'],
       bgColor: '157C78',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
@@ -206,6 +206,7 @@ export default {
       // console.log('*** Checking message!')
       if (this.codes.includes(this.inputValue)) {
         console.log('I am santa!')
+        this.$store.state.client = this.inputValue
         this.$router.push('santa')
       } else if (this.isHuman === true && this.inputValue) {
         this.sendMsg()

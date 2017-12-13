@@ -1,0 +1,21 @@
+{
+  "title": "Hello World",
+  "people": [
+    "wonder woman",
+    "tinker bell",
+    "turtle dove"
+  ],
+  "meta": {
+    "index": 0,
+    "fileName": "HelloWorld.comp.md",
+    "section": "/",
+    "dirName": "/"
+  },
+  "date": "2017-12-13",
+  "path": "/hello-world",
+  "permalink": "/hello-world",
+  "anchors": [],
+  "body": {
+    "relativePath": "./HelloWorld.comp.md"
+  }
+}

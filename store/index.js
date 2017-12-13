@@ -6,10 +6,14 @@ const store = () =>
       messages: [{ who: 'bot greeting', text: '<h2>Hallo 😄,</h2> ich bin der Chatbot von SiR MaRY und beantworte deine Fragen zu SiR MaRY. <br><br>Was möchtest du wissen?' }],
       newMsg: '',
       mainClass: 'home',
+      client: '',
       isOverview: true,
       buttonMsg: '&times;',
       isTeamShuffled: false,
       isLogoBlurred: false,
+      logoColor: 'black',
+      responses: [{redirect: '1b', text: 'yes'}, {redirect: '2a', text: 'no'}],
+      santaMsgs: ['santa1', 'santa2'],
       keyData: [
         {
           id: 10,

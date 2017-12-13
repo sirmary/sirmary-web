@@ -12,11 +12,13 @@
       :resize="true"
       color="#fff"
     )
-    p.person(v-for="person in post.people") {{person}}
+    //- p.person(v-for="person in samsung.people") {{person}}
     .chatstuff
-      .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
-        ul.messages(ref="messages")
-          li(v-for="message in messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
+      //- .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
+      //-   ul.messages(ref="messages")
+      //-     li(v-if="$store.state.client === 'samsung'" v-for="message in samsung.messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
+      //-     li(v-html="samsung.messages[id = '2b']")
+      samsung
 
     .main-links
       //- nuxt-link(to="/about") About
@@ -31,20 +33,16 @@
 
 <script>
 import Snowf from '~/components/Snowf.vue'
+import samsung from '~/components/samsung.vue'
 
 export default {
   components: {
-    Snowf
-  },
-  async asyncData ({ app }) {
-    return {
-      contentPreview: await app.$content('/content/stories.md')
-      .query({ exclude: ['attributes', 'body'] })
-      .getAll()
-    }
+    Snowf,
+    samsung
   },
   data () {
     return {
+      client: 'samsung',
       snowAmount: 700,
       snowSize: 5,
       snowSpeed: 1.5,
@@ -55,7 +53,6 @@ export default {
       inputValue: '',
       blurred: false,
       isHuman: true,
-      codes: ['xmas', 'santa', 'reindeer'],
       bgColor: 'e40000',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
@@ -64,6 +61,9 @@ export default {
       messagesScrolltop: 0
     }
   },
+  asyncData: async ({ app, route, payload }) => ({
+    samsung: await app.$content('/').get('samsung') || payload
+  }),
   methods: {
     changePhase (phase) {
       switch (phase) {
@@ -142,8 +142,8 @@ export default {
       preload.src = trkLink
     },
     scrollToEnd () {
-      let messagesHeight = this.$refs.messages.scrollHeight
-      this.$refs.messageBox.scrollTop = messagesHeight + 100
+      // let messagesHeight = this.$refs.messages.scrollHeight
+      // this.$refs.messageBox.scrollTop = messagesHeight + 100
     },
     handleClick (event, value) {
       let myLink = event.target.dataset.link
@@ -160,23 +160,24 @@ export default {
   mounted () {
     let self = this
     this.snowAmount = 50
+    this.$store.state.logoColor = 'white'
     setTimeout(function () {
       self.scrollToEnd()
     }, 500)
   },
   updated () {
     // console.log('updated')
-    let containerHeight = this.$refs.messageBox.clientHeight
-    let messagesHeight = this.$refs.messages.clientHeight
-    if (messagesHeight >= containerHeight) {
-      this.$refs.messages.style.height = '100%'
-    }
-    this.scrollToEnd()
+    // let containerHeight = this.$refs.messageBox.clientHeight
+    // let messagesHeight = this.$refs.messages.clientHeight
+    // if (messagesHeight >= containerHeight) {
+    //   this.$refs.messages.style.height = '100%'
+    // }
+    // this.scrollToEnd()
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~assets/css/_settings.scss';
 
 .snow-controls {
@@ -386,6 +387,22 @@ h3 {
   to {
     transform: translate3d(0, 0, 0);
   }
+}
+
+.responses {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .button {
+        cursor: pointer;
+        margin: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 </style>

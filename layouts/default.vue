@@ -3,13 +3,18 @@
     noscript
       | Please enable Javascript to view this web site.
     img(src="https://secure.leadforensics.com/89514.png", style="display:none;")
+    logo(class="logo" :class="{ blur: $store.state.isLogoBlurred}")
     //- img(src="~/assets/img/sirmary_logo_opt.svg", class="logo", :class="{ blur: $store.state.isLogoBlurred }")
     nuxt
 </template>
 
 <script>
+import logo from '~/components/logo.vue'
 
 export default {
+  components: {
+    logo
+  },
   methods: {
     track_load (docloc, doctit) {
       var trkSw = escape(screen.width).substring(0, 6)
