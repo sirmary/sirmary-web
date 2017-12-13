@@ -1,23 +1,42 @@
 [
   {
     "title": "Hello World",
-    "people": [
-      "wonder woman",
-      "tinker bell",
-      "turtle dove"
+    "messages": [
+      {
+        "id": "1a",
+        "who": "bot",
+        "text": "I'm the santa bot and I like you"
+      },
+      {
+        "id": "1b",
+        "who": "human",
+        "buttons": [
+          {
+            "text": "yes more",
+            "redirect": "2b"
+          },
+          {
+            "text": "no thanks",
+            "redirect": "2a"
+          }
+        ]
+      },
+      {
+        "id": "2b",
+        "who": "bot",
+        "text": "this is awesome"
+      }
     ],
     "meta": {
       "index": 0,
-      "fileName": "HelloWorld.comp.md",
+      "fileName": "samsung.md",
       "section": "/",
       "dirName": "/"
     },
     "date": "2017-12-13",
-    "path": "/hello-world",
-    "permalink": "/hello-world",
+    "path": "/samsung",
+    "permalink": "/samsung",
     "anchors": [],
-    "body": {
-      "relativePath": "./HelloWorld.comp.md"
-    }
+    "body": ""
   }
 ]

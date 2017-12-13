@@ -12,18 +12,8 @@
       :resize="true"
       color="#fff"
     )
-    //- p.person(v-for="person in samsung.people") {{person}}
     .chatstuff
-      //- .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
-      //-   ul.messages(ref="messages")
-      //-     li(v-if="$store.state.client === 'samsung'" v-for="message in samsung.messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
-      //-     li(v-html="samsung.messages[id = '2b']")
       samsung
-
-    .main-links
-      //- nuxt-link(to="/about") About
-      //- nuxt-link(to="/cases") Cases
-      //- nuxt-link(to="/team") Team
     .snow-controls
       button(@click="changePhase(1)") phase 1
       button(@click="changePhase(2)") phase 2
@@ -148,6 +138,11 @@ export default {
     handleClick (event, value) {
       let myLink = event.target.dataset.link
       this.$router.push(myLink)
+    },
+    handleAction (value) {
+      console.log('clicked an action')
+      console.log(value)
+      this.$store.state.santaMsgs.push(value)
     }
   },
   head () {
@@ -158,12 +153,23 @@ export default {
     }
   },
   mounted () {
+    this.$on('handleAction', (value) => {
+      console.log('should do something')
+    })
     let self = this
     this.snowAmount = 50
     this.$store.state.logoColor = 'white'
+    this.$store.state.santaIsTyping = true
     setTimeout(function () {
-      self.scrollToEnd()
-    }, 500)
+      // self.scrollToEnd()
+      self.$store.state.santaMsgs.push('santa1')
+      self.$store.state.santaIsTyping = false
+    }, 2000)
+    setTimeout(function () {
+      // self.scrollToEnd()
+      self.$store.state.santaMsgs.push('santa2')
+      self.$store.state.santaActions = 1
+    }, 3000)
   },
   updated () {
     // console.log('updated')
@@ -292,6 +298,11 @@ h3 {
       }
     }
   }
+}
+
+.message {
+        transform-origin: center bottom;
+      animation: bounceInUp .5s;
 }
 
   a {

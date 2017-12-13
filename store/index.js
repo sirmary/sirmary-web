@@ -11,9 +11,11 @@ const store = () =>
       buttonMsg: '&times;',
       isTeamShuffled: false,
       isLogoBlurred: false,
+      santaIsTyping: true,
       logoColor: 'black',
       responses: [{redirect: '1b', text: 'yes'}, {redirect: '2a', text: 'no'}],
-      santaMsgs: ['santa1', 'santa2'],
+      santaMsgs: [],
+      santaActions: 0,
       keyData: [
         {
           id: 10,
