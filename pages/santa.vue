@@ -13,12 +13,12 @@
       color="#fff"
     )
     .chatstuff
-      samsung
-    .snow-controls
-      button(@click="changePhase(1)") phase 1
-      button(@click="changePhase(2)") phase 2
-      button(@click="changePhase(3)") phase 3
-      button(@click="changePhase(4)") phase 4
+      samsung(v-on:addSnow="changePhase(4)")
+    //- .snow-controls
+    //-   button(@click="changePhase(1)") phase 1
+    //-   button(@click="changePhase(2)") phase 2
+    //-   button(@click="changePhase(3)") phase 3
+    //-   button(@click="changePhase(4)") phase 4
 </template>
 
 <script>
@@ -55,6 +55,9 @@ export default {
     samsung: await app.$content('/').get('samsung') || payload
   }),
   methods: {
+    loadView () {
+      console.log('loaded')
+    },
     changePhase (phase) {
       switch (phase) {
         case 1:
@@ -301,8 +304,15 @@ h3 {
 }
 
 .message {
-        transform-origin: center bottom;
+      transform-origin: center bottom;
       animation: bounceInUp .5s;
+
+      &.me span {
+        background: #787709;
+        color: white;
+    padding: 1rem;
+    border-radius: 36px;
+      }
 }
 
   a {
