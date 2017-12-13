@@ -13,7 +13,6 @@ const store = () =>
       isLogoBlurred: false,
       santaIsTyping: true,
       logoColor: 'black',
-      responses: [{redirect: '1b', text: 'yes'}, {redirect: '2a', text: 'no'}],
       santaMsgs: [],
       santaActions: 0,
       keyData: [

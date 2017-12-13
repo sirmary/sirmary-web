@@ -44,10 +44,6 @@ export default {
       blurred: false,
       isHuman: true,
       bgColor: 'e40000',
-      config: {
-        headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
-      },
-      messages: this.$store.state.messages,
       messagesScrolltop: 0
     }
   },
@@ -412,17 +408,18 @@ h3 {
 
 .responses {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     width: 100%;
     display: flex;
     justify-content: center;
 
-    .button {
+    button {
         cursor: pointer;
         margin: .5rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        background: purple;
     }
 }
 
