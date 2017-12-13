@@ -90,10 +90,18 @@ const config = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+
+      // Uncomment line below to view webpack rules
+      console.dir(config.module.rules)
       }
+
     },
 
     vendor: ['eventsource-polyfill'],
+
+    modules: [
+      'nuxtent'
+    ],
 
     postcss: [
       require('autoprefixer')({

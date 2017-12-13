@@ -12,6 +12,7 @@
       :resize="true"
       color="#fff"
     )
+    p.person(v-for="person in post.people") {{person}}
     .chatstuff
       .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
         ul.messages(ref="messages")
@@ -34,6 +35,13 @@ import Snowf from '~/components/Snowf.vue'
 export default {
   components: {
     Snowf
+  },
+  async asyncData ({ app }) {
+    return {
+      contentPreview: await app.$content('/content/stories.md')
+      .query({ exclude: ['attributes', 'body'] })
+      .getAll()
+    }
   },
   data () {
     return {
