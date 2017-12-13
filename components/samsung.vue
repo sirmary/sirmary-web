@@ -63,17 +63,17 @@
             span.circle
 
     //- actions
-    //- handleAction([message to add], [button text], [skip an action: boolean], [autoLoad the next msg: array to autoload])
+    //- handleAction([message to add], [button text], [skip an action: boolean], [autoLoad the next msg: array to autoload], [nextActions])
     .responses(v-if="santaActions === 1")
-      button.response(@click="handleAction('santa3', 'Ich hab nichts zu befürchten', true, ['santa4'])") Ich hab nichts zu befürchten
-      button.response(@click="handleAction('santa2b', 'Ich bin noch nicht in Weihnachtsstimmung', false)") Ich bin noch nicht in Weihnachtsstimmung
+      button.response(@click="handleAction('santa3', 'Ich hab nichts zu befürchten', true, ['santa4'], 3)") Ich hab nichts zu befürchten
+      button.response(@click="handleAction('santa2b', 'Ich bin noch nicht in Weihnachtsstimmung', false, false, 2)") Ich bin noch nicht in Weihnachtsstimmung
     .responses(v-if="santaActions === 2")
-      button.response(@click="handleAction('santa3', 'Jetzt bin ich bereit', false, ['santa4'])") Jetzt bin ich bereit
+      button.response(@click="handleAction('santa3', 'Jetzt bin ich bereit', false, ['santa4'], 3)") Jetzt bin ich bereit
     .responses(v-if="santaActions === 3")
-      button.response(@click="handleAction('santa6', 'Oh! Erzähl mir weiter…', false, ['santa7'])") Oh! Erzähl mir weiter…
+      button.response(@click="handleAction('santa6', 'Oh! Erzähl mir weiter…', false, ['santa7'], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      button.response(@click="handleAction('santa7', 'Mach weiter, Nikolaus!', false, ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'])") Mach weiter, Nikolaus!
-      button.response(@click="handleAction('santa7b', 'Stop! Sami, schliess das Buch!', false, ['santa7b','santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'])") Stop! Sami, schliess das Buch!
+      button.response(@click="handleAction('santa7', 'Mach weiter, Nikolaus!', false, ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], 5)") Mach weiter, Nikolaus!
+      button.response(@click="handleAction('santa7b', 'Stop! Sami, schliess das Buch!', false, ['santa7b','santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], 6)") Stop! Sami, schliess das Buch!
 </template>
 
 <script>
@@ -92,9 +92,9 @@ export default {
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
     },
-    handleAction (val, txt, skip, autoload) {
+    handleAction (val, txt, skip, autoload, next) {
       console.log('what now the next action?: ' + this.nextActionsCounter)
-      // this.nextActionsCounter ++
+      this.nextActionsCounter = next
       this.santaActions = 0
       // santa types
       this.santaIsTyping = true
@@ -147,14 +147,7 @@ export default {
             console.log('shoul show the buttons now...')
             console.log(skip)
             console.log('santa actions right before the skip if: ' + this.santaActions)
-            if (skip === true) {
-              console.log('it is true so I should see this')
-              console.log('santa actions inside the skip if: ' + this.santaActions)
-              console.log('next action counter inside for loop:' + this.nextActionsCounter)
-              this.santaActions = this.nextActionsCounter + 2
-            } else {
-              this.santaActions = this.nextActionsCounter + 1
-            }
+            this.santaActions = this.nextActionsCounter
             console.log('now I have set the santaACtion to: ' + this.santaActions)
           }, maxDelay)
         }
@@ -166,13 +159,7 @@ export default {
         setTimeout(() => {
           this.santaMsgs.push(val)
           this.santaIsTyping = false
-          if (skip === true) {
-            console.log('which action now:' + this.santaActions)
-            this.santaActions = this.nextActionsCounter + 2
-          } else {
-            console.log('which action now:' + this.santaActions)
-            this.santaActions = this.nextActionsCounter + 1
-          }
+          this.santaActions = this.nextActionsCounter
           console.log('current action count: ' + this.santaActions)
         }, 2000)
       }
@@ -182,7 +169,6 @@ export default {
   mounted () {
     setTimeout(() => {
       this.santaActions = 1
-      this.nextActionsCounter = 1
     }, 4000)
   }
 }
