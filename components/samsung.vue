@@ -41,7 +41,19 @@
         p Eine kurze Frage an Fabian Fehr:
         p Sag mal, wo hast du eigentlich all deine Brillen her? 
         p Hat Fielmann euren Claim geklaut? #SwitchNow
-        
+      //- santa11
+      li.message(v-if="$store.state.santaMsgs.includes('santa11')")
+        p Und Sandra
+        img(src="~assets/img/emoji/rose.png")
+      //- santa12
+      li.message(v-if="$store.state.santaMsgs.includes('santa12')")
+        p Hey Sandra
+        img(src="~assets/img/emoji/rose.png")
+      //- santa13
+      li.message(v-if="$store.state.santaMsgs.includes('santa13')")
+        p Hier steht, du schaust ganz schön oft den Bachelor auf 3+.
+        p Verehrst ihn mit jedem Kuss.
+
       //- typing...
       li.message(v-if="$store.state.santaIsTyping === true")
         .bottemp.waiting
@@ -51,17 +63,17 @@
             span.circle
 
     //- actions
-    //- handleAction([message to add], [button text], [skip an action: boolean], [autoLoad the next msg: num of msgs to autoload])
+    //- handleAction([message to add], [button text], [skip an action: boolean], [autoLoad the next msg: array to autoload])
     .responses(v-if="$store.state.santaActions === 1")
-      button.response(@click="handleAction('santa3', 'Ich hab nichts zu befürchten', true, 1)") Ich hab nichts zu befürchten
-      button.response(@click="handleAction('santa2b', 'Ich bin noch nicht in Weihnachtsstimmung')") Ich bin noch nicht in Weihnachtsstimmung
+      button.response(@click="handleAction('santa3', 'Ich hab nichts zu befürchten', true, ['santa4'])") Ich hab nichts zu befürchten
+      button.response(@click="handleAction('santa2b', 'Ich bin noch nicht in Weihnachtsstimmung', false)") Ich bin noch nicht in Weihnachtsstimmung
     .responses(v-if="$store.state.santaActions === 2")
-      button.response(@click="handleAction('santa3', 'Jetzt bin ich bereit', false, 1)") Jetzt bin ich bereit
+      button.response(@click="handleAction('santa3', 'Jetzt bin ich bereit', false, ['santa4'])") Jetzt bin ich bereit
     .responses(v-if="$store.state.santaActions === 3")
-      button.response(@click="handleAction('santa6', 'Oh! Erzähl mir weiter…', false, 1)") Oh! Erzähl mir weiter…
+      button.response(@click="handleAction('santa6', 'Oh! Erzähl mir weiter…', false, ['santa7'])") Oh! Erzähl mir weiter…
     .responses(v-if="$store.state.santaActions === 4")
-      button.response(@click="handleAction('santa7', 'Mach weiter, Nikolaus!', false, 10)") Mach weiter, Nikolaus!
-      button.response(@click="handleAction('santa7b', 'Stop! Sami, schliess das Buch!', false, 10)") Stop! Sami, schliess das Buch!
+      button.response(@click="handleAction('santa7', 'Mach weiter, Nikolaus!', false, ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'])") Mach weiter, Nikolaus!
+      button.response(@click="handleAction('santa7b', 'Stop! Sami, schliess das Buch!', false, ['santa7b','santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'])") Stop! Sami, schliess das Buch!
 </template>
 
 <script>
@@ -82,11 +94,6 @@ export default {
       let self = this
       let autoNext = autoload
       let nextActionsCounter
-      if (skip === true) {
-        nextActionsCounter = this.$store.state.santaActions + 2
-      } else {
-        nextActionsCounter = this.$store.state.santaActions + 1
-      }
       let value = val
       let text = txt
       console.log('what is skip?: ' + skip)
@@ -112,25 +119,50 @@ export default {
       this.$store.state.santaActions = 0
       // if autoNext is a number
       if (autoNext) {
-        console.log('how many to autoload: ' + autoNext)
-        setTimeout(function () {
-          self.$store.state.santaMsgs.push(value)
-          self.$store.state.santaIsTyping = false
-          if (autoNext) {
-            self.$store.state.santaIsTyping = true
-            setTimeout(function () {
-              self.$store.state.santaMsgs.push(autoNext)
-              self.$store.state.santaIsTyping = false
-              self.$store.state.santaActions = nextActionsCounter
-              console.log('current action count: ' + self.$store.state.santaActions)
-            }, 2000)
-          }
-        }, 2000)
-      } else {
+        this.$store.state.santaActions = 0
+        self.$store.state.santaIsTyping = true
+        console.log('I should load this one: ' + value)
         setTimeout(function () {
           self.$store.state.santaMsgs.push(value)
           self.$store.state.santaIsTyping = false
           self.$store.state.santaActions = nextActionsCounter
+          console.log('current action count: ' + self.$store.state.santaActions)
+        }, 2000)
+        console.log('whom to autoload: ' + autoNext)
+        let maxDelay = autoNext.length * 2000 + 2000
+        console.log(maxDelay)
+        for (const [index, value] of autoNext.entries()) {
+          console.log(index, value)
+          self.$store.state.santaIsTyping = true
+          console.log('typing: ' + self.$store.state.santaIsTyping)
+          let delay = 2000 + ((index + 1) * 2000)
+          setTimeout(function () {
+            let msgL = value
+            self.$store.state.santaMsgs.push(msgL)
+            self.$store.state.santaIsTyping = false
+            console.log('current action count: ' + self.$store.state.santaActions)
+          }, delay)
+          // set the longest poss delay for showing the buttons:
+          setTimeout(function () {
+            if (skip === true) {
+              nextActionsCounter = self.$store.state.santaActions + 2
+            } else {
+              nextActionsCounter = self.$store.state.santaActions + 1
+            }
+          }, maxDelay)
+        }
+      } else {
+        console.log('I should load this one: ' + value)
+        self.$store.state.santaIsTyping = true
+        setTimeout(function () {
+          self.$store.state.santaMsgs.push(value)
+          self.$store.state.santaIsTyping = false
+          if (skip === true) {
+            console.log('which action now:' + self.$store.state.santaActions)
+            nextActionsCounter = self.$store.state.santaActions + 2
+          } else {
+            nextActionsCounter = self.$store.state.santaActions + 1
+          }
           console.log('current action count: ' + self.$store.state.santaActions)
         }, 2000)
       }
@@ -138,8 +170,6 @@ export default {
   },
   updated () {
     console.log('updated!')
-    console.log(this.nextLoad)
-    console.log(this.loadId)
   }
 }
 </script>
