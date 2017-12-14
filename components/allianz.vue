@@ -6,7 +6,7 @@
       li.message(v-if="santaMsgs.includes('santa1')")
         h2 Ho! Ho! Ho! 
           img(src="~/assets/img/emoji/santa.png")
-        p Hallo Samsung
+        p Hallo Allianz
         p Ich bin’s, der Samichlous. 
         p Vor mir liegt liegt auf meinem Tisch 
         p mein goldenes Buch voll Sachen über dich.

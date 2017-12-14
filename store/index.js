@@ -6,7 +6,7 @@ const store = () =>
       messages: [{ who: 'bot greeting', text: '<h2>Hallo 😄,</h2> ich bin der Chatbot von SiR MaRY und beantworte deine Fragen zu SiR MaRY. <br><br>Was möchtest du wissen?' }],
       newMsg: '',
       mainClass: 'home',
-      client: '',
+      santaClient: 'temp',
       isOverview: true,
       buttonMsg: '&times;',
       isTeamShuffled: false,
@@ -616,6 +616,50 @@ const store = () =>
           q: 'Dein Lieblingsessen?',
           o: null,
           f: ['essen', 'liebling', 'lieblingsessen']
+        }
+      ],
+      santaCodes: [
+        {
+          'name': 'Samsung',
+          'slug': 'samsung',
+          'code': 'f472',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1azphd1kb84u9'
+        },
+        {
+          'name': 'Allianz Evia',
+          'slug': 'allianz',
+          'code': 'c493',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/2ewkgssxdcisr'
+        },
+        {
+          'name': 'UBS',
+          'slug': 'ubs',
+          'code': 't699',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/l5hu5qol9h0z'
+        },
+        {
+          'name': 'Globus',
+          'slug': 'globus',
+          'code': 'q915',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1jlh88m9er560'
+        },
+        {
+          'name': 'Sharoo',
+          'slug': 'sharoo',
+          'code': 'x064',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/28wyfa8aujqyr'
+        },
+        {
+          'name': 'Schweiz Tourismus',
+          'slug': 'schweiz-tourismus',
+          'code': 'w570',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1n15xnyxgzfpw'
+        },
+        {
+          'name': 'Swisslos',
+          'slug': 'swisslos',
+          'code': 'y234',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/13nshifx8t864'
         }
       ]
     }

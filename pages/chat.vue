@@ -42,9 +42,10 @@ export default {
     return {
       route: '',
       inputValue: '',
+      santaClient: this.$store.state.santaClient,
       blurred: false,
       isHuman: true,
-      codes: ['samsung', 'sharoo', 'coop'],
+      santaCodes: this.$store.state.santaCodes,
       bgColor: '157C78',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
@@ -204,11 +205,17 @@ export default {
     },
     checkMsg () {
       // console.log('*** Checking message!')
-      if (this.codes.includes(this.inputValue)) {
-        console.log('I am santa!')
-        this.$store.state.client = this.inputValue
-        this.$router.push('santa')
-      } else if (this.isHuman === true && this.inputValue) {
+      for (let code of this.$store.state.santaCodes) {
+        console.log('code:')
+        console.log(code.name)
+        console.log(code.slug)
+        if (this.inputValue.toLowerCase() === code.code) {
+          console.log('client should be: ' + code.slug)
+          this.$store.state.santaClient = code.slug
+          this.$router.push('santa')
+        }
+      }
+      if (this.isHuman === true && this.inputValue) {
         this.sendMsg()
       }
       this.humanize()

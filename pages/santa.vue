@@ -13,22 +13,32 @@
       color="#fff"
     )
     .chatstuff
-      samsung(ref="messageComp" v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      samsung(v-if="santaClient === 'samsung'" ref="messageComp" v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      allianz(v-if="santaClient === 'allianz'" ref="messageComp" v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+        //- typing...
+        .typingContainer(v-if="santaIsTyping")
+          .bottemp.waiting
+            .typing-container
+              span.circle
+              span.circle
+              span.circle
 </template>
 
 <script>
 import Snowf from '~/components/Snowf.vue'
 import samsung from '~/components/samsung.vue'
+import allianz from '~/components/allianz.vue'
 
 export default {
   components: {
     Snowf,
-    samsung
+    samsung,
+    allianz
   },
   data () {
     return {
-      client: 'samsung',
-      snowAmount: 700,
+      santaClient: this.$store.state.santaClient,
+      snowAmount: 1000,
       snowSize: 5,
       snowSpeed: 1.5,
       snowWind: 0,
@@ -51,7 +61,7 @@ export default {
       console.log('loaded')
     },
     handleEmail (name) {
-      let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + name + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20bitte%2C%20mach%20uns%20die%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Adarum%20bitte%2C%20jetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + name + '%20Team'
+      let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + name + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20mach%20jetzt%20unsere%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Ajetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + name + '%20Team'
       window.open(linkString)
     },
     handleAmazon (link) {
@@ -88,12 +98,12 @@ export default {
           break
         case 4:
           console.log('enter phase 4')
-          this.snowAmount = 700
-          this.snowSize = 8
-          this.snowSpeed = 5
-          this.snowWind = 3
-          this.snowSwing = 4
-          this.snowOpacity = 0.95
+          this.snowAmount = 1000
+          this.snowSize = 10
+          this.snowSpeed = 10
+          this.snowWind = 7
+          this.snowSwing = 6
+          this.snowOpacity = 0.9
           break
       }
     },
@@ -142,8 +152,6 @@ export default {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
     },
     handleAction (val, txt, autoload, next) {
-      console.log('I clicked something:')
-      console.log('what now the next action?: ' + this.nextActionsCounter)
       this.nextActionsCounter = next
       this.santaActions = 0
       // santa types
@@ -151,13 +159,15 @@ export default {
 
       // should I do more snow?
       if (val === 'santa2b') {
-        console.log('more snow')
         this.changePhase(4)
       }
-      // append my response
 
+      // back to normal snow
+      if (val === 'santa3') {
+        this.changePhase(1)
+      }
+      // append my response
       let msgCount = document.getElementsByClassName('message').length
-      console.log('msgcount: ' + msgCount)
       let div = document.getElementsByClassName('message')[msgCount - 1]
       let li = document.createElement('li')
       li.innerHTML = '<span>' + txt + '</span>'
@@ -166,53 +176,64 @@ export default {
       this.insertAfter(div, li)
       // remove the buttons
       this.santaActions = 0
-      // if autoNext is a number
+      // ***********
+      // ***********
       if (autoload) {
-        console.log('auto next is true...')
+        // AutoLoad is On!
+        // ***********
+        // Hide the buttons:
         this.santaActions = 0
+        // Santa is typing
         this.santaIsTyping = true
-        console.log('I should load this one: ' + val)
+        // After 2 seconds, load the message:
         setTimeout(() => {
+          this.santaIsTyping = true
           this.santaMsgs.push(val)
           this.santaIsTyping = false
-          console.log('next actions counter (inside autoload set time): ' + this.nextActionsCounter)
-          // this.santaActions = this.nextActionsCounter
-          console.log('current action count: ' + this.santaActions)
         }, 2000)
-        console.log('whom to autoload: ' + autoload)
+        // *********
+        // Calculate a the longest delay to pause the buttons:
         let maxDelay = 2000 + (autoload.length * 2000)
-        console.log('max delay: ' + maxDelay)
+        // *********
+        // how many messages to autoload?
+        let autoloadsCount = autoload.length
+        // Loop through the array of next messages:
         for (const [index, value] of autoload.entries()) {
-          console.log(index, value)
-          this.santaIsTyping = true
           this.santaActions = 0
+          this.santaIsTyping = true
+          // separate each message by 2 seconds
+          // TODO: give each message its own delay value!
           let delay = 2000 + ((index + 1) * 2000)
           setTimeout(() => {
-            let msgL = value
-            this.santaMsgs.push(msgL)
-            this.santaIsTyping = false
-            console.log('current action count: ' + this.santaActions)
+            this.santaIsTyping = true
+            this.santaMsgs.push(value)
+            // if this is the last autoLoad, turn off the typing!
+            console.log('length of array: ' + autoloadsCount)
+            console.log('current load: ' + index)
+            if (index === autoloadsCount - 1) {
+              console.log('*****************************')
+              console.log('this shoudl be the last autoload!')
+              this.santaIsTyping = false
+            }
           }, delay)
-          // set the longest poss delay for showing the buttons:
+          this.santaIsTyping = true
+          // Calculate the total delay then show buttons
           setTimeout(() => {
-            console.log('shoul show the buttons now...')
+            this.santaIsTyping = false
             this.santaActions = this.nextActionsCounter
-            console.log('now I have set the santaACtion to: ' + this.santaActions)
           }, maxDelay)
         }
       } else {
-        console.log('auto next is false...')
-        console.log('I should load this one: ' + val)
+        // No AUTOLOAD. Just show the next message.
         this.santaActions = 0
         this.santaIsTyping = true
         setTimeout(() => {
+          this.santaIsTyping = true
           this.santaMsgs.push(val)
           this.santaIsTyping = false
           this.santaActions = this.nextActionsCounter
-          console.log('current action count: ' + this.santaActions)
         }, 2000)
       }
-      console.log('now at the end of the function, what is the next action: ' + this.nextActionsCounter)
     }
   },
   head () {
@@ -223,22 +244,25 @@ export default {
     }
   },
   mounted () {
+    console.log('inside santa, loaded, what is client: ' + this.santaClient)
     let self = this
     this.snowAmount = 50
     this.$store.state.logoColor = 'white'
-    this.$store.state.santaIsTyping = true
+    this.santaIsTyping = true
     setTimeout(function () {
       // self.scrollToEnd()
-      self.$store.state.santaMsgs.push('santa1')
-      self.$store.state.santaIsTyping = false
+      self.santaMsgs.push('santa1')
+      self.santaIsTyping = false
     }, 2000)
     setTimeout(() => {
       // self.scrollToEnd()
-      self.$store.state.santaMsgs.push('santa2')
+      self.santaMsgs.push('santa2')
+      this.santaIsTyping = false
       this.santaActions = 1
     }, 3000)
   },
   updated () {
+    // console.log('typing?: ' + this.santaIsTyping)
     // handle The auto SCroll to bottom
     // let msgWrapper = this.$refs.messageComp.$refs.messageBox
     // let msgs = this.$refs.messageComp.$refs.messageBox.children[0]
@@ -300,13 +324,13 @@ h3 {
   display: block;
   padding: 0;
   padding-top: 24px;
-  padding-bottom: 20rem;
+  padding-bottom: 9rem;
   height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
   overflow: hidden;
-  // height: calc(100% - 136px);
+  // height: calc(100% - 96px);
   transition: filter .2s ease;
 
   &.blur {
@@ -388,7 +412,7 @@ h3 {
 
       p img {
         display: inline-block;
-        max-width: 50px;
+        max-width: 2rem;
       }
 }
 
@@ -496,6 +520,7 @@ h3 {
 
     button {
         background: #787709;
+        transition: color .2s;
         border:0;
         outline: none;
         color: white;
@@ -505,7 +530,15 @@ h3 {
     font-size: 1.25rem;
     cursor: pointer;
     margin: .25rem;
+
+    &:hover {
+      background: $sm-gray;
     }
+    }
+}
+
+.typingContainer {
+  padding-left: 1.75rem;
 }
 
 </style>
