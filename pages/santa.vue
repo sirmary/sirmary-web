@@ -226,15 +226,17 @@ h3 {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 120px;
+  bottom: 0;
   display: block;
   padding: 0;
   padding-top: 24px;
+  padding-bottom: 20rem;
+  height: 100vh;
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-end;
   overflow: auto;
-  height: calc(100% - 136px);
+  // height: calc(100% - 136px);
   transition: filter .2s ease;
 
   &.blur {
@@ -408,18 +410,22 @@ h3 {
 
 .responses {
     position: absolute;
-    bottom: 1rem;
+    bottom: 3rem;
     width: 100%;
     display: flex;
     justify-content: center;
 
     button {
-        cursor: pointer;
-        margin: .5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: purple;
+        background: #787709;
+        border:0;
+        outline: none;
+        color: white;
+    padding: 1rem;
+    border-radius: 36px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin: .25rem;
     }
 }
 

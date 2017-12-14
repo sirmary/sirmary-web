@@ -167,10 +167,6 @@ const config = {
   //   }
   // },
 
-  modules: [
-    ['nuxtent']
-  ],
-
   /*
   ** Define environment variables being available
   ** in generate and browser context
