@@ -13,12 +13,7 @@
       color="#fff"
     )
     .chatstuff
-      samsung(v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
-    //- .snow-controls
-    //-   button(@click="changePhase(1)") phase 1
-    //-   button(@click="changePhase(2)") phase 2
-    //-   button(@click="changePhase(3)") phase 3
-    //-   button(@click="changePhase(4)") phase 4
+      samsung(ref="messageComp" v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
 </template>
 
 <script>
@@ -139,19 +134,15 @@ export default {
       preload.src = trkLink
     },
     scrollToEnd () {
-      // let messagesHeight = this.$refs.messages.scrollHeight
-      // this.$refs.messageBox.scrollTop = messagesHeight + 100
-    },
-    handleClick (event, value) {
-      let myLink = event.target.dataset.link
-      this.$router.push(myLink)
+      console.log('scroll to end')
+      let messagesHeight = this.$refs.messageComp.$refs.messageBox.children[0].scrollHeight
+      this.$refs.messageComp.$refs.messageBox.scrollTop = messagesHeight + 100
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
     },
     handleAction (val, txt, autoload, next) {
       console.log('I clicked something:')
-      console.log()
       console.log('what now the next action?: ' + this.nextActionsCounter)
       this.nextActionsCounter = next
       this.santaActions = 0
@@ -166,10 +157,12 @@ export default {
       // append my response
 
       let msgCount = document.getElementsByClassName('message').length
+      console.log('msgcount: ' + msgCount)
       let div = document.getElementsByClassName('message')[msgCount - 1]
       let li = document.createElement('li')
       li.innerHTML = '<span>' + txt + '</span>'
-      li.classList = 'message me'
+      li.classList.add('message')
+      li.classList.add('me')
       this.insertAfter(div, li)
       // remove the buttons
       this.santaActions = 0
@@ -246,11 +239,13 @@ export default {
     }, 3000)
   },
   updated () {
-    // console.log('updated')
-    // let containerHeight = this.$refs.messageBox.clientHeight
-    // let messagesHeight = this.$refs.messages.clientHeight
+    // handle The auto SCroll to bottom
+    // let msgWrapper = this.$refs.messageComp.$refs.messageBox
+    // let msgs = this.$refs.messageComp.$refs.messageBox.children[0]
+    // let containerHeight = msgWrapper.clientHeight
+    // let messagesHeight = msgs.clientHeight
     // if (messagesHeight >= containerHeight) {
-    //   this.$refs.messages.style.height = '100%'
+    //   msgs.style.height = '100%'
     // }
     // this.scrollToEnd()
   }
@@ -308,9 +303,9 @@ h3 {
   padding-bottom: 20rem;
   height: 100vh;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: flex-end;
-  overflow: auto;
+  overflow: hidden;
   // height: calc(100% - 136px);
   transition: filter .2s ease;
 
@@ -389,6 +384,11 @@ h3 {
 
       p {
         margin: 0;
+      }
+
+      p img {
+        display: inline-block;
+        max-width: 50px;
       }
 }
 
@@ -488,7 +488,7 @@ h3 {
 }
 
 .responses {
-    position: absolute;
+    position: fixed;
     bottom: 3rem;
     width: 100%;
     display: flex;

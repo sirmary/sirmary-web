@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  .message-wrapper(ref="messageBox")
+  .message-wrapper#message-wrapper(ref="messageBox")
     ul.messages#messages(ref="messages")
       //- santa1
       li.message(v-if="santaMsgs.includes('santa1')")
