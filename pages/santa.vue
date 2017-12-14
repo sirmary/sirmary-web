@@ -47,9 +47,6 @@ export default {
       messagesScrolltop: 0
     }
   },
-  asyncData: async ({ app, route, payload }) => ({
-    samsung: await app.$content('/').get('samsung') || payload
-  }),
   methods: {
     loadView () {
       console.log('loaded')
