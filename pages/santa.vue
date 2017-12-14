@@ -13,7 +13,7 @@
       color="#fff"
     )
     .chatstuff
-      samsung(v-on:addSnow="changePhase(4)" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:checkIn="checkIn($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      samsung(v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
     //- .snow-controls
     //-   button(@click="changePhase(1)") phase 1
     //-   button(@click="changePhase(2)") phase 2
@@ -55,9 +55,12 @@ export default {
     loadView () {
       console.log('loaded')
     },
-    checkIn (msg) {
-      console.log(msg)
-      this.santaActions = 1
+    handleEmail (name) {
+      let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + name + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20bitte%2C%20mach%20uns%20die%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Adarum%20bitte%2C%20jetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + name + '%20Team'
+      window.open(linkString)
+    },
+    handleAmazon (link) {
+      window.open(link)
     },
     changePhase (phase) {
       switch (phase) {
@@ -146,7 +149,9 @@ export default {
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
     },
-    handleAction (val, txt, skip, autoload, next) {
+    handleAction (val, txt, autoload, next) {
+      console.log('I clicked something:')
+      console.log()
       console.log('what now the next action?: ' + this.nextActionsCounter)
       this.nextActionsCounter = next
       this.santaActions = 0
@@ -156,9 +161,8 @@ export default {
       // should I do more snow?
       if (val === 'santa2b') {
         console.log('more snow')
-        this.$emit('addSnow')
+        this.changePhase(4)
       }
-
       // append my response
 
       let msgCount = document.getElementsByClassName('message').length
@@ -199,8 +203,6 @@ export default {
           // set the longest poss delay for showing the buttons:
           setTimeout(() => {
             console.log('shoul show the buttons now...')
-            console.log(skip)
-            console.log('santa actions right before the skip if: ' + this.santaActions)
             this.santaActions = this.nextActionsCounter
             console.log('now I have set the santaACtion to: ' + this.santaActions)
           }, maxDelay)
@@ -237,7 +239,7 @@ export default {
       self.$store.state.santaMsgs.push('santa1')
       self.$store.state.santaIsTyping = false
     }, 2000)
-    setTimeout(function () {
+    setTimeout(() => {
       // self.scrollToEnd()
       self.$store.state.santaMsgs.push('santa2')
       this.santaActions = 1
@@ -383,6 +385,10 @@ h3 {
         color: white;
     padding: 1rem;
     border-radius: 36px;
+      }
+
+      p {
+        margin: 0;
       }
 }
 
