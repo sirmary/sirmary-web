@@ -13,15 +13,15 @@
       color="#fff"
     )
     .chatstuff
-      samsung(v-if="santaClient === 'samsung'" ref="messageComp" v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
-      allianz(v-if="santaClient === 'allianz'" ref="messageComp" v-on:handleAction="(a,b,c,d) => {handleAction(a,b,c,d)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
-        //- typing...
-        .typingContainer(v-if="santaIsTyping")
-          .bottemp.waiting
-            .typing-container
-              span.circle
-              span.circle
-              span.circle
+      samsung(v-if="true" ref="messageComp" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      allianz(v-if="santaClient === 'allianz'" ref="messageComp" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      //- typing...
+      .typingContainer(v-if="santaIsTyping")
+        .bottemp.waiting
+          .typing-container
+            span.circle
+            span.circle
+            span.circle
 </template>
 
 <script>
@@ -151,7 +151,7 @@ export default {
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
     },
-    handleAction (val, txt, autoload, next) {
+    handleAction (val, txt, autoload, timings, next) {
       this.nextActionsCounter = next
       this.santaActions = 0
       // santa types
@@ -185,7 +185,7 @@ export default {
         this.santaActions = 0
         // Santa is typing
         this.santaIsTyping = true
-        // After 2 seconds, load the message:
+        // After 2 seconds, load the next message:
         setTimeout(() => {
           this.santaIsTyping = true
           this.santaMsgs.push(val)
@@ -193,7 +193,7 @@ export default {
         }, 2000)
         // *********
         // Calculate a the longest delay to pause the buttons:
-        let maxDelay = 2000 + (autoload.length * 2000)
+        var maxDelay = timings.reduce((a, b) => a + b, 0) + 1000
         // *********
         // how many messages to autoload?
         let autoloadsCount = autoload.length
@@ -201,9 +201,11 @@ export default {
         for (const [index, value] of autoload.entries()) {
           this.santaActions = 0
           this.santaIsTyping = true
+          console.log('is santa typing: ' + this.santaIsTyping)
           // separate each message by 2 seconds
           // TODO: give each message its own delay value!
-          let delay = 2000 + ((index + 1) * 2000)
+          let delay = timings[index]
+          console.log('what should the dlay be: ' + delay)
           setTimeout(() => {
             this.santaIsTyping = true
             this.santaMsgs.push(value)
@@ -223,6 +225,7 @@ export default {
             this.santaActions = this.nextActionsCounter
           }, maxDelay)
         }
+        this.santaIsTyping = true
       } else {
         // No AUTOLOAD. Just show the next message.
         this.santaActions = 0
