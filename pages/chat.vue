@@ -46,6 +46,7 @@ export default {
       blurred: false,
       isHuman: true,
       santaCodes: this.$store.state.santaCodes,
+      amazonLink: this.$store.state.amazonLink,
       bgColor: '157C78',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
@@ -209,7 +210,10 @@ export default {
         if (this.inputValue.toLowerCase() === code.code) {
           this.$store.state.santaClient = code.slug
           this.$store.state.clientName = code.name
-          this.$store.state.amazonLink = code.link
+          this.$store.state.amazonLink = code.wishlist
+          console.log('***************')
+          console.log('it is a match, the link: ' + this.amazonLink)
+          console.log('the client: ' + this.santaClient)
           this.$router.push('santa')
           return
         }

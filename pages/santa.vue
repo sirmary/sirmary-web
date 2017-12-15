@@ -43,7 +43,6 @@ export default {
     return {
       santaClient: this.$store.state.santaClient,
       clientName: this.$store.state.clientName,
-      amazonLink: this.$store.state.amazonLink,
       clientList: ['samsung', 'allianz', 'ubs'],
       snowAmount: 1000,
       snowSize: 5,
@@ -74,8 +73,8 @@ export default {
       window.open(linkString)
     },
     handleAmazon (link) {
-      console.log('handling amazon: ' + this.amazonLink)
-      window.open(this.amazonLink)
+      console.log('handling amazon: ' + this.$store.state.amazonLink)
+      window.open(this.$store.state.amazonLink)
     },
     blinkTyping () {
       console.log('blink the typing')
@@ -294,10 +293,7 @@ export default {
     //   msgs.style.height = '100%'
     // }
     // this.scrollToEnd()
-    console.log('santaactions: ' + this.santaActions)
-    console.log('santaTyping: ' + this.santaIsTyping)
     if (this.santaActions !== 0 || this.santaClient === 'temp') {
-      console.log('update: santa shouldnt be typing')
       this.santaIsTyping = false
     }
   }
