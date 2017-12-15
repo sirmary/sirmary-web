@@ -130,8 +130,6 @@
       li.message(v-if="santaMsgs.includes('santa37')")
         p So liebes Schweiz Tourismus Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
         p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
-      slot
-
 
 
 
