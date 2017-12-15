@@ -16,7 +16,7 @@
       samsung(v-if="true" ref="messageComp" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
       allianz(v-if="santaClient === 'allianz'" ref="messageComp" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
       //- typing...
-      .typingContainer(v-if="santaIsTyping")
+      .typingContainer(v-if="santaIsTyping" :class="{blink: isBlinking}")
         .bottemp.waiting
           .typing-container
             span.circle
@@ -53,7 +53,8 @@ export default {
       santaActions: this.$store.state.santaActions,
       santaIsTyping: this.$store.state.santaIsTyping,
       santaMsgs: this.$store.state.santaMsgs,
-      nextActionsCounter: 0
+      nextActionsCounter: 0,
+      isBlinking: false
     }
   },
   methods: {
@@ -66,6 +67,13 @@ export default {
     },
     handleAmazon (link) {
       window.open(link)
+    },
+    blinkTyping () {
+      console.log('blink the typing')
+      this.isBlinking = true
+      setTimeout(() => {
+        this.isBlinking = false
+      }, 500)
     },
     changePhase (phase) {
       switch (phase) {
@@ -189,11 +197,13 @@ export default {
         setTimeout(() => {
           this.santaIsTyping = true
           this.santaMsgs.push(val)
-          this.santaIsTyping = false
+          // this.santaIsTyping = false
         }, 2000)
         // *********
         // Calculate a the longest delay to pause the buttons:
-        var maxDelay = timings.reduce((a, b) => a + b, 0) + 1000
+        let maxDelay = timings[timings.length - 1]
+        console.log('max delay: ' + maxDelay)
+        this.santaIsTyping = true
         // *********
         // how many messages to autoload?
         let autoloadsCount = autoload.length
@@ -209,31 +219,33 @@ export default {
           setTimeout(() => {
             this.santaIsTyping = true
             this.santaMsgs.push(value)
+            this.blinkTyping()
             // if this is the last autoLoad, turn off the typing!
             console.log('length of array: ' + autoloadsCount)
             console.log('current load: ' + index)
             if (index === autoloadsCount - 1) {
               console.log('*****************************')
               console.log('this shoudl be the last autoload!')
-              this.santaIsTyping = false
+              // this.santaIsTyping = false
             }
           }, delay)
           this.santaIsTyping = true
           // Calculate the total delay then show buttons
           setTimeout(() => {
-            this.santaIsTyping = false
+            // this.santaIsTyping = false
             this.santaActions = this.nextActionsCounter
           }, maxDelay)
         }
         this.santaIsTyping = true
       } else {
         // No AUTOLOAD. Just show the next message.
+        console.log('No AUTOLOAD ***')
         this.santaActions = 0
         this.santaIsTyping = true
         setTimeout(() => {
           this.santaIsTyping = true
           this.santaMsgs.push(val)
-          this.santaIsTyping = false
+          // this.santaIsTyping = false
           this.santaActions = this.nextActionsCounter
         }, 2000)
       }
@@ -255,12 +267,12 @@ export default {
     setTimeout(function () {
       // self.scrollToEnd()
       self.santaMsgs.push('santa1')
-      self.santaIsTyping = false
+      // self.santaIsTyping = false
     }, 2000)
     setTimeout(() => {
       // self.scrollToEnd()
       self.santaMsgs.push('santa2')
-      this.santaIsTyping = false
+      // this.santaIsTyping = false
       this.santaActions = 1
     }, 3000)
   },
@@ -275,6 +287,12 @@ export default {
     //   msgs.style.height = '100%'
     // }
     // this.scrollToEnd()
+    console.log('santaactions: ' + this.santaActions)
+    console.log('santaTyping: ' + this.santaIsTyping)
+    if (this.santaActions !== 0) {
+      console.log('update: santa shouldnt be typing')
+      this.santaIsTyping = false
+    }
   }
 }
 </script>
@@ -541,7 +559,21 @@ h3 {
 }
 
 .typingContainer {
+  width: 100vw;
+  position: fixed;
+  bottom: 6.5rem;
   padding-left: 1.75rem;
+  text-align: center;
+
+  &.blink {
+    display: none;
+  }
+
+  .bottemp {
+    max-width: 54rem;
+    margin: 0 auto;
+    padding-left: 1rem;
+  }
 }
 
 </style>

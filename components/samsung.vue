@@ -8,7 +8,7 @@
           img(src="~/assets/img/emoji/santa.png")
         p Hallo Samsung
         p Ich bin’s, der Samichlous. 
-        p Vor mir liegt liegt auf meinem Tisch 
+        p Vor mir liegt auf meinem Tisch 
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
       li.message(v-if="santaMsgs.includes('santa2')")
@@ -24,18 +24,18 @@
       li.message(v-if="santaMsgs.includes('santa4')")
         p Gut
         p In meinem Buche steht, es macht die Runde,
-        p ihr seid SiR MaRY’s Lieblingskunde.
+        p ihr seid SiR MaRYs Lieblingskunde.
         p 
         p Doch habt ihr euch auch gut benommen?
-        p Ich sags euch,, dafür bin ich hergekommen.
+        p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
         p Jeder braucht ein strenges Ziel
-        p Patrick sagt, er raucht nicht viel
+        p Patrick meint, er raucht nicht viel
         p Bloss ab und zu, mal hier mal dort
-        p "Gelegentlich" dein Zauberwort
+        p "Gelegentlich" sein Zauberwort
         p Mitnichten stimmt das, weit und breit!
-        p Patrick, DU RAUCHST BEI JEDER MÖGLICHKEIT!
+        p Patrick, DU RAUCHST BEI JEDER MÖGLICHEN GELEGENHEIT!
 
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
@@ -45,13 +45,19 @@
         p Wo denkst du hin? Und weiter geht’s im Text…
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
-        p Eine kurze Frage an Fabian Fehr:
-        p Wo kommen all deine Brillen her? 
-        p #SwitchNow 
-        p Hat Fielmann euren Claim geklaut? 
+        p Fabian, Fabian bist du es?
+        p 
+        p Mein Lieber, ich erkenne dich fast nicht!
+        p Hast du eine neue Brille im Gesicht?
+        p 
+        p Davon sollst du viele haben, 
+        p für jeden Tag und jeden Abend.
+        p 
+        p Ich hab’s auch nicht mehr mit den Augen.
+        p Doch mit Brille seh ich blöd aus, kannst mir glauben. 
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
-        p Und Sandra
+        p Sandra steht hier jetzt
           img(src="~/assets/img/emoji/rose.png")
       //- santa12
       li.message(v-if="santaMsgs.includes('santa12')")
@@ -60,7 +66,7 @@
       //- santa13
       li.message(v-if="santaMsgs.includes('santa13')")
         p Du guckst gern Bachelor auf 3+.
-        p Verehrst ihn mit jedem Kuss.
+        p Verehrst ihn mehr mit jedem Kuss.
       //- santa14
       li.message(v-if="santaMsgs.includes('santa14')")
         p Oh Sandra
@@ -75,7 +81,7 @@
           img(src="~/assets/img/emoji/rose.png")
       //- santa17
       li.message(v-if="santaMsgs.includes('santa17')")
-        p Für den Bachelor bist du doch viel zu schlau
+        p Für sowas bist du doch viel zu schlau
           img(src="~/assets/img/emoji/rose.png")
           img(src="~/assets/img/emoji/kiss.png")
       //- santa18
@@ -84,7 +90,7 @@
       //- santa19
       li.message(v-if="santaMsgs.includes('santa19')")
         p ...was glaubst denn du für Sachen?
-        p Bargeldlos Tulpen soll Frauen wirklich glücklich machen???
+        p Bargeldlos bezahlte Tulpen sollen Frauen glücklich machen???
       //- santa20
       li.message(v-if="santaMsgs.includes('santa20')")
         p Ho! Ho! Ho!
@@ -98,51 +104,49 @@
           img(src="~/assets/img/emoji/tears.png")
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
-        p Rita? Ritaaaaaa? Bist du da?
+        p Rita? 
       //- santa25
       li.message(v-if="santaMsgs.includes('santa25')")
-        p Hier steht du liebst BQMS und QLED. 
-        p Ich hab zwar keine Ahnung was das ist, aber das klingt extrem versaut! 
+        p Bitte Rita erklärs mir fix: BQMS und QLED, 
+        p das sagt mir nix.
+        p Am besten wäre Schmutzli dann auch gleich da,
+        p In unserer Hütte ist er Chief Multimedia.
       //- santa26
       li.message(v-if="santaMsgs.includes('santa26')")
         img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif")
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
-        p Und.. Allan?
+        p (temp)
       //- santa28
       li.message(v-if="santaMsgs.includes('santa28')")
-        p Oh Allan.. sieh mal an..., du reist gern und guckst dir fremde Städte mit Locals an?
+        p (temp)
       //- santa29
       li.message(v-if="santaMsgs.includes('santa29')")
-        p Das ist ja gut und recht, ich gönn es dir.
-        p Aber Herrgottsjammer –beim Sightseeing gibt doch mehr zu sehen als nur Bier.
+        p (temp)
       //- santa30
       li.message(v-if="santaMsgs.includes('santa30')")
         p Fehlt noch wer?
       //- santa31
       li.message(v-if="santaMsgs.includes('santa31')")
-        p Heiko…
+        p Allan? Allan steht in meinem Buch!
       //- santa32
       li.message(v-if="santaMsgs.includes('santa32')")
-        p Lieber Spatz
-          img(src="~/assets/img/emoji/heart.png")
+        p Du hast Stil, fällst auf nichts herein,
+        p ausser Heftchen mit Design.
       //- santa33
       li.message(v-if="santaMsgs.includes('santa33')")
-        p Du hältst tatsächlich "Redbull Flugtag" für den besten Satz?
+        p Reisen ist bei dir nicht nur möchte, würde, hätte.
+        p Mit Locals besuchst du gerne fremde Städte. 
       //- santa34
       li.message(v-if="santaMsgs.includes('santa34')")
-        p Das bringt SiR MaRY arg ins Schwitzen, 
-        p und lässt die Ärmsten jeden Abend nachsitzen, 
-        p Dabei geht doch nur um Fame
-        p "Do what you can’t" auf Deutsch – Ta-daa: Der beste Claim!
+        p Das ist ja gut und recht, ich gönn es dir.
       //- santa35
       li.message(v-if="santaMsgs.includes('santa35')")
-        p Dann endlich! Die Idee, trotz engster Fristen!!
-        p Und dann oh nein! Heiko pitched sie fiktiv vor Journalisten…
+        p Aber Herrgottsjammer – beim Sightseeing gibt’s doch mehr zu sehen, als nur Bier.
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif")
-      //- santa37
+      //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
         p So liebes Samsung Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
         p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
@@ -159,18 +163,18 @@
     .responses(v-if="santaActions === 2")
       button.response(@click="$emit('handleAction','santa3', 'Jetzt bin ich bereit', ['santa4'], [7000], 3)") Jetzt bin ich bereit
     .responses(v-if="santaActions === 3")
-      button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [5000], 4)") Oh! Erzähl mir weiter…
+      button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [2000, 3000, 4000, 2000, 3000, 5000, 3000, 2000, 3000, 5000, 4000, 2000], 5)") Mach weiter, Nikolaus!
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa7b','santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [2000, 3000, 4000, 2000, 3000, 5000, 3000, 2000, 3000, 5000, 4000, 2000], 5)") Stop! Sami, schliess das Buch!
-    .responses(v-if="santaActions === 5")
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 12000, 14000, 15000, 16500, 18350, 21000, 23500, 26000, 28000, 35000, 40000], 5)") Mach weiter, Nikolaus!
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 12000, 14000, 15000, 16500, 18350, 21000, 23500, 26000, 28000, 35000, 40000], 5)") Stop! Sami, schliess das Buch!
+    .responses(v-if="santaActions === 5")                                                                                                                                                                         
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29'],[3000,4000,2000,1000,3000], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29'],[3000,10000,15000,17500,19250], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
-      button.response(@click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,4000,2000,1000,3000, 4000], 8)") Ja! Unser Chef!
-      button.response(@click="$emit('handleAction','santa31', 'Ja! Unser Chef!', ['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,4000,2000,1000,3000, 4000], 8)") Ja! Unser Chef!
+      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Allan fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Allan fehlt!
+      //- button.response(@click="$emit('handleAction','santa31', 'Ja! Allan fehlt!', ['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Allan fehlt!
     .responses(v-if="santaActions === 8")
       button.response(@click="$emit('handleEmail', 'Samsung')") Wir waren super!
       button.response(@click="$emit('handleAmazon', 'https://www.amazon.de/hz/wishlist/ls/1AZPHD1KB84U9')") Wir müssen uns verbessern
