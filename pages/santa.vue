@@ -65,7 +65,7 @@ export default {
       santaMsgs: this.$store.state.santaMsgs,
       nextActionsCounter: 0,
       isBlinking: false,
-      santaCodes: this.$store.state.santaCodes
+      santaShuffle: this.$store.state.santaShuffle
     }
   },
   methods: {
@@ -163,10 +163,14 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     },
-    scrollToEnd () {
+    scrollToEnd (msgWrapper, msgs) {
       console.log('scroll to end')
-      let messagesHeight = this.$refs.messageComp.$refs.santaMessageBox.children[0].scrollHeight
-      this.$refs.messageComp.$refs.santaMessageBox.scrollTop = messagesHeight + 100
+      console.log('wrapperScrolltop: ' + msgWrapper.scrollTop)
+      console.log('msgs: ' + msgs.scrollHeight)
+      console.log('msgWrapper Height: ' + msgWrapper.scrollHeight)
+      console.log('window: ' + window.innerHeight)
+      let messagesHeight = msgs.scrollHeight
+      msgWrapper.scrollTop = messagesHeight + 3000
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
@@ -288,14 +292,18 @@ export default {
   updated () {
     // console.log('typing?: ' + this.santaIsTyping)
     // handle The auto SCroll to bottom
-    // let msgWrapper = this.$refs.messageComp.$refs.santaMessageBox
-    // let msgs = this.$refs.messageComp.$refs.santaMessageBox.children[0]
-    // let containerHeight = msgWrapper.clientHeight
-    // let messagesHeight = msgs.clientHeight
-    // if (messagesHeight >= containerHeight) {
-    //   msgs.style.height = '100%'
-    // }
-    // this.scrollToEnd()
+    if (this.$store.state.santaClient !== 'temp') {
+      console.log('message comp el: ')
+      console.log(this.$refs.messageComp[0].$el.children[0])
+      let msgWrapper = this.$refs.messageComp[0].$el
+      let msgs = this.$refs.messageComp[0].$el.children[0]
+      // let containerHeight = msgWrapper.clientHeight
+      let messagesHeight = msgs.clientHeight
+      if (messagesHeight >= window.innerHeight - 144) {
+        msgs.style.height = '100%'
+      }
+      this.scrollToEnd(msgWrapper, msgs)
+    }
     if (this.santaActions !== 0 || this.santaClient === 'temp') {
       this.santaIsTyping = false
     }
@@ -356,7 +364,7 @@ h3 {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
-  overflow: hidden;
+  overflow: auto;
   // height: calc(100% - 96px);
   transition: filter .2s ease;
 

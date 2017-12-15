@@ -45,7 +45,7 @@ export default {
       santaClient: this.$store.state.santaClient,
       blurred: false,
       isHuman: true,
-      santaCodes: this.$store.state.santaCodes,
+      santaShuffle: this.$store.state.santaShuffle,
       amazonLink: this.$store.state.amazonLink,
       bgColor: '157C78',
       config: {
@@ -206,8 +206,8 @@ export default {
     },
     checkMsg () {
       // console.log('*** Checking message!')
-      for (let code of this.$store.state.santaCodes) {
-        if (this.inputValue.toLowerCase() === code.code) {
+      for (let code of this.$store.state.santaShuffle) {
+        if (this.inputValue.toLowerCase() === code.larry) {
           this.$store.state.santaClient = code.slug
           this.$store.state.clientName = code.name
           this.$store.state.amazonLink = code.wishlist
