@@ -13,8 +13,7 @@
       color="#fff"
     )
     .chatstuff
-      samsung(v-if="true" ref="messageComp" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
-      allianz(v-if="santaClient === 'allianz'" ref="messageComp" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      component(v-for="compName, index in clientList" :is="compName" v-if="santaClient === compName" ref="messageComp" :key="index" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
       //- typing...
       .typingContainer(v-if="santaIsTyping" :class="{blink: isBlinking}")
         .bottemp.waiting
@@ -28,16 +27,19 @@
 import Snowf from '~/components/Snowf.vue'
 import samsung from '~/components/samsung.vue'
 import allianz from '~/components/allianz.vue'
+import ubs from '~/components/ubs.vue'
 
 export default {
   components: {
     Snowf,
     samsung,
-    allianz
+    allianz,
+    ubs
   },
   data () {
     return {
       santaClient: this.$store.state.santaClient,
+      clientList: ['samsung', 'allianz', 'ubs'],
       snowAmount: 1000,
       snowSize: 5,
       snowSpeed: 1.5,
@@ -268,7 +270,7 @@ export default {
       // self.scrollToEnd()
       self.santaMsgs.push('santa1')
       // self.santaIsTyping = false
-    }, 2000)
+    }, 500)
     setTimeout(() => {
       // self.scrollToEnd()
       self.santaMsgs.push('santa2')
