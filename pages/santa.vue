@@ -29,6 +29,7 @@ import Snowf from '~/components/Snowf.vue'
 import samsung from '~/components/samsung.vue'
 import allianz from '~/components/allianz.vue'
 import ubs from '~/components/ubs.vue'
+import schweizTourismus from '~/components/schweizTourismus.vue'
 import anonymous from '~/components/anonymous.vue'
 
 export default {
@@ -37,13 +38,14 @@ export default {
     samsung,
     allianz,
     ubs,
+    schweizTourismus,
     anonymous
   },
   data () {
     return {
       santaClient: this.$store.state.santaClient,
       clientName: this.$store.state.clientName,
-      clientList: ['samsung', 'allianz', 'ubs'],
+      clientList: ['samsung', 'allianz', 'ubs', 'schweizTourismus'],
       snowAmount: 1000,
       snowSize: 5,
       snowSpeed: 1.5,
@@ -274,7 +276,6 @@ export default {
     setTimeout(function () {
       // self.scrollToEnd()
       self.santaMsgs.push('santa1')
-      // self.santaIsTyping = false
     }, 500)
     setTimeout(() => {
       // self.scrollToEnd()

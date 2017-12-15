@@ -211,9 +211,6 @@ export default {
           this.$store.state.santaClient = code.slug
           this.$store.state.clientName = code.name
           this.$store.state.amazonLink = code.wishlist
-          console.log('***************')
-          console.log('it is a match, the link: ' + this.amazonLink)
-          console.log('the client: ' + this.santaClient)
           this.$router.push('santa')
           return
         }
@@ -236,7 +233,6 @@ export default {
       this.$refs.awesomeInput.awesomplete.minChars = 2
     },
     scrollToEnd () {
-      console.log('want the height of messages: ' + this.$refs.messages.scrollHeight)
       let messagesHeight = this.$refs.messages.scrollHeight
       this.$refs.messageBox.scrollTop = messagesHeight + 100
     },

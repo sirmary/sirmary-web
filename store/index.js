@@ -653,7 +653,7 @@ const store = () =>
         },
         {
           'name': 'Schweiz Tourismus',
-          'slug': 'schweiz-tourismus',
+          'slug': 'schweizTourismus',
           'code': 'w570',
           'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1n15xnyxgzfpw'
         },
