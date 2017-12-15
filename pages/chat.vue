@@ -213,6 +213,7 @@ export default {
           console.log('client should be: ' + code.slug)
           this.$store.state.santaClient = code.slug
           this.$router.push('santa')
+          return
         }
       }
       if (this.isHuman === true && this.inputValue) {
@@ -233,6 +234,7 @@ export default {
       this.$refs.awesomeInput.awesomplete.minChars = 2
     },
     scrollToEnd () {
+      console.log('want the height of messages: ' + this.$refs.messages.scrollHeight)
       let messagesHeight = this.$refs.messages.scrollHeight
       this.$refs.messageBox.scrollTop = messagesHeight + 100
     },

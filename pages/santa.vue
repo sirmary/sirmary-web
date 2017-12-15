@@ -153,8 +153,8 @@ export default {
     },
     scrollToEnd () {
       console.log('scroll to end')
-      let messagesHeight = this.$refs.messageComp.$refs.messageBox.children[0].scrollHeight
-      this.$refs.messageComp.$refs.messageBox.scrollTop = messagesHeight + 100
+      let messagesHeight = this.$refs.messageComp.$refs.santaMessageBox.children[0].scrollHeight
+      this.$refs.messageComp.$refs.santaMessageBox.scrollTop = messagesHeight + 100
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
@@ -279,8 +279,8 @@ export default {
   updated () {
     // console.log('typing?: ' + this.santaIsTyping)
     // handle The auto SCroll to bottom
-    // let msgWrapper = this.$refs.messageComp.$refs.messageBox
-    // let msgs = this.$refs.messageComp.$refs.messageBox.children[0]
+    // let msgWrapper = this.$refs.messageComp.$refs.santaMessageBox
+    // let msgs = this.$refs.messageComp.$refs.santaMessageBox.children[0]
     // let containerHeight = msgWrapper.clientHeight
     // let messagesHeight = msgs.clientHeight
     // if (messagesHeight >= containerHeight) {

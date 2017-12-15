@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  .message-wrapper#message-wrapper(ref="messageBox")
-    ul.messages#messages(ref="messages")
+  .message-wrapper#message-wrapper(ref="santaMessageBox")
+    ul.messages#messages(ref="santaMessages")
       //- santa1
       li.message(v-if="santaMsgs.includes('santa1')")
         h2 Ho! Ho! Ho! 
@@ -156,7 +156,7 @@
 
 
     //- actions
-    //- handleAction([message to add], [button text], [autoLoad the next msg: array to autoload], [nextActions])
+    //- handleAction([message to add], [button text], [autoLoad the next msg: array to autoload],[custom delay], [nextActions])
     .responses(v-if="santaActions === 1")
       button.response(@click="$emit('handleAction', 'santa3', 'Ich hab nichts zu befürchten',['santa4'], [7000], 3)") Ich hab nichts zu befürchten
       button.response(@click="$emit('handleAction','santa2b', 'Ich bin noch nicht in Weihnachtsstimmung', null, null, 2)") Ich bin noch nicht in Weihnachtsstimmung
@@ -174,7 +174,6 @@
       button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29'],[3000,10000,15000,17500,19250], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
       button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Allan fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Allan fehlt!
-      //- button.response(@click="$emit('handleAction','santa31', 'Ja! Allan fehlt!', ['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Allan fehlt!
     .responses(v-if="santaActions === 8")
       button.response(@click="$emit('handleEmail', 'Samsung')") Wir waren super!
       button.response(@click="$emit('handleAmazon', 'https://www.amazon.de/hz/wishlist/ls/1AZPHD1KB84U9')") Wir müssen uns verbessern
