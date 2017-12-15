@@ -206,12 +206,10 @@ export default {
     checkMsg () {
       // console.log('*** Checking message!')
       for (let code of this.$store.state.santaCodes) {
-        console.log('code:')
-        console.log(code.name)
-        console.log(code.slug)
         if (this.inputValue.toLowerCase() === code.code) {
-          console.log('client should be: ' + code.slug)
           this.$store.state.santaClient = code.slug
+          this.$store.state.clientName = code.name
+          this.$store.state.amazonLink = code.link
           this.$router.push('santa')
           return
         }

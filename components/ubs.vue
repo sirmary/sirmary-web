@@ -23,8 +23,8 @@
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
         p Gut
-        p In meinem Buche steht, es macht die Runde, ihr seid SiR MaRY’s Lieblingskunde.
-        p
+        p In meinem Buche steht, es macht die Runde, 
+        p ihr seid SiR MaRY’s Lieblingskunde.
         p Doch habt ihr euch wirklich gut benommen?
         p Ich werd's euch sagen, dafür bin ich hergekommen.
       //- santa6
@@ -165,12 +165,12 @@
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29'],[3000,10000,15000,17500,19250], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29', 'santa30'],[3000,10000,15000,17500,19250, 21000], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
       button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Unser Chef!
     .responses(v-if="santaActions === 8")
-      button.response(@click="$emit('handleEmail', 'Samsung')") Wir waren super!
-      button.response(@click="$emit('handleAmazon', 'https://www.amazon.de/hz/wishlist/ls/1AZPHD1KB84U9')") Wir müssen uns verbessern
+      button.response(@click="$emit('handleEmail')") Wir waren super!
+      button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern
 </template>
 
 <script>

@@ -39,6 +39,8 @@ export default {
   data () {
     return {
       santaClient: this.$store.state.santaClient,
+      clientName: this.$store.state.clientName,
+      amazonLink: this.$store.state.amazonLink,
       clientList: ['samsung', 'allianz', 'ubs'],
       snowAmount: 1000,
       snowSize: 5,
@@ -56,7 +58,8 @@ export default {
       santaIsTyping: this.$store.state.santaIsTyping,
       santaMsgs: this.$store.state.santaMsgs,
       nextActionsCounter: 0,
-      isBlinking: false
+      isBlinking: false,
+      santaCodes: this.$store.state.santaCodes
     }
   },
   methods: {
@@ -64,11 +67,11 @@ export default {
       console.log('loaded')
     },
     handleEmail (name) {
-      let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + name + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20mach%20jetzt%20unsere%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Ajetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + name + '%20Team'
+      let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + this.clientName + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20mach%20jetzt%20unsere%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Ajetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + this.clientName + '%20Team'
       window.open(linkString)
     },
     handleAmazon (link) {
-      window.open(link)
+      window.open(this.amazonLink)
     },
     blinkTyping () {
       console.log('blink the typing')
@@ -261,7 +264,6 @@ export default {
     }
   },
   mounted () {
-    console.log('inside santa, loaded, what is client: ' + this.santaClient)
     let self = this
     this.snowAmount = 50
     this.$store.state.logoColor = 'white'
@@ -274,7 +276,6 @@ export default {
     setTimeout(() => {
       // self.scrollToEnd()
       self.santaMsgs.push('santa2')
-      // this.santaIsTyping = false
       this.santaActions = 1
     }, 3000)
   },

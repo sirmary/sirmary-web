@@ -175,8 +175,8 @@
     .responses(v-if="santaActions === 7")
       button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Allan fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Allan fehlt!
     .responses(v-if="santaActions === 8")
-      button.response(@click="$emit('handleEmail', 'Samsung')") Wir waren super!
-      button.response(@click="$emit('handleAmazon', 'https://www.amazon.de/hz/wishlist/ls/1AZPHD1KB84U9')") Wir müssen uns verbessern
+      button.response(@click="$emit('handleEmail')") Wir waren super!
+      button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern
 </template>
 
 <script>

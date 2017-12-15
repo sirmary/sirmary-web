@@ -7,6 +7,8 @@ const store = () =>
       newMsg: '',
       mainClass: 'home',
       santaClient: 'temp',
+      clientName: 'anonymous',
+      amazonLink: 'https://disney.com',
       isOverview: true,
       buttonMsg: '&times;',
       isTeamShuffled: false,
