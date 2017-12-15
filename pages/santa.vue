@@ -21,6 +21,7 @@
             span.circle
             span.circle
             span.circle
+    anonymous(v-if="santaClient === 'temp'")
 </template>
 
 <script>
@@ -28,13 +29,15 @@ import Snowf from '~/components/Snowf.vue'
 import samsung from '~/components/samsung.vue'
 import allianz from '~/components/allianz.vue'
 import ubs from '~/components/ubs.vue'
+import anonymous from '~/components/anonymous.vue'
 
 export default {
   components: {
     Snowf,
     samsung,
     allianz,
-    ubs
+    ubs,
+    anonymous
   },
   data () {
     return {
@@ -71,6 +74,7 @@ export default {
       window.open(linkString)
     },
     handleAmazon (link) {
+      console.log('handling amazon: ' + this.amazonLink)
       window.open(this.amazonLink)
     },
     blinkTyping () {
@@ -292,7 +296,7 @@ export default {
     // this.scrollToEnd()
     console.log('santaactions: ' + this.santaActions)
     console.log('santaTyping: ' + this.santaIsTyping)
-    if (this.santaActions !== 0) {
+    if (this.santaActions !== 0 || this.santaClient === 'temp') {
       console.log('update: santa shouldnt be typing')
       this.santaIsTyping = false
     }
@@ -551,7 +555,7 @@ h3 {
     padding: 1rem;
     border-radius: 36px;
     font-weight: 700;
-    font-size: 1.25rem;
+    // font-size: 1.rem;
     cursor: pointer;
     margin: .25rem;
 
