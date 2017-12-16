@@ -17,7 +17,6 @@
 
 <script>
 import { createClient } from '~/plugins/contentful.js'
-// import { bus } from '~/plugins/bus.js'
 import CloseModal from '~/components/CloseModal.vue'
 import VueMarkdown from 'vue-markdown'
 

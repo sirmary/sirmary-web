@@ -6,11 +6,17 @@ const store = () =>
       messages: [{ who: 'bot greeting', text: '<h2>Hallo 😄,</h2> ich bin der Chatbot von SiR MaRY und beantworte deine Fragen zu SiR MaRY. <br><br>Was möchtest du wissen?' }],
       newMsg: '',
       mainClass: 'home',
+      santaClient: 'temp',
+      clientName: 'anonymous',
+      amazonLink: 'https://disney.com',
       isOverview: true,
       buttonMsg: '&times;',
       isTeamShuffled: false,
       isLogoBlurred: false,
-      samsung: [{who: 'bot greeting', text: '<h2>Hey shhitty</h2>'}],
+      santaIsTyping: true,
+      logoColor: 'black',
+      santaMsgs: [],
+      santaActions: 0,
       keyData: [
         {
           id: 10,
@@ -612,6 +618,50 @@ const store = () =>
           q: 'Dein Lieblingsessen?',
           o: null,
           f: ['essen', 'liebling', 'lieblingsessen']
+        }
+      ],
+      santaShuffle: [
+        {
+          'name': 'Samsung',
+          'slug': 'samsung',
+          'larry': 'f472',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1azphd1kb84u9'
+        },
+        {
+          'name': 'Allianz Evia',
+          'slug': 'allianz',
+          'larry': 'c493',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/2ewkgssxdcisr'
+        },
+        {
+          'name': 'UBS',
+          'slug': 'ubs',
+          'larry': 't699',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/l5hu5qol9h0z'
+        },
+        {
+          'name': 'Globus',
+          'slug': 'globus',
+          'larry': 'q915',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1jlh88m9er560'
+        },
+        {
+          'name': 'Sharoo',
+          'slug': 'sharoo',
+          'larry': 'x064',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/28wyfa8aujqyr'
+        },
+        {
+          'name': 'Schweiz Tourismus',
+          'slug': 'schweizTourismus',
+          'larry': 'w570',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1n15xnyxgzfpw'
+        },
+        {
+          'name': 'Swisslos',
+          'slug': 'swisslos',
+          'larry': 'y234',
+          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/13nshifx8t864'
         }
       ]
     }

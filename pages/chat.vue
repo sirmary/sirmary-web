@@ -42,10 +42,11 @@ export default {
     return {
       route: '',
       inputValue: '',
+      santaClient: this.$store.state.santaClient,
       blurred: false,
       isHuman: true,
-      codes: ['xmas', 'santa', 'reindeer'],
-      bgColor: '157C78',
+      santaShuffle: this.$store.state.santaShuffle,
+      amazonLink: this.$store.state.amazonLink,
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
       },
@@ -204,10 +205,16 @@ export default {
     },
     checkMsg () {
       // console.log('*** Checking message!')
-      if (this.codes.includes(this.inputValue)) {
-        console.log('I am santa!')
-        this.$router.push('santa')
-      } else if (this.isHuman === true && this.inputValue) {
+      for (let code of this.$store.state.santaShuffle) {
+        if (this.inputValue.toLowerCase() === code.larry) {
+          this.$store.state.santaClient = code.slug
+          this.$store.state.clientName = code.name
+          this.$store.state.amazonLink = code.wishlist
+          this.$router.push('santa')
+          return
+        }
+      }
+      if (this.isHuman === true && this.inputValue) {
         this.sendMsg()
       }
       this.humanize()
@@ -236,11 +243,12 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #' + this.bgColor + '}', type: 'text/css' }
+        { cssText: ':root { background: #157C78}', type: 'text/css' }
       ]
     }
   },
   mounted () {
+    this.$store.state.logoColor = 'black'
     for (var question of this.$store.state.keyData) {
       this.setting.list.push(question.q)
       if (question.o === 1) {
@@ -266,6 +274,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
+::-webkit-scrollbar {
+display: none;
+}
 
 h1 {
   text-indent: 13vw;

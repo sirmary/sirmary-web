@@ -90,10 +90,15 @@ const config = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+
+      // Uncomment line below to view webpack rules
+      console.dir(config.module.rules)
       }
+
     },
 
     vendor: ['eventsource-polyfill'],
+
 
     postcss: [
       require('autoprefixer')({
@@ -123,44 +128,44 @@ const config = {
   ** - blog posts
   ** - available blog post tags
   */
-  generate: {
-    routes () {
-      return Promise.all([
-        // get all blog posts
-        cdaClient.getEntries({
-          'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
-        }),
-         cdaClient.getEntries({
-          'content_type': ctfConfig.CTF_PERSON_TYPE_ID
-        }),
-         cdaClient.getEntries({
-          'content_type': ctfConfig.CTF_JOB_TYPE_ID
-        }),
-        cdaClient.getEntries({
-          'content_type':ctfConfig.CTF_CLIENT_TYPE_ID
-        })
-        // get the blog post content type
-        // cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
-        // .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
-      ])
-      .then(([entries, person, job, client]) => {
-        let routes = [
-          // map entries to URLs
-          ...entries.items.map(entry => `/cases/${entry.fields.slug}`),
-          // map clients to URLS
-          ...client.items.map(entry => `/clients/${entry.fields.slug}`),
-          // map team to URLS
-          ...person.items.map(entry => `/team/${entry.fields.slug}`),
-          // map jobs to URLS
-          ...job.items.map(entry => `/jobs/${entry.fields.slug}`)
-          // map all possible tags to URLs
-          //...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
-          // ...postType.fields.find(field => field.id === 'client').items.validations[0].in.map(client => `/clients/${client}`)
-        ]
-        return routes
-      })
-    }
-  },
+  // generate: {
+  //   routes () {
+  //     return Promise.all([
+  //       // get all blog posts
+  //       cdaClient.getEntries({
+  //         'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
+  //       }),
+  //        cdaClient.getEntries({
+  //         'content_type': ctfConfig.CTF_PERSON_TYPE_ID
+  //       }),
+  //        cdaClient.getEntries({
+  //         'content_type': ctfConfig.CTF_JOB_TYPE_ID
+  //       }),
+  //       cdaClient.getEntries({
+  //         'content_type':ctfConfig.CTF_CLIENT_TYPE_ID
+  //       })
+  //       // get the blog post content type
+  //       // cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
+  //       // .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
+  //     ])
+  //     .then(([entries, person, job, client]) => {
+  //       let routes = [
+  //         // map entries to URLs
+  //         ...entries.items.map(entry => `/cases/${entry.fields.slug}`),
+  //         // map clients to URLS
+  //         ...client.items.map(entry => `/clients/${entry.fields.slug}`),
+  //         // map team to URLS
+  //         ...person.items.map(entry => `/team/${entry.fields.slug}`),
+  //         // map jobs to URLS
+  //         ...job.items.map(entry => `/jobs/${entry.fields.slug}`)
+  //         // map all possible tags to URLs
+  //         //...postType.fields.find(field => field.id === 'tags').items.validations[0].in.map(tag => `/tags/${tag}`)
+  //         // ...postType.fields.find(field => field.id === 'client').items.validations[0].in.map(client => `/clients/${client}`)
+  //       ]
+  //       return routes
+  //     })
+  //   }
+  // },
 
   /*
   ** Define environment variables being available

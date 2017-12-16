@@ -13,31 +13,43 @@
       color="#fff"
     )
     .chatstuff
-      .message-wrapper(ref="messageBox", :class="{ blur: blurred }")
-        ul.messages(ref="messages")
-          li(v-for="message in messages", :class="message.who", v-html="message.text", @click="handleMsgClick($event)")
-
-    .main-links
-      //- nuxt-link(to="/about") About
-      //- nuxt-link(to="/cases") Cases
-      //- nuxt-link(to="/team") Team
-    .snow-controls
-      button(@click="changePhase(1)") phase 1
-      button(@click="changePhase(2)") phase 2
-      button(@click="changePhase(3)") phase 3
-      button(@click="changePhase(4)") phase 4
+      component(v-for="compName, index in clientList" :is="compName" v-if="santaClient === compName" ref="messageComp" :key="index" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      //- typing...
+      .typingContainer(v-if="santaIsTyping" :class="{blink: isBlinking}")
+        .bottemp.waiting
+          .typing-container
+            span.circle
+            span.circle
+            span.circle
+    anonymous(v-if="santaClient === 'temp'")
 </template>
 
 <script>
 import Snowf from '~/components/Snowf.vue'
+import samsung from '~/components/samsung.vue'
+import allianz from '~/components/allianz.vue'
+import ubs from '~/components/ubs.vue'
+import schweizTourismus from '~/components/schweizTourismus.vue'
+import swisslos from '~/components/swisslos.vue'
+import anonymous from '~/components/anonymous.vue'
 
 export default {
   components: {
-    Snowf
+    Snowf,
+    samsung,
+    allianz,
+    ubs,
+    schweizTourismus,
+    swisslos,
+    anonymous
   },
   data () {
     return {
-      snowAmount: 700,
+      bgColor: 'e40000',
+      santaClient: this.$store.state.santaClient,
+      clientName: this.$store.state.clientName,
+      clientList: ['samsung', 'allianz', 'ubs', 'schweizTourismus', 'swisslos'],
+      snowAmount: 1000,
       snowSize: 5,
       snowSpeed: 1.5,
       snowWind: 0,
@@ -47,18 +59,34 @@ export default {
       inputValue: '',
       blurred: false,
       isHuman: true,
-      bgColor: 'e40000',
       messagesScrolltop: 0,
-      messages: this.$store.state.samsung
+      santaActions: this.$store.state.santaActions,
+      santaIsTyping: this.$store.state.santaIsTyping,
+      santaMsgs: this.$store.state.santaMsgs,
+      nextActionsCounter: 0,
+      isBlinking: false,
+      santaShuffle: this.$store.state.santaShuffle
     }
   },
   computed: {
   },
   methods: {
+    handleEmail (name) {
+      let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + this.clientName + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20mach%20jetzt%20unsere%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Ajetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + this.clientName + '%20Team'
+      window.open(linkString)
+    },
+    handleAmazon (link) {
+      window.open(this.$store.state.amazonLink)
+    },
+    blinkTyping () {
+      this.isBlinking = true
+      setTimeout(() => {
+        this.isBlinking = false
+      }, 500)
+    },
     changePhase (phase) {
       switch (phase) {
         case 1:
-          console.log('enter phahse 1')
           this.snowAmount = 50
           this.snowSize = 5
           this.snowSpeed = 1.5
@@ -67,7 +95,6 @@ export default {
           this.snowOpacity = 0.7
           break
         case 2:
-          console.log('enter phase 2')
           this.snowAmount = 200
           this.snowSize = 7
           this.snowSpeed = 3
@@ -76,7 +103,6 @@ export default {
           this.snowOpacity = 0.8
           break
         case 3:
-          console.log('enter phase 3')
           this.snowAmount = 400
           this.snowSize = 9
           this.snowSpeed = 5
@@ -85,13 +111,12 @@ export default {
           this.snowOpacity = 0.9
           break
         case 4:
-          console.log('enter phase 4')
-          this.snowAmount = 700
-          this.snowSize = 8
-          this.snowSpeed = 5
-          this.snowWind = 3
-          this.snowSwing = 4
-          this.snowOpacity = 0.95
+          this.snowAmount = 1000
+          this.snowSize = 10
+          this.snowSpeed = 10
+          this.snowWind = 7
+          this.snowSwing = 6
+          this.snowOpacity = 0.9
           break
       }
     },
@@ -131,13 +156,96 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     },
-    scrollToEnd () {
-      let messagesHeight = this.$refs.messages.scrollHeight
-      this.$refs.messageBox.scrollTop = messagesHeight + 100
+    scrollToEnd (msgWrapper, msgs) {
+      let messagesHeight = msgs.scrollHeight
+      msgWrapper.innerHeight = msgs.scrollHeight + 100
+      msgWrapper.scrollTop = messagesHeight + 3000
     },
-    handleClick (event, value) {
-      let myLink = event.target.dataset.link
-      this.$router.push(myLink)
+    insertAfter (referenceNode, newNode) {
+      referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+    },
+    handleAction (val, txt, autoload, timings, next) {
+      this.nextActionsCounter = next
+      this.santaActions = 0
+      // santa types
+      this.santaIsTyping = true
+
+      // should I do more snow?
+      if (val === 'santa2b') {
+        this.changePhase(4)
+      }
+
+      // back to normal snow
+      if (val === 'santa3') {
+        this.changePhase(1)
+      }
+      // append my response
+      let msgCount = document.getElementsByClassName('message').length
+      let div = document.getElementsByClassName('message')[msgCount - 1]
+      let li = document.createElement('li')
+      li.innerHTML = '<span>' + txt + '</span>'
+      li.classList.add('message')
+      li.classList.add('me')
+      this.insertAfter(div, li)
+      // remove the buttons
+      this.santaActions = 0
+      // ***********
+      // ***********
+      if (autoload) {
+        // AutoLoad is On!
+        // ***********
+        // Hide the buttons:
+        this.santaActions = 0
+        // Santa is typing
+        this.santaIsTyping = true
+        // After 2 seconds, load the next message:
+        setTimeout(() => {
+          this.santaIsTyping = true
+          this.santaMsgs.push(val)
+          // this.santaIsTyping = false
+        }, 2000)
+        // *********
+        // Calculate a the longest delay to pause the buttons:
+        let maxDelay = timings[timings.length - 1]
+        this.santaIsTyping = true
+        // *********
+        // how many messages to autoload?
+        let autoloadsCount = autoload.length
+        // Loop through the array of next messages:
+        for (const [index, value] of autoload.entries()) {
+          this.santaActions = 0
+          this.santaIsTyping = true
+          // separate each message by 2 seconds
+          // TODO: give each message its own delay value!
+          let delay = timings[index]
+          setTimeout(() => {
+            this.santaIsTyping = true
+            this.santaMsgs.push(value)
+            this.blinkTyping()
+            // if this is the last autoLoad, turn off the typing!
+            if (index === autoloadsCount - 1) {
+              // this.santaIsTyping = false
+            }
+          }, delay)
+          this.santaIsTyping = true
+          // Calculate the total delay then show buttons
+          setTimeout(() => {
+            // this.santaIsTyping = false
+            this.santaActions = this.nextActionsCounter
+          }, maxDelay)
+        }
+        this.santaIsTyping = true
+      } else {
+        // No AUTOLOAD. Just show the next message.
+        this.santaActions = 0
+        this.santaIsTyping = true
+        setTimeout(() => {
+          this.santaIsTyping = true
+          this.santaMsgs.push(val)
+          // this.santaIsTyping = false
+          this.santaActions = this.nextActionsCounter
+        }, 2000)
+      }
     }
   },
   head () {
@@ -148,33 +256,50 @@ export default {
     }
   },
   mounted () {
+    this.bgColor = '990000'
     let self = this
     this.snowAmount = 50
+    this.$store.state.logoColor = 'white'
+    this.santaIsTyping = true
     setTimeout(function () {
-      self.scrollToEnd()
+      // self.scrollToEnd()
+      self.santaMsgs.push('santa1')
     }, 500)
+    setTimeout(() => {
+      // self.scrollToEnd()
+      self.santaMsgs.push('santa2')
+      this.santaActions = 1
+    }, 3000)
   },
   updated () {
-    // console.log('updated')
-    let containerHeight = this.$refs.messageBox.clientHeight
-    let messagesHeight = this.$refs.messages.clientHeight
-    if (messagesHeight >= containerHeight) {
-      this.$refs.messages.style.height = '100%'
+    // handle The auto SCroll to bottom
+    if (this.$store.state.santaClient !== 'temp') {
+      let msgWrapper = this.$refs.messageComp[0].$el
+      let msgs = this.$refs.messageComp[0].$el.children[0]
+      let messagesHeight = msgs.clientHeight
+      if (messagesHeight >= window.innerHeight - 144) {
+        // the messages are taller than the window
+        msgs.style.height = '100%'
+        this.$store.state.isLogoBlurred = true
+      }
+      this.scrollToEnd(msgWrapper, msgs)
     }
-    this.scrollToEnd()
+    if (this.santaActions !== 0 || this.santaClient === 'temp') {
+      this.santaIsTyping = false
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~assets/css/_settings.scss';
-
-.snow-controls {
-  position: relative;
-  button {
-    font-size: .7rem;
-  }
+.snowf-canvas {
+  background: #e40000;
 }
+::-webkit-scrollbar {
+display: none;
+}
+
 
 h1 {
   text-indent: 13vw;
@@ -189,37 +314,28 @@ h3 {
   margin-top: 100vh;
 }
 
-.main-links {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  text-align: center;
 
-  a {
-    margin:0 12px;
-    color: black;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .05rem;
-    text-decoration: none;
-  }
-}
 .message-wrapper {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  bottom: 120px;
+  bottom: 24;
   display: block;
   padding: 0;
   padding-top: 24px;
+  height: calc(100% - 96px);
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: flex-end;
   overflow: auto;
-  height: calc(100% - 136px);
+  // height: calc(100% - 96px);
   transition: filter .2s ease;
+
+  @include mq ($from: tablet) {
+    height: calc(100% - 136px);
+  }
+
 
   &.blur {
     filter: blur(5px);
@@ -245,11 +361,51 @@ h3 {
     margin-bottom: 24px;
     padding-right: 90px;
     padding-left: 24px;
-    // text-indent: rem(36);
+    transform-origin: center bottom;
+    animation: popIn .5s;
+
+      &.me {
+      text-align: right;
+      transform-origin: 100% 100%;
+      padding-right: 24px;
+      padding-left: 90px;
+      text-indent: 0;
+      // display: flex;
+
+        span {
+          // color: #787709;
+          color: $sm-yellow;
+          // display: flex;
+          // flex: 1 1 auto;
+          width: auto;
+          // color: white;
+          padding: .5rem 1rem;
+          font-size: 1rem;
+          border-radius: 36px;
+
+      @include mq ($from: tablet) {
+        font-size: 1.25rem;
+        padding: 1rem 2rem;
+      }
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      p img {
+        display: inline-block;
+        max-width: 2rem;
+      }
 
     &.new {
       transform-origin: center bottom;
-      animation: bounceInUp .5s;
+      animation: zoomInUp .5s;
     }
 
     &.greeting  {
@@ -257,12 +413,7 @@ h3 {
     }
 
     &.me {
-      text-align: right;
-      transform-origin: 100% 100%;
-      padding-right: 24px;
-      padding-left: 90px;
-      color: $sm-yellow;
-      text-indent: 0;
+
     }
 
     a {
@@ -287,54 +438,6 @@ h3 {
   color: #D8D941;
   }
 
-.input-wrapper {
-  left: 12px;
-  right: 12px;
-  position: fixed;
-  bottom: 62px;
-  padding:0;
-}
-
-.input-bar {
-  background: black;
-  padding: 6px;
-  height: 48px;
-  border-radius: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items:stretch;
-  width: 100%;
-  max-width: 400px;
-  margin:0 auto;
-
-
-
-  .input {
-    border:none;
-    border-radius: 23px;
-    flex: 1 1 auto;
-    padding: 0 12px;
-    height: 36px;
-    width: 100%;
-  }
-
-  button {
-    width: 36px;
-    height: 36px;
-    border-radius: 18px;
-    border:none;
-    outline: none;
-    margin-left: $spacing-unit /2;
-    background-color: $sm-blue;
-    color:black;
-    font-weight: 700;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    text-align: center;
-    padding: 0;
-  }
-}
 
 @keyframes popIn {
   0% {
@@ -350,31 +453,60 @@ h3 {
   }
 }
 
-@keyframes bounceInUp {
-  from, 60%, 75%, 90%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+.responses {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+
+    @include mq ($from:tablet) {
+      padding: 2rem;
+    }
+
+    button {
+      background: #787709;
+      transition: color .2s;
+      border:0;
+      outline: none;
+      color: white;
+      padding: .5rem;
+      border-radius: 36px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: .25rem;
+
+    @include mq ($from: tablet) {
+      padding: 1rem;
+      font-size: 1.25rem;
+    }
+
+    &:hover {
+      background: $sm-gray;
+    }
+    }
+}
+
+.typingContainer {
+  width: 100vw;
+  position: fixed;
+  bottom: 3rem;
+  text-align: center;
+
+  @include mq($from:tablet) {
+    bottom: 6.5rem;
   }
 
-  from {
-    opacity: 0;
-    transform: translate3d(0, 100px, 0);
+  &.blink {
+    display: none;
   }
 
-  60% {
-    opacity: 1;
-    transform: translate3d(0, -20px, 0);
-  }
-
-  75% {
-    transform: translate3d(0, 10px, 0);
-  }
-
-  90% {
-    transform: translate3d(0, -5px, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
+  .bottemp {
+    max-width: 54rem;
+    margin: 0 auto;
+    padding-left: 1.5rem;
   }
 }
 
