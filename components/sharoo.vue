@@ -30,7 +30,7 @@
         p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
-        p Sarah, über Dich weiss ich nur Gutes,
+        p Sarah, über dich weiss ich nur Gutes,
         p bist für eine bessere Welt vollen Mutes.
         p 
         p Kämpfst täglich ohne Geschrei,
@@ -42,13 +42,14 @@
         p da sollte keine Agentur mit dir nicht Scherzen.
         p 
         p Selbst Amsterdam liebst du nicht wegen dem Gras,
-        p für Tony’s Milchschokolade gibst du Gas.
+        p nur für Tony’s Milchschokolade gibst du Gas.
       //- santa7b
       li.message(v-if="santaMsgs.includes('santa7b')")
         p Wo denkst du hin? Heute wird mal keiner geschont...
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
-        p Christina, auch an dich habe ich gedacht und einen Vers gemacht:
+        p Christina, auch an dich habe ich gedacht 
+        p und einen Vers gemacht:
         p Gut
         p Gut 
       //- santa11

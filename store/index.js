@@ -646,7 +646,7 @@ const store = () =>
           'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1jlh88m9er560'
         },
         {
-          'name': 'Sharoo',
+          'name': 'sharoo',
           'slug': 'sharoo',
           'larry': 'x064',
           'wishlist': 'https://www.amazon.de/hz/wishlist/ls/28wyfa8aujqyr'

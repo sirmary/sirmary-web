@@ -54,7 +54,7 @@
         p Übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
-                img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
+          img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
         p Die Richtige Antwort: Ihr Kinderlein kommet 
@@ -121,17 +121,17 @@
       button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
       
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa20','santa21'], [4000, 12000, 14000, 15000], 5)") Mach weiter, Nikolaus!
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa20','santa21'], [4000, 12000, 14000, 17000], 5)") Mach weiter, Nikolaus!
       
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa20','santa21'], [4000, 12000, 14000, 15000], 5)") Stop! Sami, schliess das Buch!
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa20','santa21'], [4000, 12000, 14000, 17000], 5)") Stop! Sami, schliess das Buch!
     
     .responses(v-if="santaActions === 5")                                                                                                                                                                        
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!', ['santa25','santa26', 'santa27', 'santa28', 'santa30'], [4000, 6000, 8500,11240, 13400], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!', ['santa25','santa26', 'santa27', 'santa28', 'santa30'], [7000, 14000, 22000,28000, 36000], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
-      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Einer fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000,20000], 8)") Ja! Einer fehlt!
+      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Einer fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [6000,12000,18500,21000,29000,35000], 8)") Ja! Einer fehlt!
     .responses(v-if="santaActions === 8")
       button.response(@click="$emit('handleEmail')") Wir waren super!
       button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern
