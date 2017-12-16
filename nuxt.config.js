@@ -75,6 +75,8 @@ const config = {
      {src: '~assets/css/sirmary.scss', lang: 'scss'}
   ],
 
+  // mode: 'spa',
+
   /*
   ** Build configuration
   */
