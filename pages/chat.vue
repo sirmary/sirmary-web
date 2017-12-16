@@ -210,7 +210,7 @@ export default {
           this.$store.state.santaClient = code.slug
           this.$store.state.clientName = code.name
           this.$store.state.amazonLink = code.wishlist
-          this.$router.push('santa')
+          this.$router.push('/santa')
           return
         }
       }

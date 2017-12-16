@@ -249,14 +249,16 @@ export default {
     }
   },
   head () {
+    // let bgColor = this.bgColor
     return {
       style: [
-        { cssText: ':root { background: #' + this.bgColor + '}', type: 'text/css' }
+        { cssText: ':root { background: #e40000}', type: 'text/css', undo: true }
       ]
     }
   },
   mounted () {
-    this.bgColor = '990000'
+    console.log(document.children[0])
+    this.bgColor = 'e40000'
     let self = this
     this.snowAmount = 50
     this.$store.state.logoColor = 'white'
@@ -272,6 +274,8 @@ export default {
     }, 3000)
   },
   updated () {
+    // bg color?
+    this.bgColor = 'e40000'
     // handle The auto SCroll to bottom
     if (this.$store.state.santaClient !== 'temp') {
       let msgWrapper = this.$refs.messageComp[0].$el
@@ -280,7 +284,6 @@ export default {
       if (messagesHeight >= window.innerHeight - 144) {
         // the messages are taller than the window
         msgs.style.height = '100%'
-        this.$store.state.isLogoBlurred = true
       }
       this.scrollToEnd(msgWrapper, msgs)
     }
@@ -293,13 +296,19 @@ export default {
 
 <style lang="scss">
 @import '~assets/css/_settings.scss';
-.snowf-canvas {
-  background: #e40000;
-}
+
 ::-webkit-scrollbar {
 display: none;
 }
 
+:root {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.hide {
+  color: #e40000;
+}
 
 h1 {
   text-indent: 13vw;
