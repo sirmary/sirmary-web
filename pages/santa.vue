@@ -13,7 +13,7 @@
       color="#fff"
     )
     .chatstuff
-      component(v-for="compName, index in clientList" :is="compName" v-if="santaClient === compName" ref="messageComp" :key="index" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")
+      component(v-for="compName, index in clientList" :is="compName" v-if="santaClient === compName" ref="messageComp" :key="index" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")#messageComp
       //- typing...
       .typingContainer(v-if="santaIsTyping" :class="{blink: isBlinking}")
         .bottemp.waiting
@@ -156,10 +156,19 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     },
+    handleScroll () {
+      console.log('scrolled, new top: ' + this.$refs.messageComp[0].$el.children[0].scrollTop)
+      console.log('page scroll: ' + window.pageYOffset)
+    },
     scrollToEnd (msgWrapper, msgs) {
-      let messagesHeight = msgs.scrollHeight
-      msgWrapper.innerHeight = msgs.scrollHeight + 100
-      msgWrapper.scrollTop = messagesHeight + 3000
+      console.log('*****')
+      console.log('scrolling')
+      console.log('msgs Scrollheight: ' + msgs.scrollHeight)
+      console.log('msgs scrollTop: ' + msgs.scrollTop)
+      document.documentElement.scrollTop = document.body.scrollTop = msgs.scrollHeight + 100
+      // let messagesHeight = msgs.scrollHeight
+      // msgWrapper.innerHeight = msgs.scrollHeight + 100
+      // msgWrapper.scrollTop = messagesHeight + 3000
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
@@ -256,6 +265,12 @@ export default {
       ]
     }
   },
+  beforeMount () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
   mounted () {
     console.log(document.children[0])
     this.bgColor = 'e40000'
@@ -306,6 +321,10 @@ display: none;
   min-height: 100vh;
 }
 
+.snowf-canvas {
+  position: fixed;
+}
+
 .hide {
   color: #e40000;
 }
@@ -324,8 +343,9 @@ h3 {
 }
 
 
-.message-wrapper {
-  position: absolute;
+#messageComp {
+  position: relative;
+  // background: rgba(purple,.5);
   left: 0;
   right: 0;
   top: 0;
@@ -333,11 +353,15 @@ h3 {
   display: block;
   padding: 0;
   padding-top: 24px;
+  padding-bottom: 100px;
   height: calc(100% - 96px);
+  height: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
-  overflow: auto;
+  // overflow: auto;
+  overflow-y: visible;
+  overflow-x: hidden;
   // height: calc(100% - 96px);
   transition: filter .2s ease;
 
