@@ -30,11 +30,11 @@
         p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
-        p Jolanda, bist du da??
-        p Mein Buch sagt, du hättest ein gutes Händchen.
-        p Bei Budgets brennen bei dir rechtzeitig die Lämpchen. 
-        p Und auch beim Anpacken bist du immer bereit.
-        p Sogar wenn mal kurz dein Handgelenk aussteigt.
+        p Jolanda, bist du da?
+        p Mein Buch sagt, du hättest ein gutes Händchen,
+        p bei Budgets brennen bei dir rechtzeitig die Lämpchen. 
+        p Und auch beim Anpacken bist du immer bereit,
+        p sogar wenn mal kurz dein Handgelenk aussteigt.
 
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
@@ -44,32 +44,33 @@
         p Wo denkst du hin? Heute wird mal keiner geschont...
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
-        p Claudia
+        p Claudia!
         p Du tust viel Zeit investieren
         p dich über die Andern zu informieren.
         p Deine Analysen haben immer gesessen. 
         p Media Focus kann man da glatt vergessen. 
         p Um noch was kann man dich beneiden 
-        p Deinen Mut etwas zu Entscheiden.
+        p deinen Mut etwas zu Entscheiden.
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
-        p Q2
+        p Q2?
       //- santa12
       li.message(v-if="santaMsgs.includes('santa12')")
         p Ist das ein Name? Oder St. Galler Dialekt?
       //- santa14
       li.message(v-if="santaMsgs.includes('santa14')")
-        p So oder so, wie du verhandelst kann man verstehen 
+        p So oder so, wie du verhandelst kann man verstehen, 
         p lässt dich dein Chef einen Monat nach Australien gehen.
       //- santa15
       li.message(v-if="santaMsgs.includes('santa15')")
-        p Thomas Jost, jetzt kommst du.
+        p Thomas Jost, jetzt kommst du,
       //- santa16
       li.message(v-if="santaMsgs.includes('santa16')")
-        p Bombst dir nicht noch den ganzen Körper zu!
-        p Model Mauri hast du entdeckt
+        p bombst dir nicht noch den ganzen Körper zu!
+        p Model Mauri hast du entdeckt,
         p Elite Model hats aber leider nicht gecheckt.
-        p Eins noch: Lächeln steht dir super gut, auch wenn man’s selten sehen tut.
+        p Eins noch: Lächeln steht dir super gut, 
+        p auch wenn man’s selten sehen tut!
       //- santa17
       li.message(v-if="santaMsgs.includes('santa17')")
         p Simone komm und sag mir doch:
@@ -89,8 +90,10 @@
           img(src="~/assets/img/emoji/tears.png")
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
-        p Luca, über dich kann ich nicht lang parlieren, tust dich bei Media profilieren. 
-        p Nächstes Jahr an diesem Ort, steht bestimmt ein effektiveres Wort.
+        p Luca, über dich kann ich nicht lang parlieren, 
+        p tust dich bei Media profilieren. 
+        p Nächstes Jahr an diesem Ort, 
+        p steht bestimmt ein effektiveres Wort.
 
 
       //- santa26
@@ -103,13 +106,16 @@
       li.message(v-if="santaMsgs.includes('santa28')")
         p AJAX, ASP, ASCII und CSS,
         p all das führt ganz schnell zu Stress.
-        p Fastnacht ist uns mehr gemein, drum lass uns lieber lustig sein.
+        p Fastnacht ist uns mehr gemein, 
+        p drum lass uns lieber lustig sein.
       //- santa29
       li.message(v-if="santaMsgs.includes('santa29')")
-        p Corina.
-        p
-        p Natürlich kannst dus noch abwägen,
-        p ob mich auf Facebook doch willst adden. Zur Gegenleistung bin ich bereit: Ehrenplatz an Schmutzlis Hochzeit.
+        p Corina...
+        p &nbsp;
+        p Natürlich kannst du's noch abwägen,
+        p ob mich auf Facebook doch willst adden. 
+        p Zur Gegenleistung bin ich bereit: 
+        p Biete Ehrenplatz an Schmutzlis Hochzeit.
       //- santa30
       li.message(v-if="santaMsgs.includes('santa30')")
         p Fehlt noch mehr?
@@ -118,8 +124,7 @@
         p Thomas ...
       //- santa32
       li.message(v-if="santaMsgs.includes('santa32')")
-        p Lieber Thomas W. 
-          img(src="~/assets/img/emoji/sun.png")
+        p Lieber Thomas  
           img(src="~/assets/img/emoji/sunglasses.png")
       //- santa33
       li.message(v-if="santaMsgs.includes('santa33')")

@@ -628,7 +628,7 @@ const store = () =>
           'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1azphd1kb84u9'
         },
         {
-          'name': 'Allianz Evia',
+          'name': 'Allianz',
           'slug': 'allianz',
           'larry': 'c493',
           'wishlist': 'https://www.amazon.de/hz/wishlist/ls/2ewkgssxdcisr'
