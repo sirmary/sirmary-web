@@ -274,6 +274,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
+::-webkit-scrollbar {
+display: none;
+}
 
 h1 {
   text-indent: 13vw;

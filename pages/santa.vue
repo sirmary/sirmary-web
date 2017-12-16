@@ -164,13 +164,19 @@ export default {
       preload.src = trkLink
     },
     scrollToEnd (msgWrapper, msgs) {
+      console.log('**************')
       console.log('scroll to end')
       console.log('wrapperScrolltop: ' + msgWrapper.scrollTop)
       console.log('msgs: ' + msgs.scrollHeight)
+      console.log('msgs ClientHeight: ' + msgs.clientHeight)
       console.log('msgWrapper Height: ' + msgWrapper.scrollHeight)
       console.log('window: ' + window.innerHeight)
       let messagesHeight = msgs.scrollHeight
+      msgWrapper.innerHeight = msgs.scrollHeight + 100
       msgWrapper.scrollTop = messagesHeight + 3000
+      // msgs.style.height = '100%'
+      console.log('wrapperScrolltop after: ' + msgWrapper.scrollTop)
+      console.log('msgWrapper innerheight after: ' + msgWrapper.innerHeight)
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
@@ -300,7 +306,9 @@ export default {
       // let containerHeight = msgWrapper.clientHeight
       let messagesHeight = msgs.clientHeight
       if (messagesHeight >= window.innerHeight - 144) {
+        // msgs.style.height = msgs.innerHeight + 5 + 'px'
         msgs.style.height = '100%'
+        msgs.style.marginBottom = '100px'
       }
       this.scrollToEnd(msgWrapper, msgs)
     }
@@ -313,6 +321,15 @@ export default {
 
 <style lang="scss">
 @import '~assets/css/_settings.scss';
+
+::-webkit-scrollbar {
+display: none;
+}
+
+::-moz-scrollbar {
+display: none;
+}
+
 
 .snow-controls {
   position: relative;
@@ -355,18 +372,18 @@ h3 {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
+  bottom: 24;
   display: block;
   padding: 0;
   padding-top: 24px;
-  padding-bottom: 9rem;
-  height: 100vh;
+  height: calc(100% - 136px);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
   overflow: auto;
   // height: calc(100% - 96px);
   transition: filter .2s ease;
+
 
   &.blur {
     filter: blur(5px);
@@ -437,12 +454,21 @@ h3 {
       &.me span {
         background: #787709;
         color: white;
-    padding: 1rem;
+    padding: .5rem;
+    font-size: 1rem;
     border-radius: 36px;
+    @include mq ($from: tablet) {
+      font-size: 1.25rem;
+      padding: 1rem;
+    }
       }
 
       p {
         margin: 0;
+      }
+
+      img {
+        max-width: 100%;
       }
 
       p img {
@@ -559,12 +585,17 @@ h3 {
         border:0;
         outline: none;
         color: white;
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 36px;
     font-weight: 700;
-    // font-size: 1.rem;
+    font-size: 1rem;
     cursor: pointer;
     margin: .25rem;
+
+    @include mq ($from: tablet) {
+      padding: 1rem;
+      font-size: 1.25rem;
+    }
 
     &:hover {
       background: $sm-gray;
@@ -576,7 +607,6 @@ h3 {
   width: 100vw;
   position: fixed;
   bottom: 6.5rem;
-  padding-left: 1.75rem;
   text-align: center;
 
   &.blink {
@@ -586,7 +616,7 @@ h3 {
   .bottemp {
     max-width: 54rem;
     margin: 0 auto;
-    padding-left: 1rem;
+    padding-left: 1.5rem;
   }
 }
 

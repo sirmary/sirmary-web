@@ -146,7 +146,7 @@
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes Samsung Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
+        p So liebes Allianz Evia Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
         p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
 
 
