@@ -154,7 +154,7 @@
     .responses(v-if="santaActions === 6")
       button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!', ['santa25','santa26', 'santa30'], [4000, 6000, 10000], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
-      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000,20000], 8)") Ja! Unser Chef!
+      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unsere Chefin!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000,20000], 8)") Ja! Unsere Chefin!
     .responses(v-if="santaActions === 8")
       button.response(@click="$emit('handleEmail')") Wir waren super!
       button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern
