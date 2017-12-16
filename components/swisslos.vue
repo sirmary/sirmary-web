@@ -8,7 +8,7 @@
           img(src="~/assets/img/emoji/santa.png")
         p Hallo Swisslos
         p Ich bin’s, der Samichlous. 
-        p Vor mir liegt auf meinem Tisch 
+        p Vor mir liegt auf meinem Tisch, 
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
       li.message(v-if="santaMsgs.includes('santa2')")
@@ -30,11 +30,11 @@
         p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
-        p Yannick Zehnder bist du da!
+        p Yannick Zehnder bist du da?
         p Olé Olé Olé – Olala!
         p 
-        p Du hast Talent, bist sehr bekannt.
-        p Sogar ein EVZ Stürmer ist nach dir benannt.
+        p Du hast Talent, bist sehr bekannt,
+        p sogar ein EVZ Stürmer ist nach dir benannt.
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
         p Da steht noch mehr geschrieben…
@@ -45,16 +45,16 @@
       li.message(v-if="santaMsgs.includes('santa8')")
         p Yannick, mach weiter X’en am richtigen Fleck.
         p Dein Samichlausspruch? Hmm, du darfst weg.
+          img(src="~/assets/img/emoji/tongue.png")
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
-        img(src="~/assets/img/emoji/tongue.png")
+        p Ho! Ho! Ho!
       //- santa20
       li.message(v-if="santaMsgs.includes('santa20')")
-        p Ho! Ho! Ho!
         p Übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
-          img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
+        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
         p Die Richtige Antwort: Ihr Kinderlein kommet 
@@ -72,8 +72,8 @@
         img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif" width="400" height="225")
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
-        p Mach was aus der spielfreien Zeit
-        p Singtraining und Gemütlichkeit.
+        p Mach was aus der spielfreien Zeit,
+        p singtraining und Gemütlichkeit.
       //- santa28
       li.message(v-if="santaMsgs.includes('santa28')")
         p Zieh deine Schlüsse und mach dich bereit,
@@ -105,8 +105,11 @@
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes Swisslos Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
-        p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
+        p So liebes Swisslos Team, 
+        p jetzt müsst ihr euch entscheiden: 
+        p Wart ihr artig dieses Jahr? 
+        p Ob ihr wirklich richtig steht, 
+        p seht ihr wenn der Tab aufgeht.
 
 
 

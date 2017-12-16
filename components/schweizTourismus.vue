@@ -8,7 +8,7 @@
           img(src="~/assets/img/emoji/santa.png")
         p Hallo Schweiz Tourismus
         p Ich bin’s, der Samichlous. 
-        p Vor mir liegt auf meinem Tisch 
+        p Vor mir liegt auf meinem Tisch, 
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
       li.message(v-if="santaMsgs.includes('santa2')")
@@ -30,12 +30,12 @@
         p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
-        p Einer muss als Erster kommen, hier gäbs einen Marc, hab ich vernommen.
-        p 
+        p Einer muss als Erster kommen, 
+        p hier gäbs einen Marc, hab ich vernommen.
         p Marc, ich hoffe, du verstehst mich gut,
-        p Was bei deinem Dialekt ja nicht gleich jeder tut.
-        p Schnaps und Freiburger Fondue NUR in Fribourg machen dich stolz.
-        p Als Freiburger bist du aus dem echtem Holz.
+        p was bei deinem Dialekt ja nicht gleich jeder tut.
+        p Schnaps und Freiburger Fondue NUR in Fribourg machen dich stolz,
+        p als Freiburger bist du aus dem echtem Holz.
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
         p Da steht noch mehr geschrieben…
@@ -45,31 +45,30 @@
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
         p Nicht mal ich hab Tricks die Marc nicht kennt,
-        p Kein Berg, den er nicht beim Namen nennt.
+        p kein Berg, den er nicht beim Namen nennt.
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
         p Von Hinz und Kunz bis Pille und Palle,
-        p Nur einer – Marc – der kennt sie alle.
+        p nur einer – Marc – der kennt sie alle.
       //- santa20
       li.message(v-if="santaMsgs.includes('santa20')")
         p Ho! Ho! Ho!
         p Übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
-                img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
+        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
         p Die Richtige Antwort: Ihr Kinderlein kommet 
           img(src="~/assets/img/emoji/tears.png")
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
-        p Sandra 
-        p
-        p In meinem Buch steht auch was für dich:.
+        p Sandra, 
+        p in meinem Buch steht auch was für dich:
       //- santa25
       li.message(v-if="santaMsgs.includes('santa25')")
-        p Selbst wenn die Welt zusammenbricht
-        p Bei dir ist Ruhe - gar kein Sturm.
+        p Selbst wenn die Welt zusammenbricht,
+        p bei dir ist Ruhe - gar kein Sturm.
         p SiR MaRY fragt: Wie macht sie’s nur?
       //- santa26
       li.message(v-if="santaMsgs.includes('santa26')")
@@ -79,10 +78,10 @@
         p Fehlt noch wer?
       //- santa31
       li.message(v-if="santaMsgs.includes('santa31')")
-        p Nicole …
+        p Liebe Nicole…
       //- santa32
       li.message(v-if="santaMsgs.includes('santa32')")
-        p Liebe Nicole jetzt zu dir.
+        p Jetzt zu dir!
       //- santa33
       li.message(v-if="santaMsgs.includes('santa33')")
         p Von Vielen habe ich’s vernommen:
@@ -94,14 +93,17 @@
       //- santa35
       li.message(v-if="santaMsgs.includes('santa35')")
         p Selbst wenn die Welt am untergehen ist, 
-        p Nicole, bleibt Multitasking-Spezialist. 
+        p bleibt Nicole Multitasking-Spezialist. 
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes Schweiz Tourismus Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
-        p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
+        p So liebes Schweiz Tourismus Team, 
+        p jetzt müsst ihr euch entscheiden: 
+        p Wart ihr artig dieses Jahr? 
+        p Ob ihr wirklich richtig steht, 
+        p seht ihr wenn der Tab aufgeht.
 
 
 

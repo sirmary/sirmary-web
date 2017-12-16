@@ -8,7 +8,7 @@
           img(src="~/assets/img/emoji/santa.png")
         p Hallo sharoo
         p Ich bin’s, der Samichlous. 
-        p Vor mir liegt auf meinem Tisch 
+        p Vor mir liegt auf meinem Tisch, 
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
       li.message(v-if="santaMsgs.includes('santa2')")
@@ -134,8 +134,11 @@
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes sharoo Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
-        p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
+        p So liebes sharoo Team, 
+        p jetzt müsst ihr euch entscheiden: 
+        p Wart ihr artig dieses Jahr? 
+        p Ob ihr wirklich richtig steht, 
+        p seht ihr wenn der Tab aufgeht.
 
 
 
