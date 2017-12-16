@@ -53,7 +53,7 @@
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
         p Moment! Mein Lob muss sich gedulden:
-        p Sollst du SiR MaRY noch ein Dinner mit Richard Kägi schulden?
+        p Sollst SiR MaRY noch ein Dinner mit Richard Kägi schulden?
       //- santa12
       li.message(v-if="santaMsgs.includes('santa12')")
         p Jan? Oh Jan..
@@ -94,7 +94,8 @@
         p Im Buch die nächste, die bist du.
       //- santa28
       li.message(v-if="santaMsgs.includes('santa28')")
-        p Vielem drückst du deinen Stempel auf - am besten aber da:
+        p Vielem drückst du deinen Stempel auf 
+        p - am besten aber da:
         p Im Delicuisine-Feed auf Insta.
       //- santa29
       li.message(v-if="santaMsgs.includes('santa29')")   
