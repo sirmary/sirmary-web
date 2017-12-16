@@ -289,8 +289,6 @@ export default {
     }, 3000)
   },
   updated () {
-    // bg color?
-    this.bgColor = 'e40000'
     // handle The auto SCroll to bottom
     if (this.$store.state.santaClient !== 'temp') {
       let msgWrapper = this.$refs.messageComp[0].$el
@@ -298,7 +296,7 @@ export default {
       let messagesHeight = msgs.clientHeight
       if (messagesHeight >= window.innerHeight - 144) {
         // the messages are taller than the window
-        msgs.style.height = '100%'
+        msgWrapper.style.position = 'relative'
       }
       this.scrollToEnd(msgWrapper, msgs)
     }
@@ -340,11 +338,10 @@ h3 {
 
 
 #messageComp {
-  position: relative;
+  position: absolute;
   // background: rgba(purple,.5);
   left: 0;
   right: 0;
-  top: 0;
   bottom: 24;
   display: block;
   padding: 0;
