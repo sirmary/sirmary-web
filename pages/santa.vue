@@ -69,19 +69,14 @@ export default {
     }
   },
   methods: {
-    loadView () {
-      console.log('loaded')
-    },
     handleEmail (name) {
       let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + this.clientName + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20mach%20jetzt%20unsere%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Ajetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + this.clientName + '%20Team'
       window.open(linkString)
     },
     handleAmazon (link) {
-      console.log('handling amazon: ' + this.$store.state.amazonLink)
       window.open(this.$store.state.amazonLink)
     },
     blinkTyping () {
-      console.log('blink the typing')
       this.isBlinking = true
       setTimeout(() => {
         this.isBlinking = false
@@ -90,7 +85,6 @@ export default {
     changePhase (phase) {
       switch (phase) {
         case 1:
-          console.log('enter phahse 1')
           this.snowAmount = 50
           this.snowSize = 5
           this.snowSpeed = 1.5
@@ -99,7 +93,6 @@ export default {
           this.snowOpacity = 0.7
           break
         case 2:
-          console.log('enter phase 2')
           this.snowAmount = 200
           this.snowSize = 7
           this.snowSpeed = 3
@@ -108,7 +101,6 @@ export default {
           this.snowOpacity = 0.8
           break
         case 3:
-          console.log('enter phase 3')
           this.snowAmount = 400
           this.snowSize = 9
           this.snowSpeed = 5
@@ -117,7 +109,6 @@ export default {
           this.snowOpacity = 0.9
           break
         case 4:
-          console.log('enter phase 4')
           this.snowAmount = 1000
           this.snowSize = 10
           this.snowSpeed = 10
@@ -164,19 +155,9 @@ export default {
       preload.src = trkLink
     },
     scrollToEnd (msgWrapper, msgs) {
-      console.log('**************')
-      console.log('scroll to end')
-      console.log('wrapperScrolltop: ' + msgWrapper.scrollTop)
-      console.log('msgs: ' + msgs.scrollHeight)
-      console.log('msgs ClientHeight: ' + msgs.clientHeight)
-      console.log('msgWrapper Height: ' + msgWrapper.scrollHeight)
-      console.log('window: ' + window.innerHeight)
       let messagesHeight = msgs.scrollHeight
       msgWrapper.innerHeight = msgs.scrollHeight + 100
       msgWrapper.scrollTop = messagesHeight + 3000
-      // msgs.style.height = '100%'
-      console.log('wrapperScrolltop after: ' + msgWrapper.scrollTop)
-      console.log('msgWrapper innerheight after: ' + msgWrapper.innerHeight)
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
@@ -224,7 +205,6 @@ export default {
         // *********
         // Calculate a the longest delay to pause the buttons:
         let maxDelay = timings[timings.length - 1]
-        console.log('max delay: ' + maxDelay)
         this.santaIsTyping = true
         // *********
         // how many messages to autoload?
@@ -233,21 +213,15 @@ export default {
         for (const [index, value] of autoload.entries()) {
           this.santaActions = 0
           this.santaIsTyping = true
-          console.log('is santa typing: ' + this.santaIsTyping)
           // separate each message by 2 seconds
           // TODO: give each message its own delay value!
           let delay = timings[index]
-          console.log('what should the dlay be: ' + delay)
           setTimeout(() => {
             this.santaIsTyping = true
             this.santaMsgs.push(value)
             this.blinkTyping()
             // if this is the last autoLoad, turn off the typing!
-            console.log('length of array: ' + autoloadsCount)
-            console.log('current load: ' + index)
             if (index === autoloadsCount - 1) {
-              console.log('*****************************')
-              console.log('this shoudl be the last autoload!')
               // this.santaIsTyping = false
             }
           }, delay)
@@ -261,7 +235,6 @@ export default {
         this.santaIsTyping = true
       } else {
         // No AUTOLOAD. Just show the next message.
-        console.log('No AUTOLOAD ***')
         this.santaActions = 0
         this.santaIsTyping = true
         setTimeout(() => {
@@ -296,19 +269,14 @@ export default {
     }, 3000)
   },
   updated () {
-    // console.log('typing?: ' + this.santaIsTyping)
     // handle The auto SCroll to bottom
     if (this.$store.state.santaClient !== 'temp') {
-      console.log('message comp el: ')
-      console.log(this.$refs.messageComp[0].$el.children[0])
       let msgWrapper = this.$refs.messageComp[0].$el
       let msgs = this.$refs.messageComp[0].$el.children[0]
       // let containerHeight = msgWrapper.clientHeight
       let messagesHeight = msgs.clientHeight
       if (messagesHeight >= window.innerHeight - 144) {
-        // msgs.style.height = msgs.innerHeight + 5 + 'px'
         msgs.style.height = '100%'
-        msgs.style.marginBottom = '100px'
       }
       this.scrollToEnd(msgWrapper, msgs)
     }
@@ -325,11 +293,6 @@ export default {
 ::-webkit-scrollbar {
 display: none;
 }
-
-::-moz-scrollbar {
-display: none;
-}
-
 
 .snow-controls {
   position: relative;
@@ -522,9 +485,6 @@ h3 {
     background-color: $sm-blue;
     color:black;
     font-weight: 700;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     text-align: center;
     padding: 0;
   }
@@ -580,17 +540,17 @@ h3 {
     justify-content: center;
 
     button {
-        background: #787709;
-        transition: color .2s;
-        border:0;
-        outline: none;
-        color: white;
-    padding: .5rem;
-    border-radius: 36px;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    margin: .25rem;
+      background: #787709;
+      transition: color .2s;
+      border:0;
+      outline: none;
+      color: white;
+      padding: .5rem;
+      border-radius: 36px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: .25rem;
 
     @include mq ($from: tablet) {
       padding: 1rem;
