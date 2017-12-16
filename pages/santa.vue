@@ -15,7 +15,7 @@
     .chatstuff
       component(v-for="compName, index in clientList" :is="compName" v-if="santaClient === compName" ref="messageComp" :key="index" v-on:handleAction="(a,b,c,d,e) => {handleAction(a,b,c,d,e)}" v-on:handleEmail="handleEmail($event)" v-on:handleAmazon="handleAmazon($event)" :santaMsgs="santaMsgs" :santaActions="santaActions" :nextActionsCounter="nextActionsCounter")#messageComp
       //- typing...
-      .typingContainer(v-if="santaIsTyping" :class="{blink: isBlinking}")
+      .typingContainer(v-if="santaIsTyping" :class="{blink: isBlinking}" ref="typingContainer")
         .bottemp.waiting
           .typing-container
             span.circle
@@ -297,12 +297,26 @@ export default {
       if (messagesHeight >= window.innerHeight - 144) {
         // the messages are taller than the window
         msgWrapper.style.position = 'relative'
+        msgWrapper.style.paddingTop = '6rem'
+        if (this.santaIsTyping === true) {
+          this.$refs.typingContainer.style.position = 'relative'
+          this.$refs.typingContainer.style.bottom = '0'
+          this.$refs.typingContainer.style.marginTop = '-100px'
+        }
       }
       this.scrollToEnd(msgWrapper, msgs)
     }
     if (this.santaActions !== 0 || this.santaClient === 'temp') {
       this.santaIsTyping = false
     }
+    // set typing container top pos to bottom of msgs
+    // if (this.santaIsTyping === true) {
+    //   if (this.$refs.messageComp) {
+    //     console.log('messages height: ' + this.$refs.messageComp[0].$el.children[0].scrollHeight)
+    //     this.$refs.typingContainer.style['top'] = this.$refs.messageComp[0].$el.children[0].scrollHeight + 'px'
+    //     console.log('typing cont: ' + this.$refs.typingContainer.style.top)
+    //   }
+    // }
   }
 }
 </script>
@@ -518,7 +532,7 @@ h3 {
 .typingContainer {
   width: 100vw;
   position: fixed;
-  bottom: 3rem;
+  bottom: 5rem;
   text-align: center;
 
   @include mq($from:tablet) {
