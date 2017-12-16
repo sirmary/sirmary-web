@@ -19,7 +19,7 @@
         p (Das Feature "mehr Schnee" hat übrigens zusätzliche 250 Lappen gekostet..)
       //- santa3
       li.message(v-if="santaMsgs.includes('santa3')")
-        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif")
+        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif" width="255" height="317")
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
         p Gut

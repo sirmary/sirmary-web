@@ -19,7 +19,7 @@
         p (Das Feature "mehr Schnee" hat übrigens zusätzliche 250 Lappen gekostet..)
       //- santa3
       li.message(v-if="santaMsgs.includes('santa3')")
-        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif")
+        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif" width="255" height="317")
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
         p Gut
@@ -54,7 +54,7 @@
         p Übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
-        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif")
+                img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
         p Die Richtige Antwort: Ihr Kinderlein kommet 
@@ -69,7 +69,7 @@
         p Winterpause hat rot blau.
       //- santa26
       li.message(v-if="santaMsgs.includes('santa26')")
-        img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif")
+        img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif" width="400" height="225")
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
         p Mach was aus der spielfreien Zeit
@@ -102,7 +102,7 @@
         p auf dem Rücksitz deine wichtigste Fracht.
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
-        img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif")
+        img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
         p So liebes Swisslos Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 

@@ -31,6 +31,7 @@ import allianz from '~/components/allianz.vue'
 import ubs from '~/components/ubs.vue'
 import schweizTourismus from '~/components/schweizTourismus.vue'
 import swisslos from '~/components/swisslos.vue'
+import globus from '~/components/globus.vue'
 import anonymous from '~/components/anonymous.vue'
 
 export default {
@@ -41,6 +42,7 @@ export default {
     ubs,
     schweizTourismus,
     swisslos,
+    globus,
     anonymous
   },
   data () {
@@ -48,7 +50,7 @@ export default {
       bgColor: 'e40000',
       santaClient: this.$store.state.santaClient,
       clientName: this.$store.state.clientName,
-      clientList: ['samsung', 'allianz', 'ubs', 'schweizTourismus', 'swisslos'],
+      clientList: ['samsung', 'allianz', 'ubs', 'schweizTourismus', 'swisslos', 'globus'],
       snowAmount: 1000,
       snowSize: 5,
       snowSpeed: 1.5,
@@ -435,7 +437,7 @@ h3 {
       }
 
       img {
-        max-width: 100%;
+        // max width?
       }
 
       p img {

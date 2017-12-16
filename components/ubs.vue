@@ -19,7 +19,7 @@
         p (Das Feature "mehr Schnee" hat übrigens zusätzliche 250 Lappen gekostet..)
       //- santa3
       li.message(v-if="santaMsgs.includes('santa3')")
-        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif")
+        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif" width="255" height="317")
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
         p Gut
@@ -99,7 +99,7 @@
         p Übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
-        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif")
+                img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
         p Die Richtige Antwort: Ihr Kinderlein kommet 
@@ -114,7 +114,7 @@
         p und sich gefreut, hast du Computer und E-Mail zurückbekommen.
       //- santa26
       li.message(v-if="santaMsgs.includes('santa26')")
-        img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif")
+        img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif" width="400" height="225")
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
         p Und.. Laura, Laura, bist du da?
@@ -142,7 +142,7 @@
         p deinen eigenen Hotspot ins UBS Mannequin Challenge Video gestellt.
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
-        img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif")
+        img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
         p So mein liebes UBS Team, das self-assessment steht noch an: Wart ihr artig dieses Jahr? 
