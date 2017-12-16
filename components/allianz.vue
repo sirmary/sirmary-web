@@ -63,7 +63,7 @@
         p lässt dich dein Chef einen Monat nach Australien gehen.
       //- santa15
       li.message(v-if="santaMsgs.includes('santa15')")
-        p Thomas Thomas J.etzt kommst du
+        p Thomas Jost, jetzt kommst du.
       //- santa16
       li.message(v-if="santaMsgs.includes('santa16')")
         p Bombst dir nicht noch den ganzen Körper zu!
@@ -112,33 +112,35 @@
         p ob mich auf Facebook doch willst adden. Zur Gegenleistung bin ich bereit: Ehrenplatz an Schmutzlis Hochzeit.
       //- santa30
       li.message(v-if="santaMsgs.includes('santa30')")
-        p Fehlt noch wer?
+        p Fehlt noch mehr?
       //- santa31
       li.message(v-if="santaMsgs.includes('santa31')")
         p Thomas ...
       //- santa32
       li.message(v-if="santaMsgs.includes('santa32')")
-        p Lieber Thomas W.
+        p Lieber Thomas W. 
+          img(src="~/assets/img/emoji/sun.png")
+          img(src="~/assets/img/emoji/sunglasses.png")
       //- santa33
       li.message(v-if="santaMsgs.includes('santa33')")
-        p Von Zürich in die Sonnenstube.
+        p Von Zürich in die Sonnenstube,
         p bist auf Achse oft im Zuge.
         p In Meetings mit Ideen bereit,
-        p sparst SiR MaRY schnell ganz viel Zeit.
+        p sparst SiR MaRY schnell viel Zeit.
       //- santa34
       li.message(v-if="santaMsgs.includes('santa34')")
-        p Wenns schnell geht, findest dus erst gut. 
-        p Ausnahmen eine: Slow Food.
+        p Wenn’s schnell geht, findest du’s erst gut.
+        p Ausnahme gibt es eine: Slow Food.
       //- santa35
       li.message(v-if="santaMsgs.includes('santa35')")
-        p Mit dir kommt man jeweils gern ins Schwitzen.
-        p Aber klar: Bei “Mut heisst machen” muss alles sitzen.
+        p Mit dir kommt man jeweils gern ins Schwitzen,
+        p aber klar: bei "Mut heisst machen" muss alles sitzen.
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes Allianz Evia Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
+        p So liebes Allianz-Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
         p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
 
 
@@ -159,7 +161,7 @@
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29'],[3000,14000,19000,23000,33000], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29', 'santa30'],[3000,14000,19000,23000,33000,40000], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
       button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [4000,7000,17000,23000,31000, 38000], 8)") Ja! Unser Chef!
     .responses(v-if="santaActions === 8")
