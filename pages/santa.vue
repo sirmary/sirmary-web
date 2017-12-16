@@ -45,6 +45,7 @@ export default {
   },
   data () {
     return {
+      bgColor: 'e40000',
       santaClient: this.$store.state.santaClient,
       clientName: this.$store.state.clientName,
       clientList: ['samsung', 'allianz', 'ubs', 'schweizTourismus', 'swisslos'],
@@ -58,7 +59,6 @@ export default {
       inputValue: '',
       blurred: false,
       isHuman: true,
-      bgColor: 'e40000',
       messagesScrolltop: 0,
       santaActions: this.$store.state.santaActions,
       santaIsTyping: this.$store.state.santaIsTyping,
@@ -249,11 +249,12 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #e40000}', type: 'text/css' }
+        { cssText: ':root { background: #' + this.bgColor + '}', type: 'text/css' }
       ]
     }
   },
   mounted () {
+    this.bgColor = '990000'
     let self = this
     this.snowAmount = 50
     this.$store.state.logoColor = 'white'
@@ -290,7 +291,9 @@ export default {
 
 <style lang="scss">
 @import '~assets/css/_settings.scss';
-
+.snowf-canvas {
+  background: #e40000;
+}
 ::-webkit-scrollbar {
 display: none;
 }
@@ -359,16 +362,30 @@ h3 {
     transform-origin: center bottom;
     animation: popIn .5s;
 
-      &.me span {
-        background: #787709;
-        color: white;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    border-radius: 36px;
-    @include mq ($from: tablet) {
-      font-size: 1.25rem;
-      padding: 1rem 2rem;
-    }
+      &.me {
+      text-align: right;
+      transform-origin: 100% 100%;
+      padding-right: 24px;
+      padding-left: 90px;
+      text-indent: 0;
+      // display: flex;
+
+        span {
+          // color: #787709;
+          color: $sm-yellow;
+          // display: flex;
+          // flex: 1 1 auto;
+          width: auto;
+          // color: white;
+          padding: .5rem 1rem;
+          font-size: 1rem;
+          border-radius: 36px;
+
+      @include mq ($from: tablet) {
+        font-size: 1.25rem;
+        padding: 1rem 2rem;
+      }
+        }
       }
 
       p {
@@ -394,12 +411,7 @@ h3 {
     }
 
     &.me {
-      text-align: right;
-      transform-origin: 100% 100%;
-      padding-right: 24px;
-      padding-left: 90px;
-      color: $sm-yellow;
-      text-indent: 0;
+
     }
 
     a {

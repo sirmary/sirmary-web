@@ -54,7 +54,6 @@
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
         p Q2
-          img(src="~/assets/img/emoji/rose.png")
       //- santa12
       li.message(v-if="santaMsgs.includes('santa12')")
         p Ist das ein Name? Oder St. Galler Dialekt?

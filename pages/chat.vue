@@ -47,7 +47,6 @@ export default {
       isHuman: true,
       santaShuffle: this.$store.state.santaShuffle,
       amazonLink: this.$store.state.amazonLink,
-      bgColor: '157C78',
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
       },
@@ -244,7 +243,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #' + this.bgColor + '}', type: 'text/css' }
+        { cssText: ':root { background: #157C78}', type: 'text/css' }
       ]
     }
   },
