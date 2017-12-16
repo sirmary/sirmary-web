@@ -19,7 +19,7 @@
         p (Das Feature "mehr Schnee" hat übrigens zusätzliche 250 Lappen gekostet..)
       //- santa3
       li.message(v-if="santaMsgs.includes('santa3')")
-        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif")
+        img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif" width="255" height="317")
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
         p Gut
@@ -97,7 +97,7 @@
         p Übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
-        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif")
+        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
         p Die Richtige Antwort: Ihr Kinderlein kommet 
@@ -113,7 +113,7 @@
         p In unserer Hütte ist er Chief Multimedia.
       //- santa26
       li.message(v-if="santaMsgs.includes('santa26')")
-        img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif")
+        img(src="https://media.giphy.com/media/g3wNqJkR0nwuk/giphy.gif" width="400" height="225")
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
         p (temp)
@@ -145,8 +145,8 @@
         p Aber Herrgottsjammer – beim Sightseeing gibt’s doch mehr zu sehen, als nur Bier.
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
-        img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif")
-      //- santa374
+        img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
+      //- santa37
       li.message(v-if="santaMsgs.includes('santa37')")
         p So liebes Samsung Team, jetzt müsst ihr euch entscheiden: Wart ihr artig dieses Jahr? 
         p Ob ihr wirklich richtig steht, seht ihr wenn der Tab aufgeht.
@@ -163,15 +163,17 @@
     .responses(v-if="santaActions === 3")
       button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 12000, 14000, 15000, 16500, 18350, 21000, 23500, 26000, 28000, 35000, 40000], 5)") Mach weiter, Nikolaus!
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 12000, 14000, 15000, 16500, 18350, 21000, 23500, 26000, 28000, 35000, 40000], 5)") Stop! Sami, schliess das Buch!
+      
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 19000, 21000, 25000, 30000, 32000, 34000, 37000, 41000, 45000, 51000, 55000], 5)") Mach weiter, Nikolaus!
+
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 19000, 21000, 25000, 30000, 32000, 34000, 37000, 41000, 45000, 51000, 55000], 5)") Stop! Sami, schliess das Buch!
     .responses(v-if="santaActions === 5")                                                                                                                                                                         
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29'],[3000,10000,15000,17500,19250], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa30'],[6000,15000,18000], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
-      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Allan fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Allan fehlt!
+      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Allan fehlt!',['santa32','santa33','santa34','santa35','santa36','santa37'], [6000,14000,22000,29000,34000, 40000], 8)") Ja! Allan fehlt!
     .responses(v-if="santaActions === 8")
       button.response(@click="$emit('handleEmail')") Wir waren super!
       button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern
