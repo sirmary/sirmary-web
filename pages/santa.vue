@@ -249,7 +249,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #' + this.bgColor + '}', type: 'text/css' }
+        { cssText: ':root { background: #e40000}', type: 'text/css' }
       ]
     }
   },
@@ -273,10 +273,11 @@ export default {
     if (this.$store.state.santaClient !== 'temp') {
       let msgWrapper = this.$refs.messageComp[0].$el
       let msgs = this.$refs.messageComp[0].$el.children[0]
-      // let containerHeight = msgWrapper.clientHeight
       let messagesHeight = msgs.clientHeight
       if (messagesHeight >= window.innerHeight - 144) {
+        // the messages are taller than the window
         msgs.style.height = '100%'
+        this.$store.state.isLogoBlurred = true
       }
       this.scrollToEnd(msgWrapper, msgs)
     }
@@ -294,12 +295,6 @@ export default {
 display: none;
 }
 
-.snow-controls {
-  position: relative;
-  button {
-    font-size: .7rem;
-  }
-}
 
 h1 {
   text-indent: 13vw;
@@ -314,22 +309,7 @@ h3 {
   margin-top: 100vh;
 }
 
-.main-links {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  text-align: center;
 
-  a {
-    margin:0 12px;
-    color: black;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .05rem;
-    text-decoration: none;
-  }
-}
 .message-wrapper {
   position: absolute;
   left: 0;
@@ -339,13 +319,17 @@ h3 {
   display: block;
   padding: 0;
   padding-top: 24px;
-  height: calc(100% - 136px);
+  height: calc(100% - 96px);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
   overflow: auto;
   // height: calc(100% - 96px);
   transition: filter .2s ease;
+
+  @include mq ($from: tablet) {
+    height: calc(100% - 136px);
+  }
 
 
   &.blur {
@@ -372,11 +356,37 @@ h3 {
     margin-bottom: 24px;
     padding-right: 90px;
     padding-left: 24px;
-    // text-indent: rem(36);
+    transform-origin: center bottom;
+    animation: popIn .5s;
+
+      &.me span {
+        background: #787709;
+        color: white;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: 36px;
+    @include mq ($from: tablet) {
+      font-size: 1.25rem;
+      padding: 1rem 2rem;
+    }
+      }
+
+      p {
+        margin: 0;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      p img {
+        display: inline-block;
+        max-width: 2rem;
+      }
 
     &.new {
       transform-origin: center bottom;
-      animation: bounceInUp .5s;
+      animation: zoomInUp .5s;
     }
 
     &.greeting  {
@@ -410,85 +420,10 @@ h3 {
   }
 }
 
-.message {
-      transform-origin: center bottom;
-      animation: bounceInUp .5s;
-
-      &.me span {
-        background: #787709;
-        color: white;
-    padding: .5rem;
-    font-size: 1rem;
-    border-radius: 36px;
-    @include mq ($from: tablet) {
-      font-size: 1.25rem;
-      padding: 1rem;
-    }
-      }
-
-      p {
-        margin: 0;
-      }
-
-      img {
-        max-width: 100%;
-      }
-
-      p img {
-        display: inline-block;
-        max-width: 2rem;
-      }
-}
-
   a {
   color: #D8D941;
   }
 
-.input-wrapper {
-  left: 12px;
-  right: 12px;
-  position: fixed;
-  bottom: 62px;
-  padding:0;
-}
-
-.input-bar {
-  background: black;
-  padding: 6px;
-  height: 48px;
-  border-radius: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items:stretch;
-  width: 100%;
-  max-width: 400px;
-  margin:0 auto;
-
-
-
-  .input {
-    border:none;
-    border-radius: 23px;
-    flex: 1 1 auto;
-    padding: 0 12px;
-    height: 36px;
-    width: 100%;
-  }
-
-  button {
-    width: 36px;
-    height: 36px;
-    border-radius: 18px;
-    border:none;
-    outline: none;
-    margin-left: $spacing-unit /2;
-    background-color: $sm-blue;
-    color:black;
-    font-weight: 700;
-    text-align: center;
-    padding: 0;
-  }
-}
 
 @keyframes popIn {
   0% {
@@ -504,40 +439,17 @@ h3 {
   }
 }
 
-@keyframes bounceInUp {
-  from, 60%, 75%, 90%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  from {
-    opacity: 0;
-    transform: translate3d(0, 100px, 0);
-  }
-
-  60% {
-    opacity: 1;
-    transform: translate3d(0, -20px, 0);
-  }
-
-  75% {
-    transform: translate3d(0, 10px, 0);
-  }
-
-  90% {
-    transform: translate3d(0, -5px, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 .responses {
     position: fixed;
-    bottom: 3rem;
+    bottom: 0;
     width: 100%;
+    padding: 1rem;
     display: flex;
     justify-content: center;
+
+    @include mq ($from:tablet) {
+      padding: 2rem;
+    }
 
     button {
       background: #787709;
@@ -566,8 +478,12 @@ h3 {
 .typingContainer {
   width: 100vw;
   position: fixed;
-  bottom: 6.5rem;
+  bottom: 3rem;
   text-align: center;
+
+  @include mq($from:tablet) {
+    bottom: 6.5rem;
+  }
 
   &.blink {
     display: none;

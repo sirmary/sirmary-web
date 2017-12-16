@@ -249,6 +249,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.state.logoColor = 'black'
     for (var question of this.$store.state.keyData) {
       this.setting.list.push(question.q)
       if (question.o === 1) {
