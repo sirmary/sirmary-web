@@ -159,15 +159,15 @@
     .responses(v-if="santaActions === 3")
       button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 12000, 14000, 18000, 22500, 30000, 39250, 42520, 46000, 51200, 54250, 59000], 5)") Mach weiter, Nikolaus!
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 12000, 14000, 18000, 22500, 30000, 39250, 42520, 46000, 51200, 54250, 59000], 5)") Stop! Sami, schliess das Buch!
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 82000, 97000, 101000], 5)") Mach weiter, Nikolaus!
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 82000, 97000, 101000], 5)") Stop! Sami, schliess das Buch!
     .responses(v-if="santaActions === 5")                                                                                                                                                                         
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29', 'santa30'],[3000,10000,15000,17500,19250, 21000], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa26','santa27','santa28','santa29', 'santa30'],[9000,14000,19000,21000,30050, 33000], 7)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 7")
-      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6500,10000,13500,16000, 20000], 8)") Ja! Unser Chef!
+      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6000,14000,23000,29000, 33000], 8)") Ja! Unser Chef!
     .responses(v-if="santaActions === 8")
       button.response(@click="$emit('handleEmail')") Wir waren super!
       button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern

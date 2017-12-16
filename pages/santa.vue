@@ -428,7 +428,7 @@ h3 {
           border-radius: 36px;
 
       @include mq ($from: tablet) {
-        font-size: 1.25rem;
+        font-size: rem(21);
         padding: 1rem 2rem;
       }
         }
