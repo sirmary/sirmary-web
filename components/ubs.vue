@@ -101,25 +101,26 @@
         p An dieser Stelle, sie ist zu Hause,
         p Julia, ich grüsse in die Baby-Pause!
         p Alles Gute und geniess dein Glück,
-        p nur versprich uns eins und komm zurück.
-      //- santa19
+        p nur versprich uns eins: komm bald zurück!
+
+      //- santa20
       li.message(v-if="santaMsgs.includes('santa19')")
+        p Ho! Ho! Ho!
+        p Übrigens, kennt ihr dieses Weihnachtslied?
+      //- santa21
+      li.message(v-if="santaMsgs.includes('santa20')")
+        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
+      //- santa23
+      li.message(v-if="santaMsgs.includes('santa21')")
+        p Die richtige Antwort: Ihr Kinderlein kommet 
+          img(src="~/assets/img/emoji/tears.png")
+      //- santa19
+      li.message(v-if="santaMsgs.includes('santa23')")
         p Carla, das hier ist für dich:
         p Mein schlaues Buch das sagt,
         p du seist bei UBS das Rückgrat.
         p Noch sicherer als der Safe ist nur,
         p die Freude, wenn du dich meldest, bei der Agentur!
-      //- santa20
-      li.message(v-if="santaMsgs.includes('santa20')")
-        p Ho! Ho! Ho!
-        p Übrigens, kennt ihr dieses Weihnachtslied?
-      //- santa21
-      li.message(v-if="santaMsgs.includes('santa21')")
-        img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
-      //- santa23
-      li.message(v-if="santaMsgs.includes('santa23')")
-        p Die richtige Antwort: Ihr Kinderlein kommet 
-          img(src="~/assets/img/emoji/tears.png")
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
         p Conrad! Conrad! Yess!!
