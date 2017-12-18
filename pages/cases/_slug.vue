@@ -59,13 +59,14 @@ export default {
     'close-modal': CloseModal
   },
   beforeMount () {
-    document.body.classList = 'cases detailView'
     this.$store.state.isArrow = true
   },
   mounted () {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
     if (isIE) {
       document.body.setAttribute('class', 'cases detailView')
+    } else {
+      document.body.classList = 'cases detailView'
     }
   }
 }

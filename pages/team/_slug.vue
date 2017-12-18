@@ -45,7 +45,6 @@ export default {
     'close-modal': CloseModal
   },
   beforeMount () {
-    document.body.classList = 'team detailView'
     this.$parent.teamLink = '/team'
     this.$store.state.isArrow = true
   },
@@ -53,6 +52,8 @@ export default {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
     if (isIE) {
       document.body.setAttribute('class', 'team detailView')
+    } else {
+      document.body.classList = 'team detailView'
     }
   }
 }

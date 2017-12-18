@@ -270,6 +270,12 @@ export default {
     setTimeout(function () {
       self.scrollToEnd()
     }, 500)
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', '')
+    } else {
+      document.body.classList = ''
+    }
   },
   updated () {
     // console.log('updated')

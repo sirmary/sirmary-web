@@ -57,15 +57,14 @@ export default {
     }
   },
   beforeMount () {
-    document.body.classList.remove(document.body.classList)
-    document.body.classList.add('cases')
-    console.log('classes: ' + document.body.classList)
     this.$store.state.isArrow = false
   },
   mounted () {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
     if (isIE) {
       document.body.setAttribute('class', 'cases')
+    } else {
+      document.body.classList = 'cases'
     }
   }
 }
