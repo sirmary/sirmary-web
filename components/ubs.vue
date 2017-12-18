@@ -4,7 +4,7 @@
     ul.messages#messages(ref="santaMessages")
       //- santa1
       li.message(v-if="santaMsgs.includes('santa1')")
-        h2 Ho! Ho! Ho! 
+        h2 Ho! Ho! Ho!
           img(src="~/assets/img/emoji/santa.png")
         p Hallo UBS
         p Ich bin’s, der Samichlaus.
@@ -22,16 +22,16 @@
         img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif" width="255" height="317")
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
-        p Gut... 
+        p Gut...
         p &nbsp;
-        p In meinem Buche steht, es macht die Runde, 
+        p In meinem Buche steht, es macht die Runde,
         p ihr seid SiR MaRY’s Lieblingskunde.
         p Doch habt ihr euch wirklich gut benommen?
         p Ich werd's euch sagen, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
         p Marc, komm als Erster jetzt zu mir.
-        p Mein Buch sagt: du liebst Fondue mit Kirsch. Und Bier. 
+        p Mein Buch sagt: du liebst Fondue mit Kirsch. Und Bier.
         p Dass du viel reist, das kann ich verstehen,
         p Freiburg hat man schnell gesehen.
 
@@ -44,8 +44,8 @@
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
         p Stefanie!
-        p Am Digitaltag nahmst du dir Besucher zu Herzen, 
-        p denn bei Sicherheit magst du nicht scherzen. 
+        p Am Digitaltag nahmst du dir Besucher zu Herzen,
+        p denn bei Sicherheit magst du nicht scherzen.
         p Gut, bist du nicht wirklich schüchtern,
         p da hilft es, bist du immer nüchtern.
       //- santa11
@@ -58,13 +58,13 @@
           img(src="~/assets/img/emoji/smile.png")
       //- santa13
       li.message(v-if="santaMsgs.includes('santa13')")
-        p Experten wie dich, findet man nicht alle Tage, 
+        p Experten wie dich, findet man nicht alle Tage,
         p darum habe ich zu den App Previews noch eine Frage:
       //- santa14
       li.message(v-if="santaMsgs.includes('santa14')")
         p Wie geht sowas, kannst du’s mir sagen?
         p Oder hilft’s, wenn wir bei der Agentur nachfragen?
-        p Wenn’s dort keiner weiss, kommst du zum Zug, 
+        p Wenn’s dort keiner weiss, kommst du zum Zug,
         p und lotst SiR MaRY sicher im Blindflug.
 
       //- santa26
@@ -75,9 +75,9 @@
       //- santa15
       li.message(v-if="santaMsgs.includes('santa15')")
         p Adrian:
-        p Mein Buch sagt, bei dir gibt’s keine harte Landung, 
-        p denn du seist bei UBS ein Fels in der Brandung. 
-        p Selbst bei den W*******s warst du unerschütterlich, 
+        p Mein Buch sagt, bei dir gibt’s keine harte Landung,
+        p denn du seist bei UBS ein Fels in der Brandung.
+        p Selbst bei den W*******s warst du unerschütterlich,
         p sie kommen, sie kommen....... oh leider nicht.
       li.message(v-if="santaMsgs.includes('santa16')")
         p Leonardo bist du hier?
@@ -110,7 +110,7 @@
       //- santa21
       li.message(v-if="santaMsgs.includes('santa20')")
         img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
-      //- santa23
+      //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
         p Die richtige Antwort: Ihr Kinderlein kommet 
           img(src="~/assets/img/emoji/tears.png")
@@ -163,10 +163,10 @@
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes UBS Team, 
-        p jetzt müsst ihr euch entscheiden: 
-        p Wart ihr artig dieses Jahr? 
-        p Ob ihr wirklich richtig steht, 
+        p So liebes UBS Team,
+        p jetzt müsst ihr euch entscheiden:
+        p Wart ihr artig dieses Jahr?
+        p Ob ihr wirklich richtig steht,
         p seht ihr wenn der Tab aufgeht.
 
 
@@ -180,17 +180,18 @@
     .responses(v-if="santaActions === 3")
       button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa26','santa15','santa16','santa17','santa18','santa18b','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 89000, 97000, 112000, 122000, 127000], 5)") Mach weiter, Nikolaus!
-      
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa26','santa15','santa16','santa17','santa18','santa18b','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 89000, 97000, 112000, 122000, 127000], 5)") Stop! Sami, schliess das Buch!
-    .responses(v-if="santaActions === 5")                                                                                                                                                                         
-      button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
-      button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa26'], [4000, 16000, 18000, 20000, 26000, 38000], 5)") Mach weiter, Nikolaus!
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa26'], [4000, 16000, 18000, 20000, 26000, 38000], 5)") Stop! Sami, schliess das Buch!
+    .responses(v-if="santaActions === 5")
+      button.response(@click="$emit('handleAction','santa15', 'Lies weiter, Nikolaus!', ['santa16','santa17','santa18','santa18b','santa19','santa20'], [15000, 28000, 40000, 50000, 63000, 69000], 6)") Lies weiter, Nikolaus!
     .responses(v-if="santaActions === 6")
-      button.response(@click="$emit('handleAction','santa24', 'Lies weiter, Samichlaus!',['santa25','santa27','santa28','santa29', 'santa30'],[9000,14000,19000,21000,30050], 7)") Lies weiter, Samichlaus!
+      button.response(@click="$emit('handleAction','santa21', 'Ja',null, null, 7)") Ja
+      button.response(@click="$emit('handleAction','santa21', 'Nein', null, null, 7)") Nein
     .responses(v-if="santaActions === 7")
-      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa35','santa36','santa37'], [3000,6000,14000,23000,29000, 33000], 8)") Ja! Unser Chef!
+      button.response(@click="$emit('handleAction','santa23', 'Lies weiter, Samichlaus!',['santa24','santa25','santa27','santa28', 'santa30'],[12000,22000,27000,30000,42000], 8)") Lies weiter, Samichlaus!
     .responses(v-if="santaActions === 8")
+      button.response(v-for="button in [1,2]" @click="$emit('handleAction','santa31', 'Ja! Unser Chef!',['santa32','santa33','santa34','santa36','santa37'], [3000,6000,14000,23000,29000], 9)") Ja! Unser Chef!
+    .responses(v-if="santaActions === 9")
       button.response(@click="$emit('handleEmail')") Wir waren super!
       button.response(@click="$emit('handleAmazon')") Wir müssen uns verbessern
 </template>
