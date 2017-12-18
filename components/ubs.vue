@@ -115,7 +115,7 @@
         img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
-        p Die Richtige Antwort: Ihr Kinderlein kommet 
+        p Die richtige Antwort: Ihr Kinderlein kommet 
           img(src="~/assets/img/emoji/tears.png")
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
