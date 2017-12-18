@@ -161,18 +161,14 @@ export default {
       preload.src = trkLink
     },
     handleScroll () {
-      // console.log('scrolled, new top: ' + this.$refs.messageComp[0].$el.children[0].scrollTop)
-      // console.log('page scroll: ' + window.pageYOffset)
+      if (window.pageYOffset === 0) {
+        this.$store.state.isLogoBlurred = false
+      } else {
+        this.$store.state.isLogoBlurred = true
+      }
     },
     scrollToEnd (msgWrapper, msgs) {
-      // console.log('*****')
-      // console.log('scrolling')
-      // console.log('msgs Scrollheight: ' + msgs.scrollHeight)
-      // console.log('msgs scrollTop: ' + msgs.scrollTop)
       document.documentElement.scrollTop = document.body.scrollTop = msgs.scrollHeight + 100
-      // let messagesHeight = msgs.scrollHeight
-      // msgWrapper.innerHeight = msgs.scrollHeight + 100
-      // msgWrapper.scrollTop = messagesHeight + 3000
     },
     insertAfter (referenceNode, newNode) {
       referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
@@ -270,10 +266,10 @@ export default {
     }
   },
   beforeMount () {
-    // window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
   },
   beforeDestroy () {
-    // window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   },
   mounted () {
     this.$store.state.isLogoBlurred = false

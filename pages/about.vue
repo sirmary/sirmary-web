@@ -59,7 +59,6 @@ export default {
   mounted () {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
     if (isIE) {
-      console.log('is IE')
       document.body.setAttribute('class', 'about')
     } else {
       document.body.classList = 'about'
