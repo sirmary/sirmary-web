@@ -21,7 +21,7 @@ export default {
       'fields.client.sys.contentType.sys.id': env.CTF_CLIENT_TYPE_ID,
       'fields.client.fields.slug[all]': params.client
     }).then(entries => {
-      console.log(entries)
+      // console.log(entries)
       return {
         filt: entries.items,
         client: entries.items[0].fields.client.fields.title

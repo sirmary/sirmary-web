@@ -42,7 +42,7 @@ export default {
   methods: {
     handleClick (event, value) {
       this.$router.push('/' + this.myLink)
-      console.log(value)
+      // console.log(value)
     }
 
   },

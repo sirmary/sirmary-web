@@ -77,7 +77,7 @@ export default {
   methods: {
     handleEmail (name) {
       let linkString = 'mailto:santa@sirmary.com?subject=Bestellung%20für%20' + this.$store.state.clientName + '&body=Dear%20Santa%0D%0A%0D%0AWir%20waren%20wirklich%20gut%20in%20diesem%20Jahr%2C%0D%0Adarum%20mach%20jetzt%20unsere%20Belohnung%20klar.%0D%0A%0D%0ADas%20Jahr%20war%20hart%20und%20verging%20im%20Fluge%2C%0D%0Ajetzt%20kommen%20die%20Drinks%20zum%20Zuge%21%0D%0A%0D%0AGerne%20nehmen%20wir%20die%20Chips%20von%20dir%0D%0Aund%20stehen%20bald%20vor%20SiR%20MaRY%E2%80%99s%20T%C3%BCr.%0D%0A%0D%0A%0D%0ADein%20' + this.$store.state.clientName + '%20Team'
-      window.open(linkString)
+      window.location.href = linkString
     },
     handleAmazon (link) {
       window.open(this.$store.state.amazonLink)

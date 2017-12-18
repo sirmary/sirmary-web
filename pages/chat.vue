@@ -214,7 +214,7 @@ export default {
       this.blurInputMobile()
     },
     checkMsg () {
-      console.log('input: ' + this.inputValue)
+      // console.log('input: ' + this.inputValue)
       // console.log('*** Checking message!')
       // for (let code of this.$store.state.santaShuffle) {
       //   if (this.inputValue.toLowerCase() === code.larry) {
