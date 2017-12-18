@@ -619,51 +619,51 @@ const store = () =>
           o: null,
           f: ['essen', 'liebling', 'lieblingsessen']
         }
-      ],
-      santaShuffle: [
-        {
-          'name': 'Samsung',
-          'slug': 'samsung',
-          'larry': 'f472',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1azphd1kb84u9'
-        },
-        {
-          'name': 'Allianz',
-          'slug': 'allianz',
-          'larry': 'c493',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/2ewkgssxdcisr'
-        },
-        {
-          'name': 'UBS',
-          'slug': 'ubs',
-          'larry': 't699',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/l5hu5qol9h0z'
-        },
-        {
-          'name': 'Globus',
-          'slug': 'globus',
-          'larry': 'q915',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1jlh88m9er560'
-        },
-        {
-          'name': 'sharoo',
-          'slug': 'sharoo',
-          'larry': 'x064',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/28wyfa8aujqyr'
-        },
-        {
-          'name': 'Schweiz Tourismus',
-          'slug': 'schweizTourismus',
-          'larry': 'w570',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1n15xnyxgzfpw'
-        },
-        {
-          'name': 'Swisslos',
-          'slug': 'swisslos',
-          'larry': 'y234',
-          'wishlist': 'https://www.amazon.de/hz/wishlist/ls/13nshifx8t864'
-        }
       ]
+      // santaShuffle: [
+      //   {
+      //     'name': 'Samsung',
+      //     'slug': 'samsung',
+      //     'larry': 'f472',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1azphd1kb84u9'
+      //   },
+      //   {
+      //     'name': 'Allianz',
+      //     'slug': 'allianz',
+      //     'larry': 'c493',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/2ewkgssxdcisr'
+      //   },
+      //   {
+      //     'name': 'UBS',
+      //     'slug': 'ubs',
+      //     'larry': 't699',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/l5hu5qol9h0z'
+      //   },
+      //   {
+      //     'name': 'Globus',
+      //     'slug': 'globus',
+      //     'larry': 'q915',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1jlh88m9er560'
+      //   },
+      //   {
+      //     'name': 'sharoo',
+      //     'slug': 'sharoo',
+      //     'larry': 'x064',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/28wyfa8aujqyr'
+      //   },
+      //   {
+      //     'name': 'Schweiz Tourismus',
+      //     'slug': 'schweizTourismus',
+      //     'larry': 'w570',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/1n15xnyxgzfpw'
+      //   },
+      //   {
+      //     'name': 'Swisslos',
+      //     'slug': 'swisslos',
+      //     'larry': 'y234',
+      //     'wishlist': 'https://www.amazon.de/hz/wishlist/ls/13nshifx8t864'
+      //   }
+      // ]
     }
   })
 

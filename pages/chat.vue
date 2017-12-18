@@ -188,6 +188,16 @@ export default {
           // })
         }, 1000)
         if (response.data.result.action !== 'input.unknown') {
+          if (response.data.result.parameters.santaClient) {
+            let client = response.data.result.parameters.santaClient
+            let name = response.data.result.parameters.clientName
+            let link = response.data.result.parameters.wishlist
+            self.$store.state.santaClient = client
+            self.$store.state.clientName = name
+            self.$store.state.amazonLink = link
+            $router.push('santa')
+            return
+          }
           $router.push(response.data.result.action)
         }
         setTimeout(function () {
@@ -204,16 +214,17 @@ export default {
       this.blurInputMobile()
     },
     checkMsg () {
+      console.log('input: ' + this.inputValue)
       // console.log('*** Checking message!')
-      for (let code of this.$store.state.santaShuffle) {
-        if (this.inputValue.toLowerCase() === code.larry) {
-          this.$store.state.santaClient = code.slug
-          this.$store.state.clientName = code.name
-          this.$store.state.amazonLink = code.wishlist
-          this.$router.push('/santa')
-          return
-        }
-      }
+      // for (let code of this.$store.state.santaShuffle) {
+      //   if (this.inputValue.toLowerCase() === code.larry) {
+      //     this.$store.state.santaClient = code.slug
+      //     this.$store.state.clientName = code.name
+      //     this.$store.state.amazonLink = code.wishlist
+      //     this.$router.push('/santa')
+      //     return
+      //   }
+      // }
       if (this.isHuman === true && this.inputValue) {
         this.sendMsg()
       }
