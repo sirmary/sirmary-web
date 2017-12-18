@@ -1,6 +1,7 @@
 <template lang="pug">
   .container
-    img(:src="post.fields.heroImage.fields.file.url+'?fm=jpg&q=60&fl=progressive'", :alt="post.fields.heroImage.fields.description", class="hero-image")
+    img(v-if="type === 'image/gif'" :src="post.fields.heroImage.fields.file.url", :alt="post.fields.heroImage.fields.description", class="hero-image")
+    img(v-else :src="post.fields.heroImage.fields.file.url+'?fm=jpg&q=60&fl=progressive'", :alt="post.fields.heroImage.fields.description", class="hero-image")
     .body-container
       .wrapper
         .copy
@@ -34,7 +35,8 @@ export default {
       'fields.slug': params.slug
     }).then(entries => {
       return {
-        post: entries.items[0]
+        post: entries.items[0],
+        type: entries.items[0].fields.heroImage.fields.file.contentType
       }
     })
     .catch(console.error)
