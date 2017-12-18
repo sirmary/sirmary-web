@@ -130,6 +130,7 @@ const config = {
   */
   plugins: [
     '~plugins/contentful',
+    '~plugins/marked',
     { src: '~plugins/ga.js', ssr: false }
   ],
 

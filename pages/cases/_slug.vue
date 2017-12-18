@@ -7,7 +7,7 @@
         .copy
           h1 {{ post.fields.title }}
           p {{ post.fields.description }}
-          vue-markdown {{post.fields.intro}}
+          div(v-html="marked(post.fields.intro)")
         .images-spaces.group
           .image(v-for="image in post.fields.imagesWithSpaces")
             img(:src="image.fields.file.url")
@@ -15,13 +15,13 @@
           .image(v-for="image in post.fields.imagesWithNoSpaces")
             img(:src="image.fields.file.url")
         .copy
-          vue-markdown {{post.fields.body}}
+          div(v-html="marked(post.fields.body)") 
           p {{post.fields.linkToProject}}
     close-modal(:link="'/cases'")
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
+import {marked} from 'marked'
 import {createClient} from '~/plugins/contentful.js'
 import Navigation from '~/components/navigation.vue'
 import CloseModal from '~/components/CloseModal.vue'
@@ -57,7 +57,7 @@ export default {
   },
   components: {
     Navigation,
-    VueMarkdown,
+    marked,
     'close-modal': CloseModal
   },
   beforeMount () {
