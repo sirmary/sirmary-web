@@ -77,7 +77,7 @@
         p Adrian:
         p Mein Buch sagt, bei dir gibt’s keine harte Landung, 
         p denn du seist bei UBS ein Fels in der Brandung. 
-        p Selbst bei den Wearables warst du unerschütterlich, 
+        p Selbst bei den W*******s warst du unerschütterlich, 
         p sie kommen, sie kommen....... oh leider nicht.
       li.message(v-if="santaMsgs.includes('santa16')")
         p Leonardo bist du hier?
