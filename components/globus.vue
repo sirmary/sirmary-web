@@ -28,6 +28,16 @@
         p 
         p Doch habt ihr euch auch gut benommen?
         p Ich sag’s euch, dafür bin ich hergekommen.
+
+      //- santa5
+      li.message(v-if="santaMsgs.includes('santa5')")
+        p Lukas, Lukas du stylischer Mann,
+        p den man auf keinen Fall "Luki" nennen kann!
+        p Undenkbar, ein Globus ohne dich, 
+        p zu erzählen brauchen wir dir das ja nicht.
+        p Und auch Chuck, dein Hund, ist auf Instagram!
+        p So gut, dass Globus nun auch Insta kann!  
+
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
         p Oh Jessica, oh Jessica, 
@@ -144,7 +154,7 @@
     .responses(v-if="santaActions === 2")
       button.response(@click="$emit('handleAction','santa3', 'Jetzt bin ich bereit', ['santa4'], [7000], 3)") Jetzt bin ich bereit
     .responses(v-if="santaActions === 3")
-      button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [6000], 4)") Oh! Erzähl mir weiter…
+      button.response(@click="$emit('handleAction','santa5', 'Oh! Erzähl mir weiter…', ['santa6','santa7'], [15000, 20000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
       
       button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa20','santa21'], [4000, 12000, 18000, 21000, 28000, 31000, 38000], 5)") Mach weiter, Nikolaus!
