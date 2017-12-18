@@ -31,8 +31,8 @@
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
         p Jolanda, bist du da?
-        p Mein Buch sagt, du hättest ein gutes Händchen,
-        p bei Budgets brennen bei dir rechtzeitig die Lämpchen. 
+        p Mein Buch sagt, du hättest ein gutes Händchen,
+        p bei Budgets brennen bei dir rechtzeitig die Lämpchen. 
         p Und auch beim Anpacken bist du immer bereit,
         p sogar wenn mal kurz dein Handgelenk aussteigt.
 
@@ -45,12 +45,12 @@
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
         p Claudia!
-        p Du tust viel Zeit investieren
+        p Du tust viel Zeit investieren,
         p dich über die Andern zu informieren.
-        p Deine Analysen haben immer gesessen. 
+        p Deine Analysen haben immer gesessen,
         p Media Focus kann man da glatt vergessen. 
-        p Um noch was kann man dich beneiden 
-        p deinen Mut etwas zu Entscheiden.
+        p Um noch was kann man dich beneiden, 
+        p deinen Mut etwas zu entscheiden.
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
         p Q2?
@@ -60,7 +60,7 @@
       //- santa14
       li.message(v-if="santaMsgs.includes('santa14')")
         p So oder so, wie du verhandelst kann man verstehen, 
-        p lässt dich dein Chef einen Monat nach Australien gehen.
+        p lässt dich dein Chef einen Monat nach Australien gehen.
       //- santa15
       li.message(v-if="santaMsgs.includes('santa15')")
         p Thomas Jost, jetzt kommst du,
@@ -69,18 +69,18 @@
         p bombst dir nicht noch den ganzen Körper zu!
         p Model Mauri hast du entdeckt,
         p Elite Model hats aber leider nicht gecheckt.
-        p Eins noch: Lächeln steht dir super gut, 
+        p Eins noch: Lächeln steht dir super gut, 
         p auch wenn man’s selten sehen tut!
       //- santa17
       li.message(v-if="santaMsgs.includes('santa17')")
         p Simone komm und sag mir doch:
       //- santa18
       li.message(v-if="santaMsgs.includes('santa18')")
-        p Hängt die Allianz24 Buswerbung in St. Gallen noch?
+        p Hängt die Allianz24 Buswerbung in St. Gallen noch?
       //- santa20
       li.message(v-if="santaMsgs.includes('santa20')")
         p Ho! Ho! Ho!
-        p Übrigens, kennt ihr dieses Weihnachtslied?
+        p übrigens, kennt ihr dieses Weihnachtslied?
       //- santa21
       li.message(v-if="santaMsgs.includes('santa21')")
         img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
@@ -92,7 +92,7 @@
       li.message(v-if="santaMsgs.includes('santa24')")
         p Luca, über dich kann ich nicht lang parlieren, 
         p tust dich bei Media profilieren. 
-        p Nächstes Jahr an diesem Ort, 
+        p Nächstes Jahr an diesem Ort, 
         p steht bestimmt ein effektiveres Wort.
 
 
@@ -112,13 +112,13 @@
       li.message(v-if="santaMsgs.includes('santa29')")
         p Corina...
         p &nbsp;
-        p Natürlich kannst du's noch abwägen,
+        p Natürlich kannst du's noch abwägen,
         p ob mich auf Facebook doch willst adden. 
         p Zur Gegenleistung bin ich bereit: 
         p Biete Ehrenplatz an Schmutzlis Hochzeit.
       //- santa30
       li.message(v-if="santaMsgs.includes('santa30')")
-        p Fehlt noch mehr?
+        p Fehlt noch wer?
       //- santa31
       li.message(v-if="santaMsgs.includes('santa31')")
         p Thomas ...

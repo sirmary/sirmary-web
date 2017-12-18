@@ -9,7 +9,7 @@
         p Hallo UBS
         p Ich bin’s, der Samichlous.
         p Vor mir liegt auf meinem Tisch,
-        p mein goldenes Buch voll Sachen über dich.
+        p mein goldenes Buch voll Sachen über dich.
       //- santa2
       li.message(v-if="santaMsgs.includes('santa2')")
         p Bist du bereit?
@@ -27,7 +27,7 @@
         p In meinem Buche steht, es macht die Runde, 
         p ihr seid SiR MaRY’s Lieblingskunde.
         p Doch habt ihr euch wirklich gut benommen?
-        p Ich werd's euch sagen, dafür bin ich hergekommen.
+        p Ich werd's euch sagen, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
         p Marc, komm als erster jetzt zu mir.
@@ -46,8 +46,8 @@
         p Stefanie!
         p Am Digitaltag nahmst du dir Besucher zu Herzen, 
         p denn bei Sicherheit magst du nicht scherzen. 
-        p Gut, bist du nicht wirklich schüchtern,
-        p da hilft es, bist du immer nüchtern.
+        p Gut, bist du nicht wirklich schüchtern,
+        p da hilft es, bist du immer nüchtern.
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
         p Und Victoria
@@ -77,17 +77,17 @@
         p Adrian:
         p Mein Buch sagt, bei dir gibt’s keine harte Landung, 
         p denn du seist bei UBS ein Fels in der Brandung. 
-        p Selbst bei den W*******s warst du unerschütterlich, 
+        p Selbst bei den W*******s warst du unerschütterlich, 
         p sie kommen, sie kommen....... oh leider nicht.
       li.message(v-if="santaMsgs.includes('santa16')")
         p Leonardo bist du hier?
         p Kryptos, sagt mein Buch, gefallen dir.
         p Fleissig sollst du investieren,
-        p sag, kannst vom Millionär-Sein schon profitieren?
+        p sag, kannst vom Millionär-Sein schon profitieren?
       //- santa17
       li.message(v-if="santaMsgs.includes('santa17')")
         p Stefan, Stefan!
-        p Um 5 unter der Dusche hört dich keiner singen,
+        p Um 5 unter der Dusche hört dich keiner singen,
         p denn mit Tagesplanung tust du diese Zeit verbringen.
         p Deine Vorbereitung ist auch das A und O im Web
       //- santa18
@@ -101,9 +101,9 @@
         p nur versprich uns eins und komm zurück.
       //- santa19
       li.message(v-if="santaMsgs.includes('santa19')")
-        p Carla, das hier ist für dich:
+        p Carla, das hier ist für dich:
         p Mein schlaues Buch das sagt,
-        p du seist bei UBS das Rückgrat.
+        p du seist bei UBS das Rückgrat.
         p Noch sicherer als der Safe ist nur,
         p die Freude, wenn du dich meldest, bei der Agentur!
       //- santa20
@@ -120,20 +120,20 @@
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
         p Conrad! Conrad! Yess!!
-        p Was wär dein Leben ohne UBS?
+        p Was wär dein Leben ohne UBS?
         p Dass du wieder da bist, hat SiR MaRY gern vernommen,
       //- santa25
       li.message(v-if="santaMsgs.includes('santa25')")
-        p und sich gefreut, hast du Computer und E-Mail zurückbekommen.
+        p und sich gefreut, hast du Computer und E-Mail zurückbekommen.
 
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
         p Und.. Laura, Laura, bist du da?
       //- santa28
       li.message(v-if="santaMsgs.includes('santa28')")
-        p Du hörst nicht nur auf „Mama“
+        p Du hörst nicht nur auf „Mama“
         p Im Buche steht, du hast Nachwuchs bekommen. 
-        p Schön, hat’s dir die Arbeitslust nicht genommen.
+        p Schön, hat’s dir die Arbeitslust nicht genommen.
       //- santa30
       li.message(v-if="santaMsgs.includes('santa30')")
         p Fehlt noch wer?
@@ -142,7 +142,7 @@
         p Andreas,
       //- santa32
       li.message(v-if="santaMsgs.includes('santa32')")
-        p in meinem Buch steht natürlich auch was über dich.
+        p in meinem Buch steht natürlich auch was über dich.
       //- santa33
       li.message(v-if="santaMsgs.includes('santa33')")
         p Seit deinem Aufstieg zum

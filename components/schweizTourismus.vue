@@ -34,8 +34,8 @@
         p hier gäbs einen Marc, hab ich vernommen.
         p Marc, ich hoffe, du verstehst mich gut,
         p was bei deinem Dialekt ja nicht gleich jeder tut.
-        p Schnaps und Freiburger Fondue NUR in Fribourg machen dich stolz,
-        p als Freiburger bist du aus dem echtem Holz.
+        p Freiburger Fondue NUR in Fribourg macht dich stolz,
+        p ihr Saanestädter seid aus einem anderen Holz!
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
         p Da steht noch mehr geschrieben…
