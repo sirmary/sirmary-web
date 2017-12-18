@@ -39,7 +39,7 @@
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
         p Guter Content liegt dir am Herzen, 
-        p da sollte keine Agentur mit dir nicht Scherzen.
+        p da sollte keine Agentur mit dir drum Scherzen.
         p 
         p Selbst Amsterdam liebst du nicht wegen dem Gras,
         p nur für Tony’s Milchschokolade gibst du Gas.
@@ -50,6 +50,7 @@
       li.message(v-if="santaMsgs.includes('santa8')")
         p Christina, auch an dich habe ich gedacht 
         p und einen Vers gemacht:
+        p &nbsp;
         p Gut
         p Gut 
       //- santa11

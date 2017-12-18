@@ -57,7 +57,8 @@ export default {
     }
   },
   beforeMount () {
-    document.body.classList = 'about'
+    document.body.classList.remove(document.body.classList)
+    document.body.classList.add('about')
   },
   mounted () {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)

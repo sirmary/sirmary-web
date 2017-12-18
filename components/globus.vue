@@ -41,7 +41,7 @@
         p was keinen wirklich sehr erstaunt.
         p 
         p Nur in der digitalen Welt, da machst du keine Witze, 
-        p Schliesslich bist du bei Globus dort Speerspitze
+        p Schliesslich bist du bei Globus dort Speerspitze!
       //- santa7b
       li.message(v-if="santaMsgs.includes('santa7b')")
         p Wo denkst du hin? Heute wird mal keiner geschont...

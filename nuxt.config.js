@@ -99,14 +99,24 @@ const config = {
 
     },
 
-    vendor: ['eventsource-polyfill'],
+    vendor: ['eventsource-polyfill', 'babel-polyfill'],
 
 
     postcss: [
       require('autoprefixer')({
         browsers: ['> 5%']
       })
-    ]
+    ],
+
+    babel: {
+      presets: [
+        ['vue-app', {
+          useBuiltIns: true,
+          targets: { ie: 9, uglify: true }
+        }
+        ]
+      ]
+    }
   },
 
   /*

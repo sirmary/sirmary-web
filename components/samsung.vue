@@ -30,12 +30,12 @@
         p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
-        p Jeder braucht ein strenges Ziel
-        p Patrick meint, er raucht nicht viel
-        p Bloss ab und zu, mal hier mal dort
-        p "Gelegentlich" sein Zauberwort
+        p Jeder braucht ein strenges Ziel!
+        p Patrick meint, er raucht nicht viel,
+        p bloss ab und zu, mal hier mal dort,
+        p "Gelegentlich" sein Zauberwort.
         p Mitnichten stimmt das, weit und breit!
-        p Patrick, DU RAUCHST BEI JEDER MÖGLICHEN GELEGENHEIT!
+        p Patrick, DU RAUCHST BEI JEDER MÖGLICHKEIT!
 
       //- santa7
       li.message(v-if="santaMsgs.includes('santa7')")
@@ -45,7 +45,7 @@
         p Wo denkst du hin? Heute wird mal keiner geschont...
       //- santa8
       li.message(v-if="santaMsgs.includes('santa8')")
-        p Fabian, Fabian bist du es?
+        p Fabian, Fabian bist es du?
         p 
         p Mein Lieber, ich erkenne dich fast nicht!
         p Hast du eine neue Brille im Gesicht?

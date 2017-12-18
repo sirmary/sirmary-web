@@ -45,7 +45,7 @@ export default {
       let word = this.msg
       bus.$emit('addMsg', this.msg)
       for (let match of this.quickMatches) {
-        if (match.words.includes(word)) {
+        if (match.words.indexOf(word) >= 0) {
           // console.log('match! Going to: ' + match.route)
           location.href = '/' + match.route
         } else {

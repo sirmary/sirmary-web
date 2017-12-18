@@ -276,7 +276,7 @@ export default {
     let containerHeight = this.$refs.messageBox.clientHeight
     let messagesHeight = this.$refs.messages.clientHeight
     if (messagesHeight >= containerHeight) {
-      this.$refs.messages.style.height = '100%'
+      this.$refs.messages.style.cssText = 'height: 100%'
     }
     this.scrollToEnd()
   }

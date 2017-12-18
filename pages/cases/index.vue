@@ -57,7 +57,9 @@ export default {
     }
   },
   beforeMount () {
-    document.body.classList = 'cases'
+    document.body.classList.remove(document.body.classList)
+    document.body.classList.add('cases')
+    console.log('classes: ' + document.body.classList)
     this.$store.state.isArrow = false
   },
   mounted () {
