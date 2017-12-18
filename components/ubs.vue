@@ -22,7 +22,8 @@
         img(src="https://media.giphy.com/media/5KuPVqoVRvQcg/giphy.gif" width="255" height="317")
       //- santa4
       li.message(v-if="santaMsgs.includes('santa4')")
-        p Gut
+        p Gut... 
+        p &nbsp;
         p In meinem Buche steht, es macht die Runde, 
         p ihr seid SiR MaRY’s Lieblingskunde.
         p Doch habt ihr euch wirklich gut benommen?
@@ -57,7 +58,8 @@
           img(src="~/assets/img/emoji/smile.png")
       //- santa13
       li.message(v-if="santaMsgs.includes('santa13')")
-        p Experten wie dich, findet man nicht alle Tage, darum habe ich zu App Reviews noch eine Frage:
+        p Experten wie dich, findet man nicht alle Tage, 
+        p darum habe ich zu den App Previews noch eine Frage:
       //- santa14
       li.message(v-if="santaMsgs.includes('santa14')")
         p Wie geht sowas, kannst du’s mir sagen?
@@ -80,17 +82,23 @@
       li.message(v-if="santaMsgs.includes('santa16')")
         p Leonardo bist du hier?
         p Kryptos, sagt mein Buch, gefallen dir.
-        p Fleissig solllst du investieren,
-        p sag, kannst vom Milllionär-Sein schon profitieren?
+        p Fleissig sollst du investieren,
+        p sag, kannst vom Millionär-Sein schon profitieren?
       //- santa17
       li.message(v-if="santaMsgs.includes('santa17')")
         p Stefan, Stefan!
-        p Um 5 unter der Dusche hört dich keiner singen.
+        p Um 5 unter der Dusche hört dich keiner singen,
         p denn mit Tagesplanung tust du diese Zeit verbringen.
         p Deine Vorbereitung ist auch das A und O im Web
       //- santa18
       li.message(v-if="santaMsgs.includes('santa18')")
         p Nur so entsteht die LinkedIn-Legende „He broke the Internet.“
+      //- santa18b
+      li.message(v-if="santaMsgs.includes('santa18b')")
+        p An dieser Stelle, sie ist zu Hause,
+        p Julia, ich grüsse in die Baby-Pause!
+        p Alles Gute und geniess dein Glück,
+        p nur versprich uns eins und komm zurück.
       //- santa19
       li.message(v-if="santaMsgs.includes('santa19')")
         p Carla, das hier ist für dich:
@@ -134,7 +142,7 @@
         p Andreas,
       //- santa32
       li.message(v-if="santaMsgs.includes('santa32')")
-        p in meinem Buch steht natürlich auch was über dich
+        p in meinem Buch steht natürlich auch was über dich.
       //- santa33
       li.message(v-if="santaMsgs.includes('santa33')")
         p Seit deinem Aufstieg zum
@@ -142,7 +150,7 @@
         p vermisst man dich ein bisschen bei SiR MaRY.
       //- santa34
       li.message(v-if="santaMsgs.includes('santa34')")
-        p Hast du doch als einziger Mensch auf dieser Welt
+        p Hast du doch als einziger Mensch auf dieser Welt,
         p deinen eigenen Hotspot ins UBS Mannequin Challenge Video gestellt!
       //- santa36
       li.message(v-if="santaMsgs.includes('santa36')")
@@ -166,9 +174,9 @@
     .responses(v-if="santaActions === 3")
       button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa26','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 82000, 97000, 101000, 106000], 5)") Mach weiter, Nikolaus!
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa12','santa13','santa14','santa26','santa15','santa16','santa17','santa18','santa18b','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 89000, 97000, 112000, 122000, 127000], 5)") Mach weiter, Nikolaus!
       
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa26','santa15','santa16','santa17','santa18','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 82000, 97000, 101000, 106000], 5)") Stop! Sami, schliess das Buch!
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa12','santa13','santa14','santa26','santa15','santa16','santa17','santa18','santa18b','santa19','santa20','santa21'], [4000, 16000, 18000, 20000, 26000, 38000, 52000, 64000, 77000, 89000, 97000, 112000, 122000, 127000], 5)") Stop! Sami, schliess das Buch!
     .responses(v-if="santaActions === 5")                                                                                                                                                                         
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
