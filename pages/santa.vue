@@ -535,7 +535,7 @@ h3 {
 }
 
 .typingContainer {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   bottom: 5rem;
   text-align: center;
