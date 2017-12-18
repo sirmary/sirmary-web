@@ -195,7 +195,7 @@ export default {
             self.$store.state.santaClient = client
             self.$store.state.clientName = name
             self.$store.state.amazonLink = link
-            $router.push('santa')
+            $router.push('/santa')
             return
           }
           $router.push(response.data.result.action)

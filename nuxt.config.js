@@ -81,6 +81,11 @@ const config = {
   ** Build configuration
   */
   build: {
+    analyze: true,
+    // or
+    analyze: {
+      analyzerMode: 'static'
+    },
     /*
     ** Run ESLINT on save
     */
