@@ -7,7 +7,7 @@
         h2 Ho! Ho! Ho! 
           img(src="~/assets/img/emoji/santa.png")
         p Hallo UBS
-        p Ich bin’s, der Samichlous.
+        p Ich bin’s, der Samichlaus.
         p Vor mir liegt auf meinem Tisch,
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
@@ -30,7 +30,7 @@
         p Ich werd's euch sagen, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
-        p Marc, komm als erster jetzt zu mir.
+        p Marc, komm als Erster jetzt zu mir.
         p Mein Buch sagt: du liebst Fondue mit Kirsch. Und Bier. 
         p Dass du viel reist, das kann ich verstehen,
         p Freiburg hat man schnell gesehen.
@@ -86,13 +86,16 @@
         p sag, kannst vom Millionär-Sein schon profitieren?
       //- santa17
       li.message(v-if="santaMsgs.includes('santa17')")
-        p Stefan, Stefan!
+        p Stephan, Stephan!
         p Um 5 unter der Dusche hört dich keiner singen,
         p denn mit Tagesplanung tust du diese Zeit verbringen.
-        p Deine Vorbereitung ist auch das A und O im Web
       //- santa18
       li.message(v-if="santaMsgs.includes('santa18')")
-        p Nur so entsteht die LinkedIn-Legende „He broke the Internet.“
+        p Auch auf LinkedIn hegst du Ambitionen,
+        p postest den Security Check und erntest Reaktionen.
+        p Nur etwas find ich sehr suspekt,
+        p dass dir Souvlaki so gut schmeckt!!
+
       //- santa18b
       li.message(v-if="santaMsgs.includes('santa18b')")
         p An dieser Stelle, sie ist zu Hause,
@@ -128,12 +131,14 @@
 
       //- santa27
       li.message(v-if="santaMsgs.includes('santa27')")
-        p Und.. Laura, Laura, bist du da?
+        p Und.. Laura...
       //- santa28
       li.message(v-if="santaMsgs.includes('santa28')")
-        p Du hörst nicht nur auf „Mama“
-        p Im Buche steht, du hast Nachwuchs bekommen. 
-        p Schön, hat’s dir die Arbeitslust nicht genommen.
+        p Laura, dich seh ich immer gerne,
+        p egal ob von nah oder aus der Ferne,
+        p denn niemand sonst in deiner Bank,
+        p hat schönere Fummel im Kleiderschrank!
+          img(src="~/assets/img/emoji/rose.png")
       //- santa30
       li.message(v-if="santaMsgs.includes('santa30')")
         p Fehlt noch wer?

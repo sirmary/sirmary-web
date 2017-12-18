@@ -303,6 +303,7 @@ export default {
         // the messages are taller than the window
         msgWrapper.style.position = 'relative'
         msgWrapper.style.paddingTop = '6rem'
+        this.$store.state.isLogoBlurred = true
         if (this.santaIsTyping === true) {
           this.$refs.typingContainer.style.position = 'relative'
           this.$refs.typingContainer.style.bottom = '0'
@@ -314,14 +315,6 @@ export default {
     if (this.santaActions !== 0 || this.santaClient === 'temp') {
       this.santaIsTyping = false
     }
-    // set typing container top pos to bottom of msgs
-    // if (this.santaIsTyping === true) {
-    //   if (this.$refs.messageComp) {
-    //     console.log('messages height: ' + this.$refs.messageComp[0].$el.children[0].scrollHeight)
-    //     this.$refs.typingContainer.style['top'] = this.$refs.messageComp[0].$el.children[0].scrollHeight + 'px'
-    //     console.log('typing cont: ' + this.$refs.typingContainer.style.top)
-    //   }
-    // }
   }
 }
 </script>

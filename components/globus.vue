@@ -7,7 +7,7 @@
         h2 Ho! Ho! Ho! 
           img(src="~/assets/img/emoji/santa.png")
         p Hallo Globus
-        p Ich bin’s, der Samichlous. 
+        p Ich bin’s, der Samichlaus. 
         p Vor mir liegt auf meinem Tisch, 
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
