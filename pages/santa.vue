@@ -272,8 +272,8 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   mounted () {
-    this.trackEvent(this.santaClient + ' is viewing SantaBot')
-    this.track_load('chat-query', 'santaBot')
+    // this.trackEvent(this.santaClient + ' is viewing SantaBot')
+    // this.track_load('chat-query', 'santaBot')
     this.$store.state.isLogoBlurred = false
     document.getElementsByClassName('snowf-canvas')[0].style.position = 'fixed'
     this.bgColor = 'e40000'
