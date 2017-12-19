@@ -4,11 +4,11 @@
     ul.messages#messages(ref="santaMessages")
       //- santa1
       li.message(v-if="santaMsgs.includes('santa1')")
-        h2 Ho! Ho! Ho! 
+        h2 Ho! Ho! Ho!
           img(src="~/assets/img/emoji/santa.png")
         p Hallo Swisslos
-        p Ich bin’s, der Samichlaus. 
-        p Vor mir liegt auf meinem Tisch, 
+        p Ich bin’s, der Samichlaus.
+        p Vor mir liegt auf meinem Tisch,
         p mein goldenes Buch voll Sachen über dich.
       //- santa2
       li.message(v-if="santaMsgs.includes('santa2')")
@@ -25,14 +25,14 @@
         p Gut...
         p In meinem Buche steht, es macht die Runde,
         p ihr seid SiR MaRYs Lieblingskunde.
-        p 
+        p
         p Doch habt ihr euch auch gut benommen?
         p Ich sag’s euch, dafür bin ich hergekommen.
       //- santa6
       li.message(v-if="santaMsgs.includes('santa6')")
         p Yannick Zehnder bist du da?
         p Olé Olé Olé – Olala!
-        p 
+        p
         p Du hast Talent, bist sehr bekannt,
         p sogar ein EVZ Stürmer ist nach dir benannt.
       //- santa7
@@ -42,10 +42,10 @@
       li.message(v-if="santaMsgs.includes('santa7b')")
         p Wo denkst du hin? Heute wird mal keiner geschont...
       //- santa8
-      li.message(v-if="santaMsgs.includes('santa8')")
-        p Yannick, mach weiter X’en am richtigen Fleck.
-        p Dein Samichlausspruch? Hmm, du darfst weg.
-          img(src="~/assets/img/emoji/tongue.png")
+      //- li.message(v-if="santaMsgs.includes('santa8')")
+      //-   p Yannick, mach weiter X’en am richtigen Fleck.
+      //-   p Dein Samichlausspruch? Hmm, du darfst weg.
+      //-     img(src="~/assets/img/emoji/tongue.png")
       //- santa11
       li.message(v-if="santaMsgs.includes('santa11')")
         p Ho! Ho! Ho!
@@ -57,11 +57,11 @@
         img(src="https://media.giphy.com/media/lWIMWLL1KWj6g/giphy.gif" width="400" height="248")
       //- santa23
       li.message(v-if="santaMsgs.includes('santa23')")
-        p Die richtige Antwort: Ihr Kinderlein kommet 
+        p Die richtige Antwort: Ihr Kinderlein kommet
           img(src="~/assets/img/emoji/tears.png")
       //- santa24
       li.message(v-if="santaMsgs.includes('santa24')")
-        p Wer nid gumped isch kein Matthias? 
+        p Wer nid gumped isch kein Matthias?
         p Mein Buch weiss auch zum Fussballfan was!
       //- santa25
       li.message(v-if="santaMsgs.includes('santa25')")
@@ -105,10 +105,10 @@
         img(src="https://media.giphy.com/media/3ofT5EIUWCX7G6boU8/giphy.gif" width="480" height="262")
       //- santa374
       li.message(v-if="santaMsgs.includes('santa37')")
-        p So liebes Swisslos Team, 
-        p jetzt müsst ihr euch entscheiden: 
-        p Wart ihr artig dieses Jahr? 
-        p Ob ihr wirklich richtig steht, 
+        p So liebes Swisslos Team,
+        p jetzt müsst ihr euch entscheiden:
+        p Wart ihr artig dieses Jahr?
+        p Ob ihr wirklich richtig steht,
         p seht ihr wenn der Tab aufgeht.
 
 
@@ -123,12 +123,12 @@
     .responses(v-if="santaActions === 3")
       button.response(@click="$emit('handleAction','santa6', 'Oh! Erzähl mir weiter…', ['santa7'], [12000], 4)") Oh! Erzähl mir weiter…
     .responses(v-if="santaActions === 4")
-      
-      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa8', 'santa11','santa20','santa21'], [4000, 12000, 14000, 17000], 5)") Mach weiter, Nikolaus!
-      
-      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa8', 'santa11','santa20','santa21'], [4000, 12000, 14000, 17000], 5)") Stop! Sami, schliess das Buch!
-    
-    .responses(v-if="santaActions === 5")                                                                                                                                                                        
+
+      button.response(@click="$emit('handleAction', 'santa7', 'Mach weiter, Nikolaus!', ['santa11','santa20','santa21'], [6000, 12000, 15000], 5)") Mach weiter, Nikolaus!
+
+      button.response(@click="$emit('handleAction','santa7b', 'Stop! Sami, schliess das Buch!', ['santa11','santa20','santa21'], [6000, 12000, 15000], 5)") Stop! Sami, schliess das Buch!
+
+    .responses(v-if="santaActions === 5")
       button.response(@click="$emit('handleAction','santa23', 'Ja',null, null, 6)") Ja
       button.response(@click="$emit('handleAction','santa23', 'Nein', null, null, 6)") Nein
     .responses(v-if="santaActions === 6")
