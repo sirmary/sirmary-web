@@ -216,17 +216,6 @@ export default {
       this.blurInputMobile()
     },
     checkMsg () {
-      // console.log('input: ' + this.inputValue)
-      // console.log('*** Checking message!')
-      // for (let code of this.$store.state.santaShuffle) {
-      //   if (this.inputValue.toLowerCase() === code.larry) {
-      //     this.$store.state.santaClient = code.slug
-      //     this.$store.state.clientName = code.name
-      //     this.$store.state.amazonLink = code.wishlist
-      //     this.$router.push('/santa')
-      //     return
-      //   }
-      // }
       if (this.isHuman === true && this.inputValue) {
         this.sendMsg()
       }
@@ -256,7 +245,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #157C78}', type: 'text/css' }
+        { cssText: ':root { background: #efefef}', type: 'text/css' }
       ]
     }
   },
@@ -382,7 +371,7 @@ h3 {
       transform-origin: 100% 100%;
       padding-right: 24px;
       padding-left: 90px;
-      color: $sm-yellow;
+      color: black;
       text-indent: 0;
     }
 
@@ -446,7 +435,7 @@ h3 {
     border:none;
     outline: none;
     margin-left: $spacing-unit /2;
-    background-color: $sm-blue;
+    background-color: $sm-grello;
     color:black;
     font-weight: 700;
     // display: flex;
