@@ -15,9 +15,9 @@
 </template>
 
 <script>
+import {marked} from 'marked'
 import { createClient } from '~/plugins/contentful.js'
 import CloseModal from '~/components/CloseModal.vue'
-import {marked} from 'marked'
 
 const client = createClient()
 const year = new Date().getFullYear()
