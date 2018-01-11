@@ -201,7 +201,9 @@ export default {
           $router.push(response.data.result.action)
         }
         setTimeout(function () {
-          document.querySelector('ul').lastChild.classList.remove('new')
+          if ($router.history.current.name === 'chat') {
+            document.querySelector('ul').lastChild.classList.remove('new')
+          }
         }, 3000)
       })
       .catch(function (error) {
