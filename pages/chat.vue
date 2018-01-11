@@ -42,8 +42,11 @@ export default {
     return {
       route: '',
       inputValue: '',
+      santaClient: this.$store.state.santaClient,
       blurred: false,
       isHuman: true,
+      santaShuffle: this.$store.state.santaShuffle,
+      amazonLink: this.$store.state.amazonLink,
       config: {
         headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
       },
@@ -185,10 +188,22 @@ export default {
           // })
         }, 1000)
         if (response.data.result.action !== 'input.unknown') {
+          if (response.data.result.parameters.santaClient) {
+            let client = response.data.result.parameters.santaClient
+            let name = response.data.result.parameters.clientName
+            let link = response.data.result.parameters.wishlist
+            self.$store.state.santaClient = client
+            self.$store.state.clientName = name
+            self.$store.state.amazonLink = link
+            $router.push('/santa')
+            return
+          }
           $router.push(response.data.result.action)
         }
         setTimeout(function () {
-          document.querySelector('ul').lastChild.classList.remove('new')
+          if ($router.history.current.name === 'chat') {
+            document.querySelector('ul').lastChild.classList.remove('new')
+          }
         }, 3000)
       })
       .catch(function (error) {
@@ -201,7 +216,17 @@ export default {
       this.blurInputMobile()
     },
     checkMsg () {
+      // console.log('input: ' + this.inputValue)
       // console.log('*** Checking message!')
+      // for (let code of this.$store.state.santaShuffle) {
+      //   if (this.inputValue.toLowerCase() === code.larry) {
+      //     this.$store.state.santaClient = code.slug
+      //     this.$store.state.clientName = code.name
+      //     this.$store.state.amazonLink = code.wishlist
+      //     this.$router.push('/santa')
+      //     return
+      //   }
+      // }
       if (this.isHuman === true && this.inputValue) {
         this.sendMsg()
       }
@@ -231,11 +256,12 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #157C78 }', type: 'text/css' }
+        { cssText: ':root { background: #157C78}', type: 'text/css' }
       ]
     }
   },
   mounted () {
+    this.$store.state.logoColor = 'black'
     for (var question of this.$store.state.keyData) {
       this.setting.list.push(question.q)
       if (question.o === 1) {
@@ -246,13 +272,19 @@ export default {
     setTimeout(function () {
       self.scrollToEnd()
     }, 500)
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', '')
+    } else {
+      document.body.classList = ''
+    }
   },
   updated () {
     // console.log('updated')
     let containerHeight = this.$refs.messageBox.clientHeight
     let messagesHeight = this.$refs.messages.clientHeight
     if (messagesHeight >= containerHeight) {
-      this.$refs.messages.style.height = '100%'
+      this.$refs.messages.style.cssText = 'height: 100%'
     }
     this.scrollToEnd()
   }
@@ -261,6 +293,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
+::-webkit-scrollbar {
+display: none;
+}
 
 h1 {
   text-indent: 13vw;

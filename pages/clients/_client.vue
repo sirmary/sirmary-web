@@ -21,7 +21,7 @@ export default {
       'fields.client.sys.contentType.sys.id': env.CTF_CLIENT_TYPE_ID,
       'fields.client.fields.slug[all]': params.client
     }).then(entries => {
-      console.log(entries)
+      // console.log(entries)
       return {
         filt: entries.items,
         client: entries.items[0].fields.client.fields.title
@@ -43,8 +43,13 @@ export default {
       ]
     }
   },
-  beforeMount () {
-    document.body.classList = 'client detailView'
+  mounted () {
+    var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
+    if (isIE) {
+      document.body.setAttribute('class', 'client detailView')
+    } else {
+      document.body.classList = 'client detailView'
+    }
   }
 }
 </script>
