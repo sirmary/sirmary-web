@@ -5,7 +5,7 @@
       .name
         h1(v-html="person.name")
       h3(v-html="person.title")
-      vue-markdown(class="person-bio" v-html="person.shortBio")
+      p(class="person-bio" v-html="marked(person.shortBio)")
       p.person-email
         a(v-bind:href="'mailto:'+person.email") {{person.email}}
       p.person-phone(v-if="person.phone")
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
+import {marked} from 'marked'
 import {createClient} from '~/plugins/contentful.js'
 import CloseModal from '~/components/CloseModal.vue'
 
@@ -41,7 +41,7 @@ export default {
     }
   },
   components: {
-    VueMarkdown,
+    marked,
     'close-modal': CloseModal
   },
   beforeMount () {
