@@ -1,9 +1,10 @@
 import Vue from 'vue'
-export const marked = require('marked')
+import Marked from '~/node_modules/marked'
+// const marked = require('marked')
 Vue.mixin({
   methods: {
     marked: function (input) {
-      return marked(input)
+      return Marked(input)
     }
   }
 })

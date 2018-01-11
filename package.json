@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "cross-env HOST=0.0.0.0 PORT=3333 nuxt",
-    "build": "nuxt build",
+    "build": "nuxt build --display-error-details",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
