@@ -29,7 +29,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #926392 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -47,6 +47,7 @@ export default {
     } else {
       document.body.classList = 'job detailView'
     }
+    this.$store.state.logoColor = 'white'
   }
 }
 </script>
@@ -64,6 +65,7 @@ export default {
 
 h2 {
   font-size: 2.25rem;
+  color: white;
 }
 
 .img-holder {
@@ -96,10 +98,8 @@ a {
   line-height: 1.5;
   max-width: 40rem;
   margin: 0 auto;
+  color: #a8a8a8;
 
-  h3 {
-    color: black;
-  }
 }
 
 

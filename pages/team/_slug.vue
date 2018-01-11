@@ -36,7 +36,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #926392 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -55,6 +55,7 @@ export default {
     } else {
       document.body.classList = 'team detailView'
     }
+    this.$store.state.logoColor = 'white'
   }
 }
 </script>
@@ -67,6 +68,7 @@ export default {
   max-width: 40rem;
   margin: 0 auto;
   padding: $spacing-unit*2;
+  color: #a8a8a8;
 }
 
 .name-wrapper {
@@ -85,7 +87,7 @@ h1 {
   font-size: rem(36);
   text-indent: 36px;
   margin: 0;
-
+  color: white; 
   @include mq($from: tablet) {
     font-size: rem(64);
   }
@@ -93,6 +95,7 @@ h1 {
 
 h3 {
   text-indent: 36px;
+  color: white;
 }
 
 .img-holder {

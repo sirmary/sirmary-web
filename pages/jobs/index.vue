@@ -45,7 +45,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #926392 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -59,6 +59,7 @@ export default {
     } else {
       document.body.classList = 'jobs'
     }
+    this.$store.state.logoColor = 'white'
   }
 }
 </script>
@@ -84,6 +85,7 @@ export default {
   line-height: rem(22);
   // text-indent: $text-indent;
   font-weight: 700;
+  color: #a8a8a8;
 
   @include mq($from: tablet) {
     font-size: rem(21);
@@ -99,6 +101,7 @@ h1 {
   padding: 0 12px;
   margin-bottom: rem(24);
   font-size: rem(36);
+  color: white;
 
   @include mq($from: tablet) {
     font-size: rem(64);
@@ -132,20 +135,22 @@ h1 {
 
 .job-item {
   margin-bottom: 6px;
-  color: rgba(black, .7);
+  // color: rgba(black, .7);
   font-family: 'LeviReBrushed';
     font-weight: normal;
     font-size: rem(36);
     line-height: 1.2;
     margin-bottom: rem(12);
     text-align: center;
+    color: $sm-grello;
 
     p {
       margin: rem(24) 0;
     }
 
 &:hover {
-  color: black;
+  // color: black;
+  text-decoration: underline;
 }
 }
 

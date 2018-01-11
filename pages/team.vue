@@ -44,7 +44,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #926392 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -58,6 +58,7 @@ export default {
     } else {
       document.body.classList = 'team teamView'
     }
+    this.$store.state.logoColor = 'white'
   },
   watch: {
     '$route': function () {
@@ -86,6 +87,7 @@ export default {
   padding: 12px;
 
   h1 {
+    color: white;
     width: 100%;
     max-width: rem(1200);
     text-indent: $text-indent;

@@ -1,7 +1,9 @@
 <template lang="pug">
   .container
     .client-grid
-      h1 Unser Kundenportfolio
+      h1 Unser 
+        br
+        | Kundenportfolio
       .client-wrapper(v-for="client in clients", :key="client.id", :to="{ name: 'clients-client', params: { client: client.fields.slug }}")
         img(class="thumbnail", :src="client.fields.icon.fields.file.url")
     close-modal
@@ -31,7 +33,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #CB754A }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -42,6 +44,7 @@ export default {
     } else {
       document.body.classList = 'clients'
     }
+    this.$store.state.logoColor = 'white'
   }
 }
 </script>
@@ -49,13 +52,13 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
 
-.container {
-  display: flex;
-  flex-flow: column nowrap;
-  transition: margin-left .5s cubic-bezier(0.0, 0.0, 0.2, 1);
-  background: orange;
-  padding: 100px 24px;
-}
+// .container {
+//   display: flex;
+//   flex-flow: column nowrap;
+//   transition: margin-left .5s cubic-bezier(0.0, 0.0, 0.2, 1);
+//   background: orange;
+//   padding: 100px 24px;
+// }
 
 // .grid {
 //   width: 100vw;
@@ -72,6 +75,7 @@ export default {
     margin: 0;
     margin-bottom: rem(72);
     font-size: rem(36);
+    color: white;
 
     @include mq($from: tablet) {
       font-size: rem(64);

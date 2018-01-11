@@ -51,7 +51,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #595959 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -83,6 +83,7 @@ $column-width: 40rem;
 .container {
   margin: 0 auto;
   text-align: center;
+  color: #a8a8a8;
 
 
 @include mq($from: tablet) {

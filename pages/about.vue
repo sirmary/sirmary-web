@@ -48,7 +48,7 @@ export default {
     return {
       title: 'About Sir Mary',
       style: [
-        { cssText: ':root { background: #787709 }', type: 'text/css' }
+        { cssText: ':root { background: #000000 }', type: 'text/css' }
       ],
       meta: [
         { hid: 'description', name: 'description', content: 'My custom description' }
@@ -62,6 +62,7 @@ export default {
     } else {
       document.body.classList = 'about'
     }
+    this.$store.state.logoColor = 'white'
   }
 }
 </script>
@@ -74,6 +75,7 @@ export default {
   max-width: 40rem;
   margin: 0 auto;
   padding-top: 60px;
+  color: white;
 
   img {
     margin: 0 auto;
@@ -95,6 +97,7 @@ export default {
 }
 
 .copy {
+  color: #a8a8a8;
   p:first-child {
     text-indent: $text-indent;
   }
@@ -106,11 +109,10 @@ export default {
 }
 
 .features {
-  color: black;
+  color: white;
   text-align: center;
   text-indent: 0;
-  font-family: 'LeviReBrushed';
-  text-transform: uppercase;
+
   max-width: 30rem;
   margin: 0 auto;
   margin-top: rem(60);
@@ -123,11 +125,12 @@ export default {
     font-size: rem(36);
     position: absolute;
     top: -20px;
-    z-index: -1;
+    z-index: 0;
     left: 20%;
   }
 
   .feature {
+    color: white;
     position: relative;
     cursor: pointer;
 
@@ -163,6 +166,9 @@ export default {
     font-size: rem(48);
     line-height: 1.2;
     margin-bottom: rem(24);
+      font-family: 'LeviReBrushed';
+  text-transform: uppercase;
+  color:$sm-grello;
   }
 
 
