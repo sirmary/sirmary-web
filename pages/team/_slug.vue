@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import {marked} from 'marked'
 import {createClient} from '~/plugins/contentful.js'
 import CloseModal from '~/components/CloseModal.vue'
 
@@ -41,7 +40,6 @@ export default {
     }
   },
   components: {
-    marked,
     'close-modal': CloseModal
   },
   beforeMount () {

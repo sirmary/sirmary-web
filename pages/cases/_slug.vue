@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import {marked} from 'marked'
 import {createClient} from '~/plugins/contentful.js'
 import Navigation from '~/components/navigation.vue'
 import CloseModal from '~/components/CloseModal.vue'
@@ -57,7 +56,6 @@ export default {
   },
   components: {
     Navigation,
-    marked,
     'close-modal': CloseModal
   },
   beforeMount () {

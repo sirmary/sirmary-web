@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import {marked} from 'marked'
 import { createClient } from '~/plugins/contentful.js'
 import CloseModal from '~/components/CloseModal.vue'
 
@@ -25,8 +24,7 @@ const year = new Date().getFullYear()
 export default {
   transition: 'about',
   components: {
-    'close-modal': CloseModal,
-    marked
+    'close-modal': CloseModal
   },
   asyncData ({ env, params }) {
     return client.getEntries({
@@ -144,8 +142,8 @@ export default {
 
     &:nth-child(3) {
       .floating-number {
-        left: 30%;
-        top: 100px;
+        left: 25%;
+        top: 0;
       }
     }
 

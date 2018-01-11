@@ -7,3 +7,5 @@ Vue.mixin({
     }
   }
 })
+
+// Solution found ehre: https://forum.vuejs.org/t/parsing-markdown-with-vue-v2/3431/4
