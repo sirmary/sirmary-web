@@ -1,9 +1,10 @@
 <template lang="pug">
   .wrapper
     nuxt-link(to="/chat")
-      .padded-multiline
-        h1
-          strong(v-html="claim")
+      img(src="~/assets/img/we-decomplex-digital.svg").claim
+      //- .padded-multiline
+      //-   h1
+      //-     strong(v-html="claim")
 </template>
 
 <script>
@@ -81,5 +82,9 @@ a h1 {
   position: relative;
   left: -10px; 
   box-decoration-break: clone;
+}
+
+.claim {
+  max-width: 100%;
 }
 </style>

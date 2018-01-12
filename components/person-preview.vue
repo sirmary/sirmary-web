@@ -50,13 +50,15 @@ export default {
       align-items: center;
       transition: background .2 ease;
 
-      &:hover {
-        // background: rgba(white,.2);
-        color: $sm-grello;
-      }
+
 
       @include mq($from: tablet) {
         padding: $spacing-unit*2;
+
+        &:hover {
+        // background: rgba(white,.2);
+        color: $sm-grello;
+      }
       }
     }
 

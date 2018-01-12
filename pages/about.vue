@@ -142,7 +142,7 @@ export default {
 
     &:nth-child(3) {
       .floating-number {
-        left: 25%;
+        left: 20%;
         top: 0;
       }
     }
@@ -164,7 +164,7 @@ export default {
     font-size: rem(48);
     line-height: 1.2;
     margin-bottom: rem(24);
-      font-family: 'LeviReBrushed';
+      font-family: 'LeviReBrushed', 'Roboto', sans-serif;
   text-transform: uppercase;
   color:$sm-grello;
   }
@@ -194,6 +194,16 @@ export default {
 }
 
 .footer {
+  ul  {
+    padding: 0;
+    list-style: none;
+  }
+  li a {
+    color: $sm-grello;
+  }
+  li p {
+    margin: 0;
+  }
   text-align: left;
   p {
     text-indent: 0;
