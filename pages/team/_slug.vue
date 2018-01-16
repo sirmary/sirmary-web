@@ -1,4 +1,5 @@
 <template lang="pug">
+  no-ssr
     .person-content(ref="content")
       .img-holder
         img(class="thumbnail", :src="person.image.fields.file.url + '?fit=scale&w=72&h=72'")
