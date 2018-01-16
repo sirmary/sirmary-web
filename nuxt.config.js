@@ -158,10 +158,10 @@ const config = {
         }),
          cdaClient.getEntries({
           'content_type': ctfConfig.CTF_JOB_TYPE_ID
-        }),
-        cdaClient.getEntries({
-          'content_type':ctfConfig.CTF_CLIENT_TYPE_ID
         })
+        // cdaClient.getEntries({
+        //   'content_type':ctfConfig.CTF_CLIENT_TYPE_ID
+        // })
         // get the blog post content type
         // cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
         // .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
@@ -171,7 +171,7 @@ const config = {
           // map entries to URLs
           ...entries.items.map(entry => `/cases/${entry.fields.slug}`),
           // map clients to URLS
-          ...client.items.map(entry => `/clients/${entry.fields.slug}`),
+          // ...client.items.map(entry => `/clients/${entry.fields.slug}`),
           // map team to URLS
           ...person.items.map(entry => `/team/${entry.fields.slug}`),
           // map jobs to URLS

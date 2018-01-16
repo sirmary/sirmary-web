@@ -1,15 +1,8 @@
-<template>
-  <div class="error-page">
-    <div>
-      <h1>THis is a tesxt of the errrrroo</h1>
-      <h2>{{ props.error.message }}</h2>
-      <h1 class="error-code">{{ error.statusCode }}</h1>
-      <div class="error-wrapper-message">
-        <h2 class="error-message">{{ error.message }}</h2>
-      </div>
-      <p v-if="error.statusCode === 404"><nuxt-link class="error-link" to="/">Back to the home page</nuxt-link></p>
-    </div>
-  </div>
+<template lang="pug">
+  .error-content  
+    h3 Oops, can't find that page.
+    nuxt-link(to="/") Home
+
 </template>
 
 <script>
@@ -21,7 +14,7 @@ export default {
       style: [
         { cssText: ':root { background: #D8D941 }', type: 'text/css' }
       ],
-      title: this.error.message || 'An error occured'
+      title: 'An error occured'
     }
   }
 }
