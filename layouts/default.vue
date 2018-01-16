@@ -40,6 +40,9 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     }
+  },
+  mounted () {
+    this.$store.state.isLogoBlurred = false
   }
   // watch: {
   //   '$route': function () {
