@@ -60,11 +60,11 @@ export default {
 @import '~assets/css/_settings.scss';
 
 .logo {
-  transition: filter .5s ease;
+  transition: all .5s ease;
 }
 
 .blurry {
   filter: blur(5px);
-  opacity: .5;
+  opacity: 0;
 }
 </style>

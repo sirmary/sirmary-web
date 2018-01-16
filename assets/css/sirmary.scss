@@ -169,15 +169,31 @@ a {
     background: black;
     border-radius: 20px;
     padding: 24px;
+    width: calc(100% + 54px);
+    padding-top: 7rem;
+    margin-left: -5px;
 
     &:before {
       content: 'Dinge, die du mich fragen kannst:';
       color: white;
-      font-size: rem(24);
+      font-size: rem(36);
       text-indent: $text-indent;
       margin-top: 0;
       margin-bottom: 24px;
       display: inline-block;
+    }
+
+    &:after {
+      content: '';
+      background: url(~assets/img/caret.svg) top center no-repeat;
+      background-size: 50px 18.5px;
+      color:$sm-grello;
+      position: absolute;
+      top: 1.5rem;
+      right: 0;
+      left: 0;
+      bottom: 24px;
+      padding: 2rem;
     }
   }
 

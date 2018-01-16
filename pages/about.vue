@@ -182,7 +182,9 @@ export default {
 
     li {
       transition: all .5s ease;
-      font-weight: normal;
+      font-weight: 700;
+      color: #a8a8a8;
+
 
       @include mq($from: desktop) {
         opacity: 0;

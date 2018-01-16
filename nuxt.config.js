@@ -134,7 +134,7 @@ const config = {
     { src: '~plugins/ga.js', ssr: false }
   ],
 
-  router: { base: '/sirmary/' },
+  // router: { base: '/sirmary/' },
 
 
   /*
