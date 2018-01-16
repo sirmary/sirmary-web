@@ -3,11 +3,11 @@
     close-modal(:link="'/jobs'")
     .job-body
       //- h1 {{ job.fields.title }}
-      vue-markdown {{job.fields.body}}
+      div(v-html="marked(job.fields.body)") {{job.fields.body}}
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
+import {marked} from 'marked'
 import {createClient} from '~/plugins/contentful.js'
 import CloseModal from '~/components/CloseModal.vue'
 
@@ -34,17 +34,18 @@ export default {
     }
   },
   components: {
-    VueMarkdown,
+    marked,
     'close-modal': CloseModal
   },
   beforeMount () {
-    document.body.classList = 'job detailView'
     this.$store.state.isArrow = true
   },
   mounted () {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
     if (isIE) {
       document.body.setAttribute('class', 'job detailView')
+    } else {
+      document.body.classList = 'job detailView'
     }
   }
 }

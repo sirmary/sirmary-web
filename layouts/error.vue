@@ -2,6 +2,7 @@
   main
     | error
     img(src="~/assets/img/sirmary_logo_opt.svg", class="logo", :class="{ blur: $store.state.isLogoBlurred }")
+    nuxt-link(to="/") back home
     nuxt
 </template>
 

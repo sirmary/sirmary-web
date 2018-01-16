@@ -2,24 +2,22 @@
   .container
     .about-content
       h1.page-title {{post.fields.claim}}
-      vue-markdown.copy {{post.fields.body}}
+      .copy(v-html="marked(post.fields.body)")
       .features
         .feature(v-for="(thing, index) in post.fields.featuresWidget")
           .floating-number 0{{index+1}}
           h3(:key="index", v-html="thing.feature")
           ul
             li(v-for="feature in thing.features") {{feature}}
-      vue-markdown.footer
-        | {{post.fields.footer}}
+      .footer(v-html="marked(post.fields.footer)")
       p.copyright &copy; {{year}} Sir Mary AG, Switzerland
     close-modal
 </template>
 
 <script>
+import {marked} from 'marked'
 import { createClient } from '~/plugins/contentful.js'
-// import { bus } from '~/plugins/bus.js'
 import CloseModal from '~/components/CloseModal.vue'
-import VueMarkdown from 'vue-markdown'
 
 const client = createClient()
 const year = new Date().getFullYear()
@@ -28,7 +26,7 @@ export default {
   transition: 'about',
   components: {
     'close-modal': CloseModal,
-    'vue-markdown': VueMarkdown
+    marked
   },
   asyncData ({ env, params }) {
     return client.getEntries({
@@ -57,13 +55,12 @@ export default {
       ]
     }
   },
-  beforeMount () {
-    document.body.classList = 'about'
-  },
   mounted () {
     var isIE = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!navigator.userAgent.match(/Edge/g)
     if (isIE) {
       document.body.setAttribute('class', 'about')
+    } else {
+      document.body.classList = 'about'
     }
   }
 }
