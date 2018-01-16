@@ -3,7 +3,7 @@
     noscript
       | Please enable Javascript to view this web site.
     img(src="https://secure.leadforensics.com/89514.png", style="display:none;")
-    logo(class="logo")
+    logo(class="logo" :class="{blurry: this.$store.state.isLogoBlurred}")
     nuxt
 </template>
 
@@ -58,5 +58,10 @@ export default {
 
 .logo {
   transition: filter .5s ease;
+}
+
+.blurry {
+  filter: blur(5px);
+  opacity: .5;
 }
 </style>

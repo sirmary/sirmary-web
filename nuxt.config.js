@@ -27,7 +27,7 @@ const config = {
   head: {
     title: 'SiR MaRY - We Decomplex Digital',
     meta: [
-      { charset: 'utf-8' },
+      { charset: 'UTF-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'SiR MaRY ist eine Kreativagentur, die Marken durch die Komplexität der vernetzten Welt führt.' },
       { 'http-equiv': 'Content-Type', content: 'text/html; charset: utf-8' },

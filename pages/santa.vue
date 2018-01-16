@@ -341,7 +341,7 @@ h1 {
 
 h3 {
   padding: 0 12px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
   margin-top: 100vh;
 }

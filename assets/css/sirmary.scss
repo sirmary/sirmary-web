@@ -23,6 +23,12 @@ body {
   position: absolute;
   // transition: right .5s cubic-bezier(0.4, 0.0, 0.2, 1);
 
+  .arrow {
+    svg {
+      width: 24px;
+    }
+  }
+
   button {
     width: 44px;
     height: 44px;
@@ -45,7 +51,7 @@ body {
     width: 20px;
     height: 20px;
     stroke: currentColor;
-    stroke-width: 3;
+    stroke-width: 5;
     stroke-linecap: round;
   }
 
@@ -226,7 +232,7 @@ body.cases main, body.about main, body.team main, body.job main, body.clients ma
   }
 
   .container {
-    background: black;
+    background:none;
     min-height: calc(100vh - 142px);
     position: relative;
 
@@ -250,6 +256,10 @@ body.cases main, body.about main, body.team main, body.job main, body.clients ma
         right: 24px;
       }
   }
+}
+
+body.cases.detailView .logo {
+  display: none;
 }
 
 body.cases .container {

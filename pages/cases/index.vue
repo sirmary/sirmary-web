@@ -82,7 +82,7 @@ export default {
     justify-content: space-between;
     align-items: stretch;
     flex: 1 1 100%;
-    margin-bottom: 12px;
+    margin-bottom: 3rem;
 
     @include mq($from: tablet) {
       flex: 0 1 50%;
