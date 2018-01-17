@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import {marked} from 'marked'
 import {createClient} from '~/plugins/contentful.js'
 import Navigation from '~/components/navigation.vue'
 import CloseModal from '~/components/CloseModal.vue'
@@ -51,13 +50,12 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #595959 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
   components: {
     Navigation,
-    marked,
     'close-modal': CloseModal
   },
   beforeMount () {
@@ -83,6 +81,7 @@ $column-width: 40rem;
 .container {
   margin: 0 auto;
   text-align: center;
+  color: #a8a8a8;
 
 
 @include mq($from: tablet) {

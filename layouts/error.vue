@@ -1,8 +1,7 @@
 <template lang="pug">
   main
     | error
-    img(src="~/assets/img/sirmary_logo_opt.svg", class="logo", :class="{ blur: $store.state.isLogoBlurred }")
-    nuxt-link(to="/") back home
+    img(src="~/assets/img/sirmary_logo_opt.svg", class="logo")
     nuxt
 </template>
 
@@ -20,9 +19,5 @@ export default {
 
 .logo {
   transition: filter .5s ease;
-}
-
-.logo.blur {
-  filter: blur(5px)
 }
 </style>

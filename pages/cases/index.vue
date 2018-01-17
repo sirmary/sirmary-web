@@ -22,18 +22,12 @@ export default {
     }).then(entries => {
       let posts = []
       for (let item of entries.items) {
-        // console.log(item)
-        // console.log(typeof item.fields.overviewThumbnail)
-        // console.log(item.sys.updatedAt)
         if (typeof item.fields.overviewThumbnail !== 'undefined') {
-          // console.log(item.fields.overviewThumbnail)
           if (typeof item.fields.overviewThumbnail.fields !== 'undefined') {
-            // console.log(item.fields.overviewThumbnail.fields)
             posts.push(item)
           }
         }
       }
-      // console.log(posts)
       return {
         posts
       }
@@ -52,7 +46,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #595959 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },
@@ -66,6 +60,7 @@ export default {
     } else {
       document.body.classList = 'cases'
     }
+    this.$store.state.logoColor = 'white'
   }
 }
 </script>
@@ -87,7 +82,7 @@ export default {
     justify-content: space-between;
     align-items: stretch;
     flex: 1 1 100%;
-    margin-bottom: 12px;
+    margin-bottom: 3rem;
 
     @include mq($from: tablet) {
       flex: 0 1 50%;

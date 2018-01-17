@@ -3,8 +3,7 @@
     noscript
       | Please enable Javascript to view this web site.
     img(src="https://secure.leadforensics.com/89514.png", style="display:none;")
-    logo(class="logo" :class="{ blur: $store.state.isLogoBlurred}")
-    //- img(src="~/assets/img/sirmary_logo_opt.svg", class="logo", :class="{ blur: $store.state.isLogoBlurred }")
+    logo(class="logo" :class="{blurry: this.$store.state.isLogoBlurred}")
     nuxt
 </template>
 
@@ -41,6 +40,9 @@ export default {
       var preload = new Image()
       preload.src = trkLink
     }
+  },
+  mounted () {
+    this.$store.state.isLogoBlurred = false
   }
   // watch: {
   //   '$route': function () {
@@ -58,10 +60,11 @@ export default {
 @import '~assets/css/_settings.scss';
 
 .logo {
-  transition: filter .5s ease;
+  transition: all .5s ease;
 }
 
-.logo.blur {
-  filter: blur(5px)
+.blurry {
+  filter: blur(5px);
+  opacity: 0;
 }
 </style>

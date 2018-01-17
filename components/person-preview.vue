@@ -43,19 +43,22 @@ export default {
     .person {
       // min-height: 10rem;
       height: 100%;
-      background: rgba(white,.3);
+      // background: rgba(white,.3);
       display: flex;
       flex: 1 1 auto;
       padding: $spacing-unit;
       align-items: center;
       transition: background .2 ease;
 
-      &:hover {
-        background: rgba(white,.2);
-      }
+
 
       @include mq($from: tablet) {
         padding: $spacing-unit*2;
+
+        &:hover {
+        // background: rgba(white,.2);
+        color: $sm-grello;
+      }
       }
     }
 

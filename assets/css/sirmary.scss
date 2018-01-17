@@ -3,7 +3,7 @@
 @import 'levi';
 
 html {
-  background-image: url(~assets/img/heart-trans.gif);
+  background-image: url(~assets/img/heart-white.gif);
   background-repeat: no-repeat;
   // background-blend-mode: multiply;
   background-position: 50% 20vh;
@@ -12,7 +12,7 @@ html {
 
 body {
     font-family: $base-font-family;
-    color:white;
+    color:black;
     -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
@@ -23,6 +23,12 @@ body {
   position: absolute;
   // transition: right .5s cubic-bezier(0.4, 0.0, 0.2, 1);
 
+  .arrow {
+    svg {
+      width: 24px;
+    }
+  }
+
   button {
     width: 44px;
     height: 44px;
@@ -31,12 +37,12 @@ body {
     border-radius: 22px;
     padding: 11px;
     padding-top: 12px;
-    background: rgba(black, .7);
-    color: white;
+    background: $sm-grello;
+    color: black;
     cursor: pointer;
 
      &:hover {
-      background: black;
+      background: $sm-grello;
       transform: scale(1.1);
     }
   }
@@ -45,7 +51,7 @@ body {
     width: 20px;
     height: 20px;
     stroke: currentColor;
-    stroke-width: 3;
+    stroke-width: 5;
     stroke-linecap: round;
   }
 
@@ -130,7 +136,7 @@ ul.messages a {
 
 a {
   text-decoration: none;
-  color:$sm-yellow;
+  color:white;
 }
 
 
@@ -141,7 +147,7 @@ a {
   left: 50vw;
   margin-left: -50px;
   // transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
-  z-index: -1;
+  z-index: 0;
 
   &.reduced {
     width: 72px;
@@ -160,17 +166,34 @@ a {
 
 
   .awesomplete > ul {
-    background: rgba(white,.3);
+    background: black;
     border-radius: 20px;
     padding: 24px;
+    width: calc(100% + 54px);
+    padding-top: 7rem;
+    margin-left: -5px;
 
     &:before {
       content: 'Dinge, die du mich fragen kannst:';
-      font-size: rem(24);
+      color: white;
+      font-size: rem(36);
       text-indent: $text-indent;
       margin-top: 0;
       margin-bottom: 24px;
       display: inline-block;
+    }
+
+    &:after {
+      content: '';
+      background: url(~assets/img/caret.svg) top center no-repeat;
+      background-size: 50px 18.5px;
+      color:$sm-grello;
+      position: absolute;
+      top: 1.5rem;
+      right: 0;
+      left: 0;
+      bottom: 24px;
+      padding: 2rem;
     }
   }
 
@@ -185,7 +208,7 @@ a {
     display: inline-block;
     height: 5px;
     width: 5px;
-    background-color: white;
+    background-color: black;
     margin: 3px;
     border-radius: 50%;
     animation: wave 1.5s infinite ease-in-out;
@@ -225,8 +248,9 @@ body.cases main, body.about main, body.team main, body.job main, body.clients ma
   }
 
   .container {
-    background: rgba(white,.3);
+    background:none;
     min-height: calc(100vh - 142px);
+    position: relative;
 
     @include mq($from: tablet) {
       min-height: calc(100vh - 180px);
@@ -236,10 +260,10 @@ body.cases main, body.about main, body.team main, body.job main, body.clients ma
   .close-modal  {
     position: absolute;
     right: 24px;
-    top: 166px;
+    top: 24px;
 
       @include mq($from: tablet) {
-        top: 204px;
+        top: 24px;
       }
 
       &.sticky {
@@ -248,6 +272,10 @@ body.cases main, body.about main, body.team main, body.job main, body.clients ma
         right: 24px;
       }
   }
+}
+
+body.cases.detailView .logo {
+  display: none;
 }
 
 body.cases .container {
@@ -286,6 +314,9 @@ body.cases.detailView main {
   //   // margin: 36px 0;
   // }
 
+  h1 {
+    color: white;
+  }
    h2 {
     line-height: 1.2;
   }
@@ -318,7 +349,7 @@ body.about .container {
 }
 
 .job-body h3 {
-  color: black;
+  color: $sm-grello;
   font-family: 'LeviRebrushed';
   font-weight: normal;
   font-size: 2rem;
@@ -329,6 +360,7 @@ body.about .container {
   font-size: rem(36);
   text-indent: $text-indent;
   line-height: 1.2;
+  color: white;
 }
 
   @keyframes slideUp {

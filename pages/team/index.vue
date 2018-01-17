@@ -27,7 +27,7 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background: #926392 }', type: 'text/css' }
+        { cssText: ':root { background: #000 }', type: 'text/css' }
       ]
     }
   },

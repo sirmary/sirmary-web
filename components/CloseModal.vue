@@ -7,9 +7,8 @@
         line(class="st0" x1="1" y1="17.8" x2="13" y2="29.8")
     button.close(v-show="!$store.state.isArrow")
       svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 36 35")
-        style(type='text/css').
-        line(transform="rotate(45 18 17.5)" x1="1" y1="17.5" x2="35" y2="17.5")
-        line(transform="rotate(-45 18 17.5)" x1="1" y1="17.5" x2="35" y2="17.5")
+        line(transform="rotate(45 18 17.5)" x1="-1.8" y1="17.5" x2="37.8" y2="17.5")
+        line(transform="rotate(-45 18 17.5)" x1="-1.8" y1="17.5" x2="37.8" y2="17.5")
 </template>
 
 <script>
@@ -47,3 +46,4 @@ export default {
   }
 }
 </script>
+

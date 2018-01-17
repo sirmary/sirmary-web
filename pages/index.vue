@@ -1,7 +1,10 @@
 <template lang="pug">
   .wrapper
     nuxt-link(to="/chat")
-      h1(v-html="claim")
+      img(src="~/assets/img/we-decomplex-digital.svg").claim
+      //- .padded-multiline
+      //-   h1
+      //-     strong(v-html="claim")
 </template>
 
 <script>
@@ -15,23 +18,25 @@ export default {
   head () {
     return {
       style: [
-        { cssText: ':root { background-color: #787709 }', type: 'text/css' }
+        { cssText: ':root { background-color: #efefef }', type: 'text/css' }
       ]
     }
   },
   mounted () {
     let router = this.$router
     setTimeout(function () {
-      // console.log('inside timer')
-      // console.log(router)
       router.push('/chat')
-    }, 2000)
+    }, 3000)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/css/_settings.scss';
+
+h1 {
+  color: black
+}
 
 .wrapper {
   height: 100vh;
@@ -43,7 +48,9 @@ export default {
 
 a h1 {
   text-indent: 36px;
-  color: white;
+  color: black;
+  // background: $sm-grello;
+  width: auto;
   text-decoration: none;
   font-size: rem(36);
 
@@ -52,4 +59,32 @@ a h1 {
   }
 }
 
+.padded-multiline { 
+  line-height: 1.3; 
+  // padding: 2px 0; 
+  // border-left: 20px solid $sm-grello;
+  // width: 400px;
+  margin: 20px auto;
+}
+.padded-multiline h1 { 
+  // background-color: $sm-grello;
+  padding: 4px 0;
+  padding-left: 20px;
+  color: black; 
+  display: inline;
+  margin: 0; 
+}
+.padded-multiline h1 strong { 
+  background-color: $sm-grello;
+  display: inline;
+  padding:12px;
+  // padding-left: 30px;
+  position: relative;
+  left: -10px; 
+  box-decoration-break: clone;
+}
+
+.claim {
+  max-width: 100%;
+}
 </style>
