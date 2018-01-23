@@ -48,7 +48,8 @@ export default {
       santaShuffle: this.$store.state.santaShuffle,
       amazonLink: this.$store.state.amazonLink,
       config: {
-        headers: {'Authorization': 'bearer ' + process.env.apiAccessToken}
+        headers: {'Authorization': 'bearer ' + process.env.apiAccessToken,
+          'Content-Type': 'application/json'}
       },
       messages: this.$store.state.messages,
       helpQuestions: [],
