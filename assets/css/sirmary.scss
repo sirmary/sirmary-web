@@ -128,9 +128,19 @@ ul.messages a {
     border-radius: 24px;
     color: white;
     text-indent: 0;
+    line-height: 1.4;
 
     @include mq($from: tablet) {
       padding-top: 10px;
+    }
+
+    &.plain-link {
+      margin: 0;
+      padding: 0;
+      display: inline;
+      background: none;
+      text-decoration: underline;
+      color: black;
     }
 }
 
