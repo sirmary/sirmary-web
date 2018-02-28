@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 const store = () =>
   new Vuex.Store({
     state: {
-      messages: [{ who: 'bot greeting', text: '<h2>Hallo,</h2> ich bin der Chatbot von SiR MaRY und beantworte deine Fragen zu SiR MaRY. <br><br>Möchtest du wissen, ob wir <a class="plain-link" href="https://www.iab-switzerland.ch/sir-mary-wird-digital-agency-of-the-year/" target="_blank">Digital Agency of the Year</a> sind? Ja. 🏆 😃. Sonst noch was?' }],
+      messages: [{ who: 'bot greeting', text: '<h2>Hallo,</h2> ich bin der Chatbot von SiR MaRY und beantworte deine Fragen zu SiR MaRY. <br><br>Möchtest du wissen, ob wir <a class="plain-link" href="https://www.iab-switzerland.ch/sir-mary-wird-digital-agency-of-the-year/" target="_blank">Digital Agency of the Year </a> sind? Ja. 🏆 😃. Sonst noch was?' }],
       newMsg: '',
       mainClass: 'home',
       santaClient: 'temp',
