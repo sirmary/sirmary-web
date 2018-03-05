@@ -26,12 +26,11 @@ export default {
       isArrow: false
     }
   },
-  mounted () {
-    let closeButton = this.$refs.closeButton
-    let $data = this.$data
-    let $store = this.$store
-
-    document.body.onscroll = function () {
+  methods: {
+    handleScroll () {
+      let closeButton = this.$refs.closeButton
+      let $data = this.$data
+      let $store = this.$store
       if (closeButton.$el.parentElement.getBoundingClientRect().top < 25) {
         $data.isSticky = true
         $store.state.isLogoBlurred = true
@@ -40,6 +39,13 @@ export default {
         $store.state.isLogoBlurred = false
       }
     }
+  },
+  mounted () {
+    let self = this
+    document.body.onscroll = function () {
+      self.handleScroll()
+    }
+    this.handleScroll()
   },
   updated () {
     this.isArrow = this.$store.state.isArrow
