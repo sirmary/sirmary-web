@@ -2,7 +2,6 @@
   .container
     close-modal(:link="'/jobs'")
     .job-body
-      //- h1 {{ job.fields.title }}
       div(v-html="marked(job.fields.body)") {{job.fields.body}}
 </template>
 
@@ -13,7 +12,6 @@ import CloseModal from '~/components/CloseModal.vue'
 const jobClient = createClient()
 
 export default {
-  // transition: 'slide',
   asyncData ({ env, params }) {
     return jobClient.getEntries({
       'content_type': 'job',
@@ -56,7 +54,6 @@ export default {
 .container {
   padding: 24px;
   padding-top: 48px;
-  // max-width: 40rem;
   margin: 0 auto;
   background: rgba(white,.3);
 }
