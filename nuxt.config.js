@@ -54,9 +54,6 @@ const config = {
       { property: 'og:image:width', content: '1920'  },
       { property: 'og:image:height', content: '1135'  }
     ],
-    script: [
-      { src: 'https://secure.leadforensics.com/js/89514.js', type: 'text/javascript' }
-    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:700'}
